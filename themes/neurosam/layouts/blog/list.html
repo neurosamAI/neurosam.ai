@@ -1,0 +1,27 @@
+{{ define "main" }}
+<div class="max-w-4xl mx-auto px-6 py-16">
+  <h1 class="text-4xl font-bold text-white mb-2">Blog</h1>
+  <p class="text-slate-400 mb-12">Neurosam AI의 기술, 인사이트, 그리고 여정을 공유합니다.</p>
+
+  <div class="space-y-8">
+    {{ range .Pages }}
+    <article class="bg-slate-900/50 border border-slate-800 rounded-xl p-6 hover:border-brand-primary/50 transition-colors">
+      <a href="{{ .Permalink }}" class="block">
+        <time class="text-sm text-brand-primary">{{ .Date.Format "2006년 1월 2일" }}</time>
+        <h2 class="text-xl font-bold text-white mt-2 hover:text-brand-primary transition-colors">
+          {{ .Title }}
+        </h2>
+        <p class="text-slate-400 mt-3 text-sm line-clamp-2">{{ .Description }}</p>
+        {{ with .Params.tags }}
+        <div class="flex flex-wrap gap-2 mt-4">
+          {{ range . }}
+          <span class="text-xs bg-slate-800 text-slate-400 px-2 py-1 rounded">{{ . }}</span>
+          {{ end }}
+        </div>
+        {{ end }}
+      </a>
+    </article>
+    {{ end }}
+  </div>
+</div>
+{{ end }}
