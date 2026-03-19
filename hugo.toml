@@ -1,0 +1,23 @@
+baseURL = 'https://neurosam.ai/'
+languageCode = 'ko-KR'
+title = 'Neurosam AI Blog'
+theme = 'neurosam'
+
+[params]
+  description = 'Neurosam AI — Connecting Intelligence to Real Life'
+  author = 'Neurosam AI Team'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    style = 'dracula'
+    lineNos = false
+
+[outputs]
+  home = ['HTML']
+  section = ['HTML']
+
+[permalinks]
+  blog = '/blog/:year/:month/:slug/'
