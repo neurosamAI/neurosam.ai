@@ -17,10 +17,20 @@
   tailwind.config = {
     theme: {
       extend: {
+        fontFamily: {
+          sans: ['Noto Sans KR', 'Inter', 'system-ui', 'sans-serif'],
+          display: ['Inter', 'Noto Sans KR', 'sans-serif'],
+        },
         colors: {
-          'brand-dark': '#0f172a',
-          'brand-primary': '#3b82f6',
-          'brand-accent': '#8b5cf6',
+          brand: {
+            50: '#eff6ff',
+            100: '#dbeafe',
+            400: '#60a5fa',
+            500: '#3b82f6',
+            600: '#2563eb',
+            900: '#0c1527',
+            950: '#080e1a',
+          }
         }
       }
     }
@@ -30,63 +40,39 @@
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<!-- FontAwesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-  body { font-family: 'Noto Sans KR', sans-serif; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans KR', 'Inter', sans-serif; }
 
-  /* 본문 기본 */
-  .prose { font-size: 1.0625rem; line-height: 1.9; color: #e2e8f0; }
-
-  /* 제목 */
-  .prose h1 { font-size: 2rem; font-weight: 800; color: #f8fafc; margin-top: 3rem; margin-bottom: 1rem; letter-spacing: -0.02em; }
-  .prose h2 { font-size: 1.5rem; font-weight: 700; color: #f1f5f9; margin-top: 2.5rem; margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid #1e293b; }
-  .prose h3 { font-size: 1.25rem; font-weight: 600; color: #e2e8f0; margin-top: 2rem; margin-bottom: 0.5rem; }
-
-  /* 문단 */
-  .prose p { color: #cbd5e1; margin-bottom: 1.25rem; word-break: keep-all; }
-
-  /* 링크 */
-  .prose a { color: #60a5fa; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: #60a5fa40; }
-  .prose a:hover { color: #a78bfa; text-decoration-color: #a78bfa80; }
-
-  /* 강조 */
-  .prose strong { color: #f1f5f9; font-weight: 600; }
-
-  /* 리스트 */
+  /* Prose */
+  .prose { font-size: 1.0625rem; line-height: 1.9; color: #d1d5db; }
+  .prose h1 { font-size: 2rem; font-weight: 800; color: #f9fafb; margin-top: 3rem; margin-bottom: 1rem; letter-spacing: -0.02em; }
+  .prose h2 { font-size: 1.5rem; font-weight: 700; color: #f3f4f6; margin-top: 2.5rem; margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .prose h3 { font-size: 1.25rem; font-weight: 600; color: #e5e7eb; margin-top: 2rem; margin-bottom: 0.5rem; }
+  .prose p { color: #9ca3af; margin-bottom: 1.25rem; word-break: keep-all; }
+  .prose a { color: #60a5fa; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(96,165,250,0.25); }
+  .prose a:hover { color: #93c5fd; text-decoration-color: rgba(96,165,250,0.5); }
+  .prose strong { color: #e5e7eb; font-weight: 600; }
   .prose ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.25rem; }
   .prose ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1.25rem; }
-  .prose li { color: #cbd5e1; margin-bottom: 0.5rem; line-height: 1.8; }
-  .prose li::marker { color: #64748b; }
-
-  /* 인용 */
-  .prose blockquote {
-    border-left: 3px solid #3b82f6;
-    background: #1e293b40;
-    padding: 1rem 1.25rem;
-    margin: 1.5rem 0;
-    border-radius: 0 8px 8px 0;
-    color: #94a3b8;
-    font-style: italic;
-  }
-  .prose blockquote p { color: #94a3b8; margin-bottom: 0; }
-  .prose blockquote strong { color: #e2e8f0; }
-
-  /* 코드 */
-  .prose code { color: #e2e8f0; background: #1e293b; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
-  .prose pre { background: #0f172a; border: 1px solid #1e293b; border-radius: 8px; padding: 1.25rem; overflow-x: auto; margin: 1.5rem 0; }
-  .prose pre code { background: none; padding: 0; font-size: 0.875rem; line-height: 1.7; color: #e2e8f0; }
-
-  /* 테이블 */
+  .prose li { color: #9ca3af; margin-bottom: 0.5rem; line-height: 1.8; }
+  .prose li::marker { color: #4b5563; }
+  .prose blockquote { border-left: 3px solid #3b82f6; background: rgba(255,255,255,0.02); padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0; color: #6b7280; font-style: italic; }
+  .prose blockquote p { color: #6b7280; margin-bottom: 0; }
+  .prose blockquote strong { color: #d1d5db; }
+  .prose code { color: #e5e7eb; background: rgba(255,255,255,0.05); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+  .prose pre { background: #0c1527; border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 1.25rem; overflow-x: auto; margin: 1.5rem 0; }
+  .prose pre code { background: none; padding: 0; font-size: 0.875rem; line-height: 1.7; color: #d1d5db; }
   .prose table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9375rem; }
-  .prose thead { border-bottom: 2px solid #334155; }
-  .prose th { color: #f1f5f9; background: #1e293b; padding: 0.75rem 1rem; text-align: left; font-weight: 600; }
-  .prose td { color: #cbd5e1; padding: 0.75rem 1rem; border-bottom: 1px solid #1e293b; }
-  .prose tr:hover td { background: #1e293b30; }
-
-  /* 구분선 */
-  .prose hr { border: none; border-top: 1px solid #334155; margin: 2.5rem 0; }
-
-  /* 이미지 */
+  .prose thead { border-bottom: 2px solid rgba(255,255,255,0.08); }
+  .prose th { color: #e5e7eb; background: rgba(255,255,255,0.03); padding: 0.75rem 1rem; text-align: left; font-weight: 600; }
+  .prose td { color: #9ca3af; padding: 0.75rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .prose tr:hover td { background: rgba(255,255,255,0.02); }
+  .prose hr { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 2.5rem 0; }
   .prose img { border-radius: 8px; margin: 1.5rem 0; }
 </style>

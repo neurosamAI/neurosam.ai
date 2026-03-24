@@ -3,409 +3,382 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>neurosam.AI - Software-first AI Startup</title>
-    <meta name="description" content="neurosam.AI는 디지털 에이전트와 물리적 머신을 구동하는 지능형 시스템을 설계하는 소프트웨어 중심의 AI 스타트업입니다.">
-    
-    <!-- Tailwind CSS (CDN) -->
+    <title>neurosam.AI — AI 안내 로봇 & 하이브리드 SaaS</title>
+    <meta name="description" content="neurosam.AI Agent-R은 방문객과 전화를 응대하는 AI 안내 로봇 솔루션입니다. 2026 AI바우처 공급기업 선정.">
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts (Noto Sans KR) -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome Icons -->
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <style>
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            scroll-behavior: smooth;
-        }
-        /* Gradient Text Utility */
-        .text-gradient {
-            background: linear-gradient(to right, #60a5fa, #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        /* Custom Animations */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-    </style>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['Noto Sans KR', 'Inter', 'system-ui', 'sans-serif'],
+                        display: ['Inter', 'Noto Sans KR', 'sans-serif'],
+                    },
                     colors: {
                         brand: {
-                            dark: '#0f172a',
-                            primary: '#3b82f6',
-                            accent: '#8b5cf6'
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#0c1527',
+                            950: '#080e1a',
                         }
                     }
                 }
             }
         }
-        
-        // Function to handle image error and show text fallback
-        function handleLogoError(img) {
-            img.style.display = 'none';
-            img.nextElementSibling.style.display = 'flex';
-        }
+
     </script>
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .text-gradient {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .line-glow {
+            background: linear-gradient(90deg, transparent, rgba(59,130,246,0.3), transparent);
+            height: 1px;
+        }
+    </style>
 </head>
-<body class="bg-brand-dark text-gray-100 antialiased selection:bg-brand-primary selection:text-white">
+<body class="bg-brand-950 text-gray-200 antialiased selection:bg-brand-500/30">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-brand-dark/90 backdrop-blur-md border-b border-white/10 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav id="nav" class="fixed w-full z-50 bg-brand-950/80 backdrop-blur-xl border-b border-white/[0.06] transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
             <div class="flex items-center justify-between h-16">
-                <!-- Logo Area -->
-                <div class="flex-shrink-0 cursor-pointer flex items-center" onclick="window.scrollTo(0,0)">
-                    <!-- Image Logo (Priority) -->
-                    <img src="logo.png" 
-                         alt="neurosam.AI Logo" 
-                         class="h-10 w-auto object-contain mr-2"
-                         onerror="handleLogoError(this)">
-                    
-                    <!-- Text Logo Fallback (Hidden by default, shown on error) -->
-                    <span class="text-2xl font-bold tracking-tighter hidden items-center" id="text-logo-nav">
-                        <i class="fa-solid fa-brain text-brand-primary mr-2"></i>
-                        neurosam<span class="text-brand-primary">.AI</span>
-                    </span>
-                </div>
-                
-                <!-- Desktop Menu -->
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#home" class="hover:text-brand-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">홈</a>
-                        <a href="#features" class="hover:text-brand-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">핵심 역량</a>
-                        <a href="#product" class="hover:text-brand-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">제품</a>
-                        <a href="#about" class="hover:text-brand-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">소개</a>
-                        <a href="/blog/" class="hover:text-brand-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">블로그</a>
-                        <a href="#contact" class="bg-brand-primary hover:bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-bold transition-all shadow-lg shadow-blue-500/30 border border-transparent hover:border-white/20">문의하기</a>
-                    </div>
+                <a href="/" class="flex items-center gap-2 group">
+                    <img src="logo.svg" alt="neurosam.AI" class="h-7 w-auto">
+                </a>
+
+                <div class="hidden md:flex items-center gap-1">
+                    <a href="#product" class="px-3 py-2 text-sm text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5">솔루션</a>
+                    <a href="#capabilities" class="px-3 py-2 text-sm text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5">기술 역량</a>
+                    <a href="#usecases" class="px-3 py-2 text-sm text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5">활용 사례</a>
+                    <a href="#about" class="px-3 py-2 text-sm text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5">회사 소개</a>
+                    <a href="/blog/" class="px-3 py-2 text-sm text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5">블로그</a>
+                    <a href="#contact" class="ml-3 px-5 py-2 bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold rounded-lg transition-all">
+                        도입 문의
+                    </a>
                 </div>
 
-                <!-- Mobile Menu Button -->
-                <div class="-mr-2 flex md:hidden">
-                    <button onclick="toggleMenu()" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none transition-colors">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
+                <button onclick="toggleMenu()" class="md:hidden p-2 text-gray-400 hover:text-white">
+                    <i class="fas fa-bars text-lg"></i>
+                </button>
             </div>
         </div>
 
-        <!-- Mobile Menu Panel -->
-        <div id="mobile-menu" class="hidden md:hidden bg-brand-dark border-b border-white/10 shadow-xl">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#home" onclick="toggleMenu()" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">홈</a>
-                <a href="#features" onclick="toggleMenu()" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">핵심 역량</a>
-                <a href="#product" onclick="toggleMenu()" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">제품</a>
-                <a href="#about" onclick="toggleMenu()" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">소개</a>
-                <a href="/blog/" onclick="toggleMenu()" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">블로그</a>
-                <a href="#contact" onclick="toggleMenu()" class="text-brand-primary hover:text-white block px-3 py-2 rounded-md text-base font-bold">문의하기</a>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-white/[0.06]">
+            <div class="px-4 py-3 space-y-1 bg-brand-950/95 backdrop-blur-xl">
+                <a href="#product" onclick="toggleMenu()" class="block px-3 py-2.5 text-gray-300 hover:text-white rounded-lg text-sm">솔루션</a>
+                <a href="#capabilities" onclick="toggleMenu()" class="block px-3 py-2.5 text-gray-300 hover:text-white rounded-lg text-sm">기술 역량</a>
+                <a href="#usecases" onclick="toggleMenu()" class="block px-3 py-2.5 text-gray-300 hover:text-white rounded-lg text-sm">활용 사례</a>
+                <a href="#about" onclick="toggleMenu()" class="block px-3 py-2.5 text-gray-300 hover:text-white rounded-lg text-sm">회사 소개</a>
+                <a href="/blog/" onclick="toggleMenu()" class="block px-3 py-2.5 text-gray-300 hover:text-white rounded-lg text-sm">블로그</a>
+                <a href="#contact" onclick="toggleMenu()" class="block px-3 py-2.5 text-brand-400 font-semibold rounded-lg text-sm">도입 문의</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-        <!-- Background Gradients -->
-        <div class="absolute top-0 left-1/2 w-full -translate-x-1/2 h-full z-0 pointer-events-none">
-            <div class="absolute top-20 left-10 w-72 h-72 bg-brand-primary/20 rounded-full blur-[100px] mix-blend-screen"></div>
-            <div class="absolute bottom-20 right-10 w-96 h-96 bg-brand-accent/20 rounded-full blur-[100px] mix-blend-screen"></div>
+    <!-- Hero -->
+    <section class="relative pt-28 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-brand-500/[0.07] rounded-full blur-[120px]"></div>
+            <div class="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-purple-500/[0.05] rounded-full blur-[120px]"></div>
         </div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <div class="inline-block px-4 py-1.5 mb-6 rounded-full border border-brand-primary/30 bg-brand-primary/10 backdrop-blur-sm">
-                <span class="text-brand-primary text-sm font-semibold tracking-wide uppercase">AI for Digital & Physical World</span>
-            </div>
-            <h1 class="text-4xl sm:text-6xl font-black tracking-tight mb-6 leading-tight">
-                디지털과 물리를 잇는<br>
-                <span class="text-gradient">지능형 시스템의 설계</span>
-            </h1>
-            <p class="mt-6 max-w-3xl mx-auto text-xl text-gray-400 mb-10 leading-relaxed font-light">
-                <strong class="text-white font-medium">neurosam.AI</strong>는 소프트웨어 중심(Software-first)의 AI 스타트업입니다.<br>
-                우리의 미션은 <strong class="text-white">거대언어모델(LLM)과 물리적 현실 세계를 연결하는 것</strong>입니다.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#contact" class="px-8 py-4 bg-brand-primary hover:bg-blue-600 rounded-full font-bold text-lg shadow-lg shadow-blue-500/40 transition-all hover:-translate-y-1 hover:shadow-blue-500/60">
-                    솔루션 도입 문의
-                </a>
-                <a href="#features" class="px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 rounded-full font-bold text-lg backdrop-blur-sm transition-all">
-                    Core Competencies
-                </a>
-            </div>
-
-            <!-- Floating visual element (Abstract) -->
-            <div class="mt-20 animate-float flex justify-center">
-                <div class="relative w-64 h-64 sm:w-96 sm:h-64 bg-gradient-to-tr from-brand-primary/10 to-brand-accent/10 rounded-2xl border border-white/10 backdrop-blur-xl flex items-center justify-center shadow-2xl group">
-                    <div class="absolute inset-0 bg-brand-primary/5 rounded-2xl filter blur-xl group-hover:bg-brand-primary/10 transition-all duration-500"></div>
-                    <div class="text-center relative z-10">
-                        <div class="flex justify-center items-center space-x-4 mb-4 opacity-80 group-hover:opacity-100 transition-opacity">
-                            <i class="fa-solid fa-laptop-code text-4xl text-gray-400 group-hover:text-white transition-colors"></i>
-                            <i class="fa-solid fa-arrow-right text-brand-primary text-xl"></i>
-                            <i class="fa-solid fa-robot text-5xl text-white"></i>
-                        </div>
-                        <p class="font-mono text-xs sm:text-sm text-brand-accent tracking-widest uppercase mt-2">Software First AI</p>
-                        <div class="w-48 h-1 bg-gray-800 rounded-full mt-6 mx-auto overflow-hidden">
-                            <div class="h-full bg-gradient-to-r from-brand-primary to-brand-accent w-2/3 rounded-full animate-[pulse_2s_cubic-bezier(0.4,0,0.6,1)_infinite]"></div>
-                        </div>
-                    </div>
+        <div class="max-w-6xl mx-auto px-5 sm:px-8 relative z-10">
+            <div class="max-w-3xl">
+                <!-- Trust Badge -->
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-8">
+                    <span class="flex h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                    <span class="text-emerald-400 text-xs font-semibold tracking-wide">2026 과학기술정보통신부 AI바우처 공급기업 선정</span>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Features Section -->
-    <section id="features" class="py-24 bg-brand-dark relative">
-        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16">
-                <h2 class="text-brand-primary font-bold tracking-widest uppercase text-sm mb-2">Core Competencies</h2>
-                <p class="text-3xl font-extrabold tracking-tight sm:text-4xl text-white">
-                    neurosam.AI 핵심 역량
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.1] tracking-tight mb-6 break-keep">
+                    사람처럼 보고, 듣고,<br>
+                    <span class="text-gradient">응대하는 AI</span>
+                </h1>
+
+                <p class="text-lg sm:text-xl text-gray-400 leading-relaxed mb-10 max-w-2xl break-keep">
+                    <strong class="text-gray-200">neurosam.AI Agent-R</strong>은 방문객 안내 로봇과 AI 전화 응대를 하나로 통합한 하이브리드 SaaS 솔루션입니다. 오피스, 호텔, 병원 — 사람을 맞이하는 모든 공간에서 24시간 지능형 응대를 제공합니다.
                 </p>
-                <p class="mt-4 max-w-2xl text-xl text-gray-400 mx-auto font-light">
-                    로봇과 AI 시스템의 '두뇌'를 만드는 기술력에 집중합니다.
-                </p>
+
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <a href="#contact" class="inline-flex items-center justify-center px-7 py-3.5 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-lg transition-all text-sm shadow-lg shadow-brand-500/20">
+                        도입 문의하기
+                        <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    </a>
+                    <a href="#product" class="inline-flex items-center justify-center px-7 py-3.5 bg-white/[0.05] hover:bg-white/[0.08] border border-white/[0.08] text-gray-300 font-semibold rounded-lg transition-all text-sm">
+                        솔루션 알아보기
+                    </a>
+                </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Feature 1: AI Software Architecture -->
-                <div class="p-8 bg-gradient-to-b from-white/5 to-transparent border border-white/10 rounded-2xl hover:border-brand-primary/50 transition-all group hover:-translate-y-1 hover:shadow-2xl hover:shadow-brand-primary/10">
-                    <div class="w-14 h-14 bg-brand-primary/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                        <i class="fa-solid fa-server text-2xl text-brand-primary"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-white group-hover:text-brand-primary transition-colors">AI Software Architecture</h3>
-                    <p class="text-gray-400 leading-relaxed break-keep text-sm">
-                        지능형 자율 시스템을 위한 견고한 백엔드 로직을 설계하고, 다양한 하드웨어에 유연하게 적용 가능한 확장성 높은 AI 아키텍처를 구축합니다.
-                    </p>
-                </div>
-                <!-- Feature 2: Robot Brain Engineering -->
-                <div class="p-8 bg-gradient-to-b from-white/5 to-transparent border border-white/10 rounded-2xl hover:border-brand-accent/50 transition-all group hover:-translate-y-1 hover:shadow-2xl hover:shadow-brand-accent/10">
-                    <div class="w-14 h-14 bg-brand-accent/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                        <i class="fa-solid fa-microchip text-2xl text-brand-accent"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-white group-hover:text-brand-accent transition-colors">Robot Brain Engineering</h3>
-                    <p class="text-gray-400 leading-relaxed break-keep text-sm">
-                        VLM(Vision-Language Model)과 같은 최신 AI 모델을 활용하여, 로봇이 환경을 스스로 인지하고 맥락을 이해하는 '소프트웨어 두뇌'를 개발합니다.
-                    </p>
-                </div>
-                <!-- Feature 3: Strategic AI Advisory -->
-                <div class="p-8 bg-gradient-to-b from-white/5 to-transparent border border-white/10 rounded-2xl hover:border-green-500/50 transition-all group hover:-translate-y-1 hover:shadow-2xl hover:shadow-green-500/10">
-                    <div class="w-14 h-14 bg-green-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                        <i class="fa-solid fa-comments text-2xl text-green-400"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-white group-hover:text-green-400 transition-colors">Strategic AI Advisory</h3>
-                    <p class="text-gray-400 leading-relaxed break-keep text-sm">
-                        전략적 파트너사에게 최적화된 AI 솔루션을 제공하고, 서비스 로봇 도입 및 상호작용(Interaction) 기술에 대한 전문적인 자문을 수행합니다.
-                    </p>
-                </div>
-            </div>
         </div>
     </section>
 
     <!-- Product Section -->
-    <section id="product" class="py-24 bg-[#0a0f1c] border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div>
-                    <h2 class="text-brand-primary font-bold tracking-widest uppercase text-sm mb-2">Flagship Product</h2>
-                    <p class="text-3xl font-extrabold tracking-tight sm:text-4xl text-white mb-6">
-                        AI 리셉셔니스트 로봇
-                    </p>
-                    <p class="text-xl text-gray-300 mb-8 leading-relaxed font-light">
-                        Neurosam AI는 지능형 LLM 기반 리셉셔니스트 로봇으로 프런트 데스크 경험을 새롭게 정의합니다. <br class="hidden lg:block">
-                        정적인 키오스크와 달리, 우리의 로봇은 음성 및 얼굴 인식 기술을 사용하여 방문객과 자연스럽게 상호 작용합니다.
-                    </p>
-                    
-                    <div class="space-y-6">
-                        <!-- Key Feature 1 -->
-                        <div class="flex">
-                            <div class="flex-shrink-0">
-                                <div class="flex items-center justify-center h-12 w-12 rounded-xl bg-brand-primary/20 text-brand-primary">
-                                    <i class="fa-solid fa-comments text-xl"></i>
-                                </div>
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="text-lg font-bold text-white">LLM 기반 대화 (LLM-Powered Dialogue)</h4>
-                                <p class="mt-2 text-gray-400 text-sm leading-relaxed">
-                                    거대언어모델(LLM)을 활용하여 방문객과 맥락을 이해하는 자연스러운 대화가 가능합니다.
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Key Feature 2 -->
-                        <div class="flex">
-                            <div class="flex-shrink-0">
-                                <div class="flex items-center justify-center h-12 w-12 rounded-xl bg-brand-accent/20 text-brand-accent">
-                                    <i class="fa-solid fa-eye text-xl"></i>
-                                </div>
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="text-lg font-bold text-white">스마트 인지 (Smart Perception)</h4>
-                                <p class="mt-2 text-gray-400 text-sm leading-relaxed">
-                                    독자적인 얼굴 인식(Face Recognition) 기술로 방문객을 즉시 식별하며, 실시간 음성 대화를 처리합니다.
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Key Feature 3 -->
-                        <div class="flex">
-                            <div class="flex-shrink-0">
-                                <div class="flex items-center justify-center h-12 w-12 rounded-xl bg-green-500/20 text-green-400">
-                                    <i class="fa-solid fa-bell-concierge text-xl"></i>
-                                </div>
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="text-lg font-bold text-white">프런트 데스크 자동화 (Front-Desk Automation)</h4>
-                                <p class="mt-2 text-gray-400 text-sm leading-relaxed">
-                                    방문객 응대 및 전화 관리를 자율적으로 처리하여 운영 효율을 극대화합니다.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-10 inline-flex items-center px-4 py-2 rounded-full border border-yellow-500/30 bg-yellow-500/10 text-yellow-500">
-                        <span class="flex h-2 w-2 rounded-full bg-yellow-500 mr-2 animate-pulse"></span>
-                        <span class="text-sm font-medium">현재 전략적 파트너사와 함께 프로토타입 개발 및 테스트 진행 중</span>
-                    </div>
-                </div>
-                
-                <div class="relative">
-                     <!-- Abstract representation of the robot -->
-                     <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl aspect-[4/5] bg-gradient-to-b from-gray-900 to-black">
-                        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                             <div class="text-center">
-                                 <div class="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-tr from-brand-primary to-brand-accent flex items-center justify-center shadow-[0_0_50px_rgba(59,130,246,0.5)]">
-                                     <i class="fa-solid fa-robot text-6xl text-white"></i>
-                                 </div>
-                                 <div class="w-64 h-2 bg-gray-800 rounded-full mx-auto overflow-hidden">
-                                     <div class="h-full bg-brand-primary w-full animate-[shimmer_2s_infinite]"></div>
-                                 </div>
-                                 <p class="mt-4 font-mono text-brand-primary text-sm">SYSTEM ONLINE</p>
-                             </div>
-                        </div>
-                        <!-- UI Overlay Mockup -->
-                        <div class="absolute bottom-0 left-0 right-0 p-6 bg-white/5 backdrop-blur-md border-t border-white/10">
-                             <div class="flex items-center space-x-4">
-                                 <div class="w-10 h-10 rounded-full bg-gray-700 flex-shrink-0"></div>
-                                 <div class="space-y-2 w-full">
-                                     <div class="h-2 bg-gray-600 rounded w-3/4"></div>
-                                     <div class="h-2 bg-gray-600 rounded w-1/2"></div>
-                                 </div>
-                             </div>
-                        </div>
-                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About/Vision Section -->
-    <section id="about" class="py-24 relative overflow-hidden bg-brand-dark border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
-                <div class="mb-12 lg:mb-0 order-2 lg:order-1">
-                    <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-brand-dark/50 backdrop-blur">
-                         <!-- Fallback Image / Placeholder for About Section -->
-                         <div class="aspect-video flex items-center justify-center relative group">
-                            <div class="absolute inset-0 bg-gradient-to-br from-brand-primary/20 to-brand-accent/20 opacity-50 group-hover:opacity-70 transition-opacity"></div>
-                            <div class="text-center p-8 relative z-10">
-                                <i class="fa-solid fa-code-branch text-7xl text-gray-500 mb-4 group-hover:text-brand-primary transition-colors duration-500"></i>
-                                <h3 class="text-xl font-bold text-gray-300">Software-First Engineering</h3>
-                            </div>
-                         </div>
-                         <div class="absolute inset-0 bg-gradient-to-t from-[#0a0f1c] via-transparent to-transparent"></div>
-                         <div class="absolute bottom-6 left-6">
-                            <div class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-brand-primary/20 text-brand-primary mb-2">
-                                Since 2025
-                            </div>
-                            <p class="text-2xl font-bold text-white">We Engineer Intelligence</p>
-                         </div>
-                    </div>
-                </div>
-                <div class="order-1 lg:order-2">
-                    <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl mb-6 text-white">
-                        <span class="text-brand-primary">neurosam.AI</span> Vision
-                    </h2>
-                    <p class="text-lg text-gray-300 mb-8 leading-relaxed text-justify font-light">
-                        neurosam.AI의 미션은 <strong class="text-white">거대언어모델(LLM)과 물리적 현실 세계를 연결하는 것</strong>입니다.<br>
-                        우리는 디지털 에이전트부터 물리적 로봇(Physical Machines)까지, AI 리셉셔니스트 로봇이 스스로 인지하고 자율적으로 판단할 수 있는 <strong>'핵심 지능형 시스템(Brain)'</strong>을 엔지니어링합니다.
-                    </p>
-                    <div class="space-y-6">
-                        <div class="flex items-start group">
-                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-brand-primary/20 flex items-center justify-center mt-1 group-hover:bg-brand-primary transition-colors">
-                                <i class="fa-solid fa-check text-sm text-brand-primary group-hover:text-white transition-colors"></i>
-                            </div>
-                            <p class="ml-4 text-gray-300 group-hover:text-white transition-colors">Software-First 접근 방식으로 유연하고 강력한 AI 구축</p>
-                        </div>
-                        <div class="flex items-start group">
-                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-brand-primary/20 flex items-center justify-center mt-1 group-hover:bg-brand-primary transition-colors">
-                                <i class="fa-solid fa-check text-sm text-brand-primary group-hover:text-white transition-colors"></i>
-                            </div>
-                            <p class="ml-4 text-gray-300 group-hover:text-white transition-colors">서비스 로봇 및 키오스크 상호작용 최적화</p>
-                        </div>
-                        <div class="flex items-start group">
-                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-brand-primary/20 flex items-center justify-center mt-1 group-hover:bg-brand-primary transition-colors">
-                                <i class="fa-solid fa-check text-sm text-brand-primary group-hover:text-white transition-colors"></i>
-                            </div>
-                            <p class="ml-4 text-gray-300 group-hover:text-white transition-colors">고도화된 Interaction AI 컨설팅</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Leadership Section -->
-    <section id="leadership" class="py-24 bg-[#05080f] border-t border-white/5 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="product" class="py-24 relative">
+        <div class="line-glow w-full"></div>
+        <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-12">
             <div class="text-center mb-16">
-                <h2 class="text-brand-primary font-bold tracking-widest uppercase text-sm mb-2">Leadership</h2>
-                <p class="text-3xl font-extrabold tracking-tight sm:text-4xl text-white">
-                    팀 리더십
+                <p class="text-brand-400 text-sm font-semibold tracking-wider uppercase mb-3 font-display">Agent-R Platform</p>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight break-keep">
+                    AI 안내 로봇과 전화 응대를<br class="hidden sm:block">하나의 플랫폼으로
+                </h2>
+                <p class="mt-4 text-gray-400 max-w-2xl mx-auto break-keep">
+                    Agent-R은 오프라인 로봇과 전화 채널을 통합하여 고객 접점 전체를 AI가 커버합니다.
                 </p>
             </div>
-            
-            <div class="max-w-4xl mx-auto">
-                <div class="bg-brand-dark border border-white/10 rounded-2xl overflow-hidden hover:border-brand-primary/30 transition-all duration-300 shadow-xl">
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Vision AI -->
+                <div class="group relative bg-white/[0.02] border border-white/[0.06] rounded-2xl p-8 hover:border-brand-500/30 transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-5">
+                        <div class="w-11 h-11 bg-brand-500/10 rounded-xl flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-eye text-brand-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">AI 시각 인식</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed break-keep">
+                        여러 명이 동시에 다가와도 각각의 얼굴을 즉시 인식하고, 재방문자에게는 이름을 불러 맞춤 인사를 건넵니다. 관심이 없어 고개를 돌리면 대화를 자연스럽게 마무리하는 자율 판단 응대가 가능합니다.
+                    </p>
+                    <div class="mt-5 flex flex-wrap gap-2">
+                        <span class="text-[11px] px-2 py-0.5 rounded bg-white/[0.04] text-gray-500 border border-white/[0.06]">Multi-Face Detection</span>
+                        <span class="text-[11px] px-2 py-0.5 rounded bg-white/[0.04] text-gray-500 border border-white/[0.06]">재방문자 인식</span>
+                        <span class="text-[11px] px-2 py-0.5 rounded bg-white/[0.04] text-gray-500 border border-white/[0.06]">자율 개입</span>
+                    </div>
+                </div>
+
+                <!-- Speech AI -->
+                <div class="group relative bg-white/[0.02] border border-white/[0.06] rounded-2xl p-8 hover:border-purple-500/30 transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-5">
+                        <div class="w-11 h-11 bg-purple-500/10 rounded-xl flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-waveform-lines text-purple-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">끊김 없는 음성 대화</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed break-keep">
+                        AI가 답변을 준비하는 짧은 순간에도 자연스러운 안내 멘트로 대화 흐름을 유지합니다. 사용자가 말을 시작하면 즉시 청취 모드로 전환하여, 사람과 대화하는 것과 같은 자연스러운 소통이 가능합니다.
+                    </p>
+                    <div class="mt-5 flex flex-wrap gap-2">
+                        <span class="text-[11px] px-2 py-0.5 rounded bg-white/[0.04] text-gray-500 border border-white/[0.06]">Nudge 멘트</span>
+                        <span class="text-[11px] px-2 py-0.5 rounded bg-white/[0.04] text-gray-500 border border-white/[0.06]">Cut-in 지원</span>
+                        <span class="text-[11px] px-2 py-0.5 rounded bg-white/[0.04] text-gray-500 border border-white/[0.06]">480ms 응답</span>
+                    </div>
+                </div>
+
+                <!-- Telephony AI -->
+                <div class="group relative bg-white/[0.02] border border-white/[0.06] rounded-2xl p-8 hover:border-emerald-500/30 transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-5">
+                        <div class="w-11 h-11 bg-emerald-500/10 rounded-xl flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-phone text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">24시간 AI 전화 응대</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed break-keep">
+                        기업 대표 번호로 걸려오는 전화를 AI가 대리 수신합니다. 고객사 전용 지식 기반으로 정확하게 답변하며, 통화 종료 후 대화 요약과 후속 조치를 자동 생성해 담당자에게 전달합니다.
+                    </p>
+                    <div class="mt-5 flex flex-wrap gap-2">
+                        <span class="text-[11px] px-2 py-0.5 rounded bg-white/[0.04] text-gray-500 border border-white/[0.06]">SIP Trunk</span>
+                        <span class="text-[11px] px-2 py-0.5 rounded bg-white/[0.04] text-gray-500 border border-white/[0.06]">RAG 기반 답변</span>
+                        <span class="text-[11px] px-2 py-0.5 rounded bg-white/[0.04] text-gray-500 border border-white/[0.06]">자동 요약/이관</span>
+                    </div>
+                </div>
+
+                <!-- Dashboard -->
+                <div class="group relative bg-white/[0.02] border border-white/[0.06] rounded-2xl p-8 hover:border-amber-500/30 transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-5">
+                        <div class="w-11 h-11 bg-amber-500/10 rounded-xl flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-chart-line text-amber-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">통합 관제 대시보드</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed break-keep">
+                        수십~수백 대의 로봇과 전화 채널의 응대 현황을 한눈에 관리합니다. 본사/지사 간 권한 분리를 지원하며, 중요 예약은 SMS/이메일로 실시간 알림을 받을 수 있습니다.
+                    </p>
+                    <div class="mt-5 flex flex-wrap gap-2">
+                        <span class="text-[11px] px-2 py-0.5 rounded bg-white/[0.04] text-gray-500 border border-white/[0.06]">Multi-Tenant</span>
+                        <span class="text-[11px] px-2 py-0.5 rounded bg-white/[0.04] text-gray-500 border border-white/[0.06]">Role 기반 권한</span>
+                        <span class="text-[11px] px-2 py-0.5 rounded bg-white/[0.04] text-gray-500 border border-white/[0.06]">실시간 알림</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Capabilities / Core Tech -->
+    <section id="capabilities" class="py-24 bg-brand-900/50 relative">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="text-center mb-16">
+                <p class="text-brand-400 text-sm font-semibold tracking-wider uppercase mb-3 font-display">Core Technology</p>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                    neurosam.AI 핵심 기술 역량
+                </h2>
+                <p class="mt-4 text-gray-400 max-w-2xl mx-auto break-keep">
+                    로봇과 AI 시스템의 '두뇌'를 만드는 소프트웨어 기술에 집중합니다.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-14 h-14 bg-brand-500/10 border border-brand-500/20 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                        <i class="fa-solid fa-server text-xl text-brand-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">AI Software Architecture</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed break-keep">
+                        지능형 자율 시스템을 위한 견고한 백엔드를 설계하고, 다양한 하드웨어에 유연하게 적용 가능한 확장성 높은 아키텍처를 구축합니다.
+                    </p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-14 h-14 bg-purple-500/10 border border-purple-500/20 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                        <i class="fa-solid fa-microchip text-xl text-purple-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">Robot Brain Engineering</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed break-keep">
+                        VLM(Vision-Language Model)과 같은 최신 AI 모델을 활용하여, 로봇이 환경을 인지하고 맥락을 이해하는 소프트웨어 두뇌를 개발합니다.
+                    </p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-14 h-14 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                        <i class="fa-solid fa-handshake text-xl text-emerald-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">Strategic AI Advisory</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed break-keep">
+                        파트너사에게 최적화된 AI 솔루션을 제공하고, 서비스 로봇 도입 및 인터랙션 기술에 대한 전문적인 자문을 수행합니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section id="usecases" class="py-24">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="text-center mb-16">
+                <p class="text-brand-400 text-sm font-semibold tracking-wider uppercase mb-3 font-display">Use Cases</p>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight break-keep">
+                    사람을 맞이하는 모든 공간에서
+                </h2>
+                <p class="mt-4 text-gray-400 max-w-2xl mx-auto break-keep">
+                    Agent-R은 산업별 특화 시나리오로 즉시 적용할 수 있습니다.
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                <div class="bg-white/[0.02] border border-white/[0.06] rounded-xl p-6 hover:bg-white/[0.04] transition-all">
+                    <div class="text-3xl mb-4"><i class="fa-solid fa-building text-brand-400"></i></div>
+                    <h3 class="font-bold text-white mb-2 text-sm">스마트 오피스</h3>
+                    <p class="text-gray-500 text-xs leading-relaxed break-keep">방문객 체크인, 담당자 자동 호출, 회의실 안내, 택배 수령 알림</p>
+                </div>
+                <div class="bg-white/[0.02] border border-white/[0.06] rounded-xl p-6 hover:bg-white/[0.04] transition-all">
+                    <div class="text-3xl mb-4"><i class="fa-solid fa-hotel text-purple-400"></i></div>
+                    <h3 class="font-bold text-white mb-2 text-sm">호텔 · 리조트</h3>
+                    <p class="text-gray-500 text-xs leading-relaxed break-keep">프런트 데스크 보조, 컨시어지 서비스, 체크인/아웃, 다국어 응대</p>
+                </div>
+                <div class="bg-white/[0.02] border border-white/[0.06] rounded-xl p-6 hover:bg-white/[0.04] transition-all">
+                    <div class="text-3xl mb-4"><i class="fa-solid fa-store text-emerald-400"></i></div>
+                    <h3 class="font-bold text-white mb-2 text-sm">리테일 · F&B</h3>
+                    <p class="text-gray-500 text-xs leading-relaxed break-keep">매장 안내, 음성 주문 접수, 결제 연동, 고객 응대 자동화</p>
+                </div>
+                <div class="bg-white/[0.02] border border-white/[0.06] rounded-xl p-6 hover:bg-white/[0.04] transition-all">
+                    <div class="text-3xl mb-4"><i class="fa-solid fa-hospital text-amber-400"></i></div>
+                    <h3 class="font-bold text-white mb-2 text-sm">의료기관</h3>
+                    <p class="text-gray-500 text-xs leading-relaxed break-keep">환자 접수, 진료실 안내, 예약 관리, 전화 문의 자동 응대</p>
+                </div>
+            </div>
+
+            <!-- AI Voucher CTA -->
+            <div class="mt-12 bg-gradient-to-r from-brand-500/10 to-purple-500/10 border border-brand-500/20 rounded-2xl p-8 sm:p-10 flex flex-col sm:flex-row items-center justify-between gap-6">
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-award text-brand-400"></i>
+                        <span class="text-sm font-bold text-brand-400">AI바우처 지원 가능</span>
+                    </div>
+                    <p class="text-white font-bold text-lg break-keep">AI바우처로 Agent-R 도입 비용을 지원받을 수 있습니다</p>
+                    <p class="text-gray-400 text-sm mt-1 break-keep">과학기술정보통신부 AI바우처 수요기업으로 선정되면 솔루션 도입 비용을 바우처로 충당할 수 있습니다.</p>
+                </div>
+                <a href="#contact" class="shrink-0 px-6 py-3 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-lg text-sm transition-all whitespace-nowrap">
+                    AI바우처 도입 상담
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-24 bg-brand-900/50 relative">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <p class="text-brand-400 text-sm font-semibold tracking-wider uppercase mb-3 font-display">About Us</p>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-6 break-keep">
+                        LLM과 물리적 현실 세계를<br>연결합니다
+                    </h2>
+                    <p class="text-gray-400 leading-relaxed mb-8 break-keep">
+                        neurosam.AI는 소프트웨어 중심(Software-first)의 AI 스타트업입니다. 디지털 에이전트부터 물리적 로봇까지, AI가 스스로 인지하고 자율적으로 판단할 수 있는 핵심 지능형 시스템을 엔지니어링합니다.
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-6 h-6 rounded-full bg-brand-500/20 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-check text-[10px] text-brand-400"></i>
+                            </div>
+                            <span class="text-gray-300 text-sm">Software-First 접근으로 유연하고 확장 가능한 AI 시스템</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-6 h-6 rounded-full bg-brand-500/20 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-check text-[10px] text-brand-400"></i>
+                            </div>
+                            <span class="text-gray-300 text-sm">서비스 로봇 및 키오스크 인터랙션 최적화</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-6 h-6 rounded-full bg-brand-500/20 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-check text-[10px] text-brand-400"></i>
+                            </div>
+                            <span class="text-gray-300 text-sm">2026 AI바우처 공급기업 — 정부 공인 기술력 검증</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leadership Card -->
+                <div class="bg-brand-950 border border-white/[0.06] rounded-2xl overflow-hidden">
                     <div class="md:flex">
-                        <!-- Profile Image Area -->
-                        <div class="md:flex-shrink-0 bg-gray-800 md:w-64 relative min-h-[250px] md:min-h-full group">
-                            <!-- Actual Image: Save your photo as 'murry_jeong.png' -->
-                            <img src="murry_jeong.png" 
-                                 alt="Murry Jeong" 
-                                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        <div class="md:w-48 shrink-0 bg-gray-800 relative min-h-[200px] md:min-h-full">
+                            <img src="murry_jeong.png" alt="Murry Jeong" class="absolute inset-0 w-full h-full object-cover"
                                  onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden'); this.nextElementSibling.classList.add('flex');">
-                            
-                            <!-- Fallback Icon (Shown if image is missing) -->
-                            <div class="hidden absolute inset-0 w-full h-full items-center justify-center bg-gray-800">
-                                <i class="fa-solid fa-user-tie text-8xl text-gray-600"></i>
+                            <div class="hidden absolute inset-0 w-full h-full items-center justify-center bg-gray-800/80">
+                                <i class="fa-solid fa-user text-5xl text-gray-600"></i>
                             </div>
                         </div>
-                        
-                        <div class="p-8 md:p-10 flex flex-col justify-center">
-                            <div class="uppercase tracking-wide text-sm text-brand-primary font-bold">Founder & CEO</div>
-                            <h3 class="mt-2 text-2xl leading-8 font-extrabold tracking-tight text-white sm:text-3xl">Murry Jeong</h3>
-                            
-                            <p class="mt-4 text-gray-300 leading-relaxed text-sm">
-                                Murry Jeong(정문창)은 neurosam.AI의 설립자입니다. AI 소프트웨어 아키텍처 및 프로젝트 관리 분야의 풍부한 경험을 바탕으로, 현재 <strong>VLM(Vision-Language Model)</strong> 기반 로봇 어시스턴트 연구개발(R&D)을 주도하고 있습니다. 또한 로봇 AI 분야의 자문 경험을 통해 최첨단 AI 모델을 실제 로봇 기술에 접목하는 가교 역할을 수행하고 있습니다.
+                        <div class="p-7">
+                            <p class="text-brand-400 text-xs font-semibold tracking-wider uppercase">Founder & CEO</p>
+                            <h3 class="text-xl font-bold text-white mt-1">Murry Jeong</h3>
+                            <p class="text-gray-400 text-sm mt-3 leading-relaxed break-keep">
+                                AI 소프트웨어 아키텍처 및 프로젝트 관리 분야의 풍부한 경험을 바탕으로, VLM 기반 로봇 어시스턴트 R&D를 주도하고 있습니다.
                             </p>
-                            
-                            <div class="mt-6">
-                                <a href="https://www.linkedin.com/in/murryjeong/" target="_blank" class="inline-flex items-center text-gray-400 hover:text-white transition-colors">
-                                    <i class="fa-brands fa-linkedin text-xl mr-2"></i>
-                                    <span class="text-sm font-medium">LinkedIn Profile</span>
-                                </a>
-                            </div>
+                            <a href="https://www.linkedin.com/in/murryjeong/" target="_blank" class="inline-flex items-center gap-2 mt-4 text-gray-500 hover:text-white text-sm transition-colors">
+                                <i class="fa-brands fa-linkedin"></i>
+                                LinkedIn
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -413,101 +386,99 @@
         </div>
     </section>
 
-    <!-- Contact CTA -->
-    <section id="contact" class="py-24 bg-gradient-to-t from-black to-brand-dark border-t border-brand-primary/20 relative">
-        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-primary/50 to-transparent"></div>
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-4 text-white">지능형 시스템 구축을 시작하세요</h2>
-            <p class="text-gray-400 mb-10 text-lg font-light">
-                neurosam.AI가 귀사의 로봇과 서비스에 '지능'을 더해드립니다.<br>
-                제품 도입, 기술 자문, 협업에 대해 편하게 문의주세요.
+    <!-- Contact -->
+    <section id="contact" class="py-24 relative">
+        <div class="absolute top-0 left-0 w-full line-glow"></div>
+        <div class="max-w-2xl mx-auto px-5 sm:px-8 text-center">
+            <p class="text-brand-400 text-sm font-semibold tracking-wider uppercase mb-3 font-display">Contact</p>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4 break-keep">
+                AI 안내 솔루션 도입을 시작하세요
+            </h2>
+            <p class="text-gray-400 mb-10 break-keep">
+                제품 데모, AI바우처 도입, 기술 자문 등 편하게 문의해 주세요.
             </p>
-            
-            <form id="contactForm" class="max-w-md mx-auto space-y-4 relative z-10">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <input type="text" name="name" placeholder="이름" required class="w-full px-4 py-3.5 rounded-xl bg-brand-dark/50 border border-gray-700 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none text-white placeholder-gray-500 transition-all hover:border-gray-600 backdrop-blur-sm">
-                    <input type="email" name="email" placeholder="이메일" required class="w-full px-4 py-3.5 rounded-xl bg-brand-dark/50 border border-gray-700 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none text-white placeholder-gray-500 transition-all hover:border-gray-600 backdrop-blur-sm">
+
+            <form id="contactForm" class="space-y-4 text-left">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs text-gray-500 mb-1.5 font-medium">이름 *</label>
+                        <input type="text" name="name" required class="w-full px-4 py-3 rounded-lg bg-white/[0.03] border border-white/[0.08] focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none text-white placeholder-gray-600 text-sm transition-all">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-500 mb-1.5 font-medium">이메일 *</label>
+                        <input type="email" name="email" required class="w-full px-4 py-3 rounded-lg bg-white/[0.03] border border-white/[0.08] focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none text-white placeholder-gray-600 text-sm transition-all">
+                    </div>
                 </div>
-                <input type="text" name="company" placeholder="회사명 / 소속" class="w-full px-4 py-3.5 rounded-xl bg-brand-dark/50 border border-gray-700 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none text-white placeholder-gray-500 transition-all hover:border-gray-600 backdrop-blur-sm">
-                <textarea name="message" rows="4" placeholder="문의하실 내용 (예: 로봇 제품 도입, 기술 자문 요청 등)" required class="w-full px-4 py-3.5 rounded-xl bg-brand-dark/50 border border-gray-700 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none text-white placeholder-gray-500 transition-all hover:border-gray-600 backdrop-blur-sm resize-none"></textarea>
-                
-                <button type="submit" id="submitBtn" class="w-full bg-brand-primary hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-xl shadow-lg transition-all transform hover:scale-[1.02] active:scale-95 flex items-center justify-center group">
-                    <span>메일 보내기</span>
-                    <i class="fa-solid fa-paper-plane ml-2 group-hover:translate-x-1 transition-transform"></i>
+                <div>
+                    <label class="block text-xs text-gray-500 mb-1.5 font-medium">회사명</label>
+                    <input type="text" name="company" class="w-full px-4 py-3 rounded-lg bg-white/[0.03] border border-white/[0.08] focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none text-white placeholder-gray-600 text-sm transition-all">
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-500 mb-1.5 font-medium">문의 내용 *</label>
+                    <textarea name="message" rows="4" required class="w-full px-4 py-3 rounded-lg bg-white/[0.03] border border-white/[0.08] focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none text-white placeholder-gray-600 text-sm transition-all resize-none" placeholder="예: Agent-R 도입 상담, AI바우처 활용 문의, 기술 자문 등"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-semibold py-3.5 rounded-lg transition-all text-sm">
+                    문의 보내기
                 </button>
             </form>
 
-            <div class="mt-12 flex justify-center items-center space-x-2 text-gray-400 hover:text-white transition-colors cursor-pointer" onclick="location.href='mailto:hello@neurosam.com'">
-                <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
-                    <i class="fa-solid fa-envelope"></i>
-                </div>
-                <span class="text-sm font-medium">hello@neurosam.com</span>
-            </div>
-            
-            <div class="mt-6 flex justify-center text-gray-600 text-sm">
-                 <a href="https://www.neurosam.ai" target="_blank" class="hover:text-brand-primary transition-colors flex items-center">
-                    <i class="fa-solid fa-globe mr-2"></i> www.neurosam.ai
-                 </a>
+            <div class="mt-10 flex items-center justify-center gap-6 text-sm text-gray-500">
+                <a href="mailto:hello@neurosam.com" class="hover:text-white transition-colors flex items-center gap-2">
+                    <i class="fa-solid fa-envelope"></i> hello@neurosam.com
+                </a>
+                <span class="w-px h-4 bg-gray-800"></span>
+                <a href="https://www.linkedin.com/company/neurosam-ai/" target="_blank" class="hover:text-white transition-colors flex items-center gap-2">
+                    <i class="fa-brands fa-linkedin"></i> LinkedIn
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-[#05080f] py-10 border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
-                <!-- Footer Logo Image -->
-                <img src="logo.png" 
-                     alt="neurosam.AI Logo" 
-                     class="h-8 w-auto opacity-80 hover:opacity-100 transition-opacity"
-                     onerror="handleLogoError(this)">
-                     
-                <!-- Footer Logo Text Fallback -->
-                <span class="text-xl font-bold tracking-tighter text-white hidden items-center" id="text-logo-footer">
-                    neurosam<span class="text-brand-primary">.AI</span>
-                </span>
-                
-                <span class="hidden md:inline-block w-px h-4 bg-gray-700"></span>
-                <p class="text-sm text-gray-500">© 2026 Neurosam AI Inc. All rights reserved.</p>
-            </div>
-            <div class="flex space-x-6">
-                <a href="https://www.linkedin.com/company/neurosam-ai/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-white transition-colors transform hover:-translate-y-1"><i class="fa-brands fa-linkedin text-xl"></i></a>
-                <a href="#" class="text-gray-500 hover:text-white transition-colors transform hover:-translate-y-1"><i class="fa-solid fa-globe text-xl"></i></a>
+    <footer class="border-t border-white/[0.06] py-10">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <img src="logo.svg" alt="neurosam.AI" class="h-5 w-auto opacity-60">
+                    <span class="w-px h-4 bg-gray-800 hidden sm:block"></span>
+                    <span class="text-xs text-gray-600">&copy; 2026 Neurosam AI Inc.</span>
+                </div>
+                <div class="flex items-center gap-5">
+                    <a href="https://www.linkedin.com/company/neurosam-ai/" target="_blank" class="text-gray-600 hover:text-gray-400 transition-colors"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="mailto:hello@neurosam.com" class="text-gray-600 hover:text-gray-400 transition-colors"><i class="fa-solid fa-envelope"></i></a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script>
-        // Mobile Menu Script
         function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-            } else {
-                menu.classList.add('hidden');
-            }
+            document.getElementById('mobile-menu').classList.toggle('hidden');
         }
 
-        // Contact Form Handling Script (Mailto)
+        // Navbar scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('nav');
+            const scrollY = window.scrollY;
+            if (scrollY > 100) {
+                nav.classList.add('shadow-xl', 'shadow-black/20');
+            } else {
+                nav.classList.remove('shadow-xl', 'shadow-black/20');
+            }
+            lastScroll = scrollY;
+        });
+
+        // Contact form
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            // Get form values
             const name = this.name.value;
             const email = this.email.value;
             const company = this.company.value;
             const message = this.message.value;
-            
-            // Construct Email Body
             const subject = `[neurosam.AI 문의] ${name}님으로부터의 문의`;
             const body = `성함: ${name}\n이메일: ${email}\n회사명: ${company}\n\n[문의 내용]\n${message}`;
-            
-            // Open Mail Client
             window.location.href = `mailto:hello@neurosam.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            
-            // UI Feedback (Optional: Simple toast or alert)
-            // alert('기본 메일 앱을 실행합니다. 메일 작성을 완료해주세요.');
         });
     </script>
 </body>
