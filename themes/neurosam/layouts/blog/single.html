@@ -1,36 +1,36 @@
 {{ define "main" }}
-<article class="max-w-2xl mx-auto px-6 py-16">
+<article class="max-w-4xl mx-auto px-6 pt-24 pb-16">
   <header class="mb-14">
-    <div class="flex items-center gap-3 text-sm text-slate-400 mb-4">
-      <time class="text-brand-primary font-medium">{{ .Date.Format "2006년 1월 2일" }}</time>
+    <div class="flex items-center gap-3 text-sm text-gray-500 mb-4">
+      <time class="text-brand-500 font-medium">{{ .Date.Format "2006년 1월 2일" }}</time>
       {{ with .Params.author }}
-      <span class="text-slate-600">·</span>
+      <span class="text-gray-700">·</span>
       <span>{{ . }}</span>
       {{ end }}
     </div>
-    <h1 class="text-3xl md:text-4xl font-extrabold text-white leading-snug tracking-tight">{{ .Title }}</h1>
+    <h1 class="text-3xl md:text-4xl font-extrabold text-white leading-snug tracking-tight break-keep">{{ .Title }}</h1>
     {{ with .Description }}
-    <p class="text-slate-400 mt-4 text-lg leading-relaxed">{{ . }}</p>
+    <p class="text-gray-500 mt-4 text-lg leading-relaxed break-keep">{{ . }}</p>
     {{ end }}
     {{ with .Params.tags }}
-    <div class="flex flex-wrap gap-2 mt-5">
+    <div class="flex flex-wrap gap-1.5 mt-5">
       {{ range . }}
-      <span class="text-xs bg-slate-800/80 text-slate-400 px-2.5 py-1 rounded-md border border-slate-700/50">{{ . }}</span>
+      <span class="text-[11px] bg-white/[0.04] text-gray-500 px-2.5 py-1 rounded-md border border-white/[0.06]">{{ . }}</span>
       {{ end }}
     </div>
     {{ end }}
-    <div class="mt-8 border-b border-slate-800"></div>
+    <div class="mt-8 border-b border-white/[0.06]"></div>
   </header>
 
   <div class="prose prose-invert max-w-none">
     {{ .Content }}
   </div>
 
-  <div class="mt-16 pt-8 border-t border-slate-800 flex items-center justify-between">
-    <a href="/blog/" class="text-brand-primary hover:text-brand-accent transition-colors text-sm font-medium">
+  <div class="mt-16 pt-8 border-t border-white/[0.06] flex items-center justify-between">
+    <a href="/blog/" class="text-brand-500 hover:text-brand-400 transition-colors text-sm font-medium">
       &larr; 블로그 목록으로
     </a>
-    <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" class="text-slate-500 hover:text-slate-300 transition-colors text-sm">
+    <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" class="text-gray-600 hover:text-gray-400 transition-colors text-sm">
       맨 위로 &uarr;
     </a>
   </div>

@@ -1,10 +1,15 @@
-<footer class="bg-brand-dark border-t border-slate-800 mt-20">
-  <div class="max-w-4xl mx-auto px-6 py-10 text-center">
-    <p class="text-slate-400 text-sm">
-      &copy; {{ now.Year }} Neurosam AI. All rights reserved.
-    </p>
-    <p class="text-slate-500 text-xs mt-2">
-      Connecting Intelligence to Real Life
-    </p>
+<footer class="border-t border-white/[0.06] py-10">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <img src="/logo.svg" alt="neurosam.AI" class="h-5 w-auto opacity-60">
+        <span class="w-px h-4 bg-gray-800 hidden sm:block"></span>
+        <span class="text-xs text-gray-600">&copy; {{ now.Year }} Neurosam AI Inc.</span>
+      </div>
+      <div class="flex items-center gap-5">
+        <a href="https://www.linkedin.com/company/neurosam-ai/" target="_blank" class="text-gray-600 hover:text-gray-400 transition-colors"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="mailto:hello@neurosam.com" class="text-gray-600 hover:text-gray-400 transition-colors"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+    </div>
   </div>
 </footer>
