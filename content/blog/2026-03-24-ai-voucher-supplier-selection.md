@@ -2,8 +2,8 @@
 title: "neurosam.AI, 2026년 AI바우처 공급기업 POOL 선정 — Agent-R로 AI 안내 로봇 시장에 도전합니다"
 date: 2026-03-24
 author: Neurosam AI Team
-tags: [AI바우처, 공급기업, AgentR, AI안내로봇, SaaS, 과학기술정보통신부, NIPA]
-description: "neurosam.AI가 과학기술정보통신부·NIPA 주관 2026년 AI바우처 사업 공급기업 POOL에 선정되었습니다. AI 안내 로봇 솔루션 Agent-R의 핵심 기술과 앞으로의 계획을 공유합니다."
+tags: [AI바우처, AI바우처공급기업, AI안내로봇, AI리셉션로봇, AI전화응대, AI전화비서, 서비스로봇, 무인안내시스템, AgentR, SaaS, 과학기술정보통신부, NIPA, 얼굴인식, AICC]
+description: "neurosam.AI가 과학기술정보통신부·NIPA 주관 2026년 AI바우처 사업 공급기업 POOL에 선정되었습니다. AI 안내 로봇과 24시간 AI 전화 응대를 통합한 솔루션 Agent-R의 핵심 기술(얼굴인식, 음성 AI, 텔레포니 AI, 관제 대시보드)과 스마트 오피스·호텔·병원·매장 활용 사례를 소개합니다."
 slug: "ai-voucher-supplier-selection"
 ---
 

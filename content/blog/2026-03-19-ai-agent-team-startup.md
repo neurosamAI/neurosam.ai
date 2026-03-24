@@ -2,7 +2,7 @@
 title: "AI 에이전트 팀으로 스타트업을 운영해봤다 — 1인 개발자의 멀티에이전트 실험기"
 date: 2026-03-19
 author: Neurosam AI Team
-tags: [AI에이전트, 멀티에이전트, 스타트업자동화, ClaudeCode, GitHubActions, DevOps]
+tags: [AI에이전트, 멀티에이전트, 스타트업자동화, ClaudeCode, GitHubActions, DevOps, AI소프트웨어, 자동화]
 description: "1인 개발자가 AI 에이전트 팀을 구축해 이슈 생성부터 코드 리뷰, 머지, 롤백까지 전 과정을 자동화한 실험기. 비용, 구조, 실전 결과를 공유합니다."
 slug: "ai-agent-team-startup"
 ---
