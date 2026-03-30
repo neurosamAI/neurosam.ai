@@ -648,10 +648,16 @@
             lastScroll = scrollY;
         });
 
-        // Contact form
+        // Contact form — hidden iframe POST (bypasses CORS/redirect issues)
         const APPS_SCRIPT_URL = '{{- .Site.Params.contactFormURL -}}';
 
-        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+        // Create hidden iframe
+        const contactFrame = document.createElement('iframe');
+        contactFrame.name = 'contact-frame';
+        contactFrame.style.display = 'none';
+        document.body.appendChild(contactFrame);
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const btn = document.getElementById('contactSubmit');
             const form = this;
@@ -660,34 +666,37 @@
 
             successEl.classList.add('hidden');
             errorEl.classList.add('hidden');
-
-            const data = {
-                name: form.name.value,
-                email: form.email.value,
-                company: form.company.value,
-                message: form.message.value,
-            };
-
             btn.disabled = true;
             btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>전송 중...';
 
-            try {
-                const res = await fetch(APPS_SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: new URLSearchParams(data).toString(),
-                });
+            // Build a temporary form and submit to hidden iframe
+            const tempForm = document.createElement('form');
+            tempForm.method = 'POST';
+            tempForm.action = APPS_SCRIPT_URL;
+            tempForm.target = 'contact-frame';
+            tempForm.style.display = 'none';
 
+            const fields = { name: form.name.value, email: form.email.value, company: form.company.value, message: form.message.value };
+            Object.entries(fields).forEach(([k, v]) => {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = k;
+                input.value = v;
+                tempForm.appendChild(input);
+            });
+
+            document.body.appendChild(tempForm);
+            tempForm.submit();
+            document.body.removeChild(tempForm);
+
+            // Show success after brief delay (iframe POST has no callback)
+            setTimeout(() => {
                 form.classList.add('hidden');
                 successEl.classList.remove('hidden');
                 form.reset();
-            } catch (err) {
-                errorEl.classList.remove('hidden');
-            } finally {
                 btn.disabled = false;
                 btn.innerHTML = '문의 보내기';
-            }
+            }, 1500);
         });
     </script>
 </body>
