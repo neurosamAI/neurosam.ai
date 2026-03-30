@@ -648,33 +648,30 @@
             lastScroll = scrollY;
         });
 
-        // Contact form — iframe POST with postMessage confirmation
+        // Contact form — iframe POST + load event confirmation
         const APPS_SCRIPT_URL = '{{- .Site.Params.contactFormURL -}}';
+        let contactSubmitted = false;
+        let contactTimeout;
 
-        // Hidden iframe for form submission
+        // Hidden iframe
         const contactFrame = document.createElement('iframe');
         contactFrame.name = 'contact-frame';
         contactFrame.style.display = 'none';
         document.body.appendChild(contactFrame);
 
-        // Listen for Apps Script response via postMessage
-        let contactTimeout;
-        window.addEventListener('message', function(event) {
-            if (!event.data || event.data.source !== 'neurosam-contact') return;
+        // iframe load = Apps Script processed the request
+        contactFrame.addEventListener('load', function() {
+            if (!contactSubmitted) return;
+            contactSubmitted = false;
             clearTimeout(contactTimeout);
 
             const form = document.getElementById('contactForm');
             const btn = document.getElementById('contactSubmit');
             const successEl = document.getElementById('contactSuccess');
-            const errorEl = document.getElementById('contactError');
 
-            if (event.data.status === 'success') {
-                form.classList.add('hidden');
-                successEl.classList.remove('hidden');
-                form.reset();
-            } else {
-                errorEl.classList.remove('hidden');
-            }
+            form.classList.add('hidden');
+            successEl.classList.remove('hidden');
+            form.reset();
             btn.disabled = false;
             btn.innerHTML = '문의 보내기';
         });
@@ -691,7 +688,7 @@
             btn.disabled = true;
             btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>전송 중...';
 
-            // Build temporary form and submit to hidden iframe
+            // Build temporary form → submit to hidden iframe
             const tempForm = document.createElement('form');
             tempForm.method = 'POST';
             tempForm.action = APPS_SCRIPT_URL;
@@ -708,11 +705,14 @@
             });
 
             document.body.appendChild(tempForm);
+            contactSubmitted = true;
             tempForm.submit();
             document.body.removeChild(tempForm);
 
-            // Timeout: 15초 안에 응답 없으면 에러 표시
+            // 15초 타임아웃
             contactTimeout = setTimeout(() => {
+                if (!contactSubmitted) return;
+                contactSubmitted = false;
                 errorEl.classList.remove('hidden');
                 btn.disabled = false;
                 btn.innerHTML = '문의 보내기';

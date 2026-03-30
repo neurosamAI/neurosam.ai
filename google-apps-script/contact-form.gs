@@ -2,10 +2,9 @@
  * neurosam.AI Contact Form Handler
  *
  * Google Apps Script로 정적 사이트의 문의 폼을 처리합니다.
- * - POST 요청으로 폼 데이터 수신
+ * - POST 요청으로 폼 데이터 수신 (form-encoded)
  * - Google Sheets에 기록
  * - 관리자에게 이메일 알림 발송
- * - 처리 결과를 postMessage로 부모 창에 전달
  *
  * === 설정 방법 ===
  * 1. Google Sheets에서 새 스프레드시트 생성
@@ -16,6 +15,11 @@
  *    - 실행 사용자: 본인
  *    - 액세스 권한: 모든 사용자
  * 6. 배포 후 받은 URL을 웹사이트 폼의 APPS_SCRIPT_URL에 설정
+ *
+ * === 동작 방식 ===
+ * 웹사이트에서 hidden iframe으로 form POST를 보냅니다.
+ * Apps Script가 처리 후 JSON을 반환하면 iframe의 load 이벤트가
+ * 발생하고, 웹사이트가 이를 감지하여 성공 메시지를 표시합니다.
  */
 
 const ADMIN_EMAIL = 'hello@neurosam.com';
@@ -23,40 +27,27 @@ const SHEET_NAME = '문의';
 
 function doPost(e) {
   try {
-    const name = e.parameter.name;
-    const email = e.parameter.email;
-    const company = e.parameter.company;
-    const message = e.parameter.message;
+    var name = e.parameter.name;
+    var email = e.parameter.email;
+    var company = e.parameter.company;
+    var message = e.parameter.message;
 
     if (!name || !email || !message) {
-      return postMessageResponse('error', '필수 항목이 누락되었습니다.');
+      return jsonResponse({ success: false, error: 'missing fields' });
     }
 
-    // 1. Google Sheets에 기록
     saveToSheet(name, email, company, message);
-
-    // 2. 관리자에게 이메일 발송
     sendNotification(name, email, company, message);
 
-    return postMessageResponse('success', '문의가 접수되었습니다.');
+    return jsonResponse({ success: true });
   } catch (err) {
-    return postMessageResponse('error', err.message);
+    return jsonResponse({ success: false, error: err.message });
   }
 }
 
-function postMessageResponse(status, msg) {
-  var html = '<html><body><script>'
-    + 'window.parent.postMessage('
-    + JSON.stringify({ source: "neurosam-contact", status: status, message: msg })
-    + ', "*");'
-    + '</script></body></html>';
-  return HtmlService.createHtmlOutput(html)
-    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
-}
-
 function saveToSheet(name, email, company, message) {
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
-  let sheet = ss.getSheetByName(SHEET_NAME);
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = ss.getSheetByName(SHEET_NAME);
 
   if (!sheet) {
     sheet = ss.insertSheet(SHEET_NAME);
@@ -64,14 +55,14 @@ function saveToSheet(name, email, company, message) {
     sheet.getRange(1, 1, 1, 6).setFontWeight('bold');
   }
 
-  const timestamp = Utilities.formatDate(new Date(), 'Asia/Seoul', 'yyyy-MM-dd HH:mm:ss');
+  var timestamp = Utilities.formatDate(new Date(), 'Asia/Seoul', 'yyyy-MM-dd HH:mm:ss');
   sheet.appendRow([timestamp, name, email, company || '-', message, '신규']);
 }
 
 function sendNotification(name, email, company, message) {
-  const subject = '[neurosam.AI 문의] ' + name + '님의 새 문의가 접수되었습니다';
+  var subject = '[neurosam.AI 문의] ' + name + '님의 새 문의가 접수되었습니다';
 
-  const body = [
+  var body = [
     '새로운 문의가 접수되었습니다.',
     '',
     '이름: ' + name,
@@ -94,8 +85,12 @@ function sendNotification(name, email, company, message) {
   });
 }
 
-function doGet() {
+function jsonResponse(data) {
   return ContentService
-    .createTextOutput(JSON.stringify({ status: 'ok', service: 'neurosam.ai contact form' }))
+    .createTextOutput(JSON.stringify(data))
     .setMimeType(ContentService.MimeType.JSON);
+}
+
+function doGet() {
+  return jsonResponse({ status: 'ok', service: 'neurosam.ai contact form' });
 }
