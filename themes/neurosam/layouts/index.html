@@ -648,33 +648,8 @@
             lastScroll = scrollY;
         });
 
-        // Contact form — iframe POST + load event confirmation
+        // Contact form — JSONP (script tag GET, no CORS/iframe/CSP issues)
         const APPS_SCRIPT_URL = '{{- .Site.Params.contactFormURL -}}';
-        let contactSubmitted = false;
-        let contactTimeout;
-
-        // Hidden iframe
-        const contactFrame = document.createElement('iframe');
-        contactFrame.name = 'contact-frame';
-        contactFrame.style.display = 'none';
-        document.body.appendChild(contactFrame);
-
-        // iframe load = Apps Script processed the request
-        contactFrame.addEventListener('load', function() {
-            if (!contactSubmitted) return;
-            contactSubmitted = false;
-            clearTimeout(contactTimeout);
-
-            const form = document.getElementById('contactForm');
-            const btn = document.getElementById('contactSubmit');
-            const successEl = document.getElementById('contactSuccess');
-
-            form.classList.add('hidden');
-            successEl.classList.remove('hidden');
-            form.reset();
-            btn.disabled = false;
-            btn.innerHTML = '문의 보내기';
-        });
 
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -688,35 +663,51 @@
             btn.disabled = true;
             btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>전송 중...';
 
-            // Build temporary form → submit to hidden iframe
-            const tempForm = document.createElement('form');
-            tempForm.method = 'POST';
-            tempForm.action = APPS_SCRIPT_URL;
-            tempForm.target = 'contact-frame';
-            tempForm.style.display = 'none';
+            const data = {
+                name: form.name.value,
+                email: form.email.value,
+                company: form.company.value,
+                message: form.message.value,
+                callback: '_contactCb',
+            };
 
-            const fields = { name: form.name.value, email: form.email.value, company: form.company.value, message: form.message.value };
-            Object.entries(fields).forEach(([k, v]) => {
-                const input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = k;
-                input.value = v;
-                tempForm.appendChild(input);
-            });
-
-            document.body.appendChild(tempForm);
-            contactSubmitted = true;
-            tempForm.submit();
-            document.body.removeChild(tempForm);
-
-            // 15초 타임아웃
-            contactTimeout = setTimeout(() => {
-                if (!contactSubmitted) return;
-                contactSubmitted = false;
+            // JSONP callback
+            const timeout = setTimeout(() => {
+                cleanup();
                 errorEl.classList.remove('hidden');
                 btn.disabled = false;
                 btn.innerHTML = '문의 보내기';
             }, 15000);
+
+            window._contactCb = function(result) {
+                cleanup();
+                if (result && result.success) {
+                    form.classList.add('hidden');
+                    successEl.classList.remove('hidden');
+                    form.reset();
+                } else {
+                    errorEl.classList.remove('hidden');
+                }
+                btn.disabled = false;
+                btn.innerHTML = '문의 보내기';
+            };
+
+            // Script tag GET request
+            const script = document.createElement('script');
+            script.src = APPS_SCRIPT_URL + '?' + new URLSearchParams(data).toString();
+            script.onerror = function() {
+                cleanup();
+                errorEl.classList.remove('hidden');
+                btn.disabled = false;
+                btn.innerHTML = '문의 보내기';
+            };
+            document.head.appendChild(script);
+
+            function cleanup() {
+                clearTimeout(timeout);
+                delete window._contactCb;
+                if (script.parentNode) script.parentNode.removeChild(script);
+            }
         });
     </script>
 </body>
