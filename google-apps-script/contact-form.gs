@@ -22,8 +22,10 @@ const SHEET_NAME = '문의';
 
 function doPost(e) {
   try {
-    const data = JSON.parse(e.postData.contents);
-    const { name, email, company, message } = data;
+    const name = e.parameter.name;
+    const email = e.parameter.email;
+    const company = e.parameter.company;
+    const message = e.parameter.message;
 
     if (!name || !email || !message) {
       return jsonResponse(400, { error: '필수 항목이 누락되었습니다.' });
