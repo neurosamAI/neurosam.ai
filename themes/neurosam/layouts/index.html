@@ -586,10 +586,20 @@
                     <label class="block text-xs text-gray-500 mb-1.5 font-medium">문의 내용 *</label>
                     <textarea name="message" rows="4" required class="w-full px-4 py-3 rounded-lg bg-white/[0.03] border border-white/[0.08] focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none text-white placeholder-gray-600 text-sm transition-all resize-none" placeholder="예: Agent-R 도입 상담, AI바우처 활용 문의, 기술 자문 등"></textarea>
                 </div>
-                <button type="submit" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-semibold py-3.5 rounded-lg transition-all text-sm">
+                <button type="submit" id="contactSubmit" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-semibold py-3.5 rounded-lg transition-all text-sm">
                     문의 보내기
                 </button>
             </form>
+            <div id="contactSuccess" class="hidden mt-6 p-5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-center">
+                <i class="fa-solid fa-circle-check text-emerald-400 text-2xl mb-2"></i>
+                <p class="text-emerald-300 font-semibold text-sm">문의가 접수되었습니다</p>
+                <p class="text-gray-400 text-xs mt-1">빠른 시일 내에 회신드리겠습니다.</p>
+            </div>
+            <div id="contactError" class="hidden mt-6 p-5 rounded-xl bg-red-500/10 border border-red-500/20 text-center">
+                <i class="fa-solid fa-circle-xmark text-red-400 text-2xl mb-2"></i>
+                <p class="text-red-300 font-semibold text-sm">전송에 실패했습니다</p>
+                <p class="text-gray-400 text-xs mt-1">이메일(<a href="mailto:hello@neurosam.com" class="text-brand-400">hello@neurosam.com</a>)로 직접 문의해 주세요.</p>
+            </div>
 
             <div class="mt-10 flex items-center justify-center gap-6 text-sm text-gray-500">
                 <a href="mailto:hello@neurosam.com" class="hover:text-white transition-colors flex items-center gap-2">
@@ -639,15 +649,45 @@
         });
 
         // Contact form
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        const APPS_SCRIPT_URL = '{{- .Site.Params.contactFormURL -}}';
+
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            const name = this.name.value;
-            const email = this.email.value;
-            const company = this.company.value;
-            const message = this.message.value;
-            const subject = `[neurosam.AI 문의] ${name}님으로부터의 문의`;
-            const body = `성함: ${name}\n이메일: ${email}\n회사명: ${company}\n\n[문의 내용]\n${message}`;
-            window.location.href = `mailto:hello@neurosam.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            const btn = document.getElementById('contactSubmit');
+            const form = this;
+            const successEl = document.getElementById('contactSuccess');
+            const errorEl = document.getElementById('contactError');
+
+            successEl.classList.add('hidden');
+            errorEl.classList.add('hidden');
+
+            const data = {
+                name: form.name.value,
+                email: form.email.value,
+                company: form.company.value,
+                message: form.message.value,
+            };
+
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>전송 중...';
+
+            try {
+                const res = await fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data),
+                });
+
+                form.classList.add('hidden');
+                successEl.classList.remove('hidden');
+                form.reset();
+            } catch (err) {
+                errorEl.classList.remove('hidden');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '문의 보내기';
+            }
         });
     </script>
 </body>
