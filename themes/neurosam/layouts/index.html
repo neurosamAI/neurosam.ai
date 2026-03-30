@@ -648,14 +648,36 @@
             lastScroll = scrollY;
         });
 
-        // Contact form — hidden iframe POST (bypasses CORS/redirect issues)
+        // Contact form — iframe POST with postMessage confirmation
         const APPS_SCRIPT_URL = '{{- .Site.Params.contactFormURL -}}';
 
-        // Create hidden iframe
+        // Hidden iframe for form submission
         const contactFrame = document.createElement('iframe');
         contactFrame.name = 'contact-frame';
         contactFrame.style.display = 'none';
         document.body.appendChild(contactFrame);
+
+        // Listen for Apps Script response via postMessage
+        let contactTimeout;
+        window.addEventListener('message', function(event) {
+            if (!event.data || event.data.source !== 'neurosam-contact') return;
+            clearTimeout(contactTimeout);
+
+            const form = document.getElementById('contactForm');
+            const btn = document.getElementById('contactSubmit');
+            const successEl = document.getElementById('contactSuccess');
+            const errorEl = document.getElementById('contactError');
+
+            if (event.data.status === 'success') {
+                form.classList.add('hidden');
+                successEl.classList.remove('hidden');
+                form.reset();
+            } else {
+                errorEl.classList.remove('hidden');
+            }
+            btn.disabled = false;
+            btn.innerHTML = '문의 보내기';
+        });
 
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -669,7 +691,7 @@
             btn.disabled = true;
             btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>전송 중...';
 
-            // Build a temporary form and submit to hidden iframe
+            // Build temporary form and submit to hidden iframe
             const tempForm = document.createElement('form');
             tempForm.method = 'POST';
             tempForm.action = APPS_SCRIPT_URL;
@@ -689,14 +711,12 @@
             tempForm.submit();
             document.body.removeChild(tempForm);
 
-            // Show success after brief delay (iframe POST has no callback)
-            setTimeout(() => {
-                form.classList.add('hidden');
-                successEl.classList.remove('hidden');
-                form.reset();
+            // Timeout: 15초 안에 응답 없으면 에러 표시
+            contactTimeout = setTimeout(() => {
+                errorEl.classList.remove('hidden');
                 btn.disabled = false;
                 btn.innerHTML = '문의 보내기';
-            }, 1500);
+            }, 15000);
         });
     </script>
 </body>

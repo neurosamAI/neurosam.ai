@@ -5,6 +5,7 @@
  * - POST 요청으로 폼 데이터 수신
  * - Google Sheets에 기록
  * - 관리자에게 이메일 알림 발송
+ * - 처리 결과를 postMessage로 부모 창에 전달
  *
  * === 설정 방법 ===
  * 1. Google Sheets에서 새 스프레드시트 생성
@@ -28,7 +29,7 @@ function doPost(e) {
     const message = e.parameter.message;
 
     if (!name || !email || !message) {
-      return jsonResponse(400, { error: '필수 항목이 누락되었습니다.' });
+      return postMessageResponse('error', '필수 항목이 누락되었습니다.');
     }
 
     // 1. Google Sheets에 기록
@@ -37,10 +38,20 @@ function doPost(e) {
     // 2. 관리자에게 이메일 발송
     sendNotification(name, email, company, message);
 
-    return jsonResponse(200, { success: true });
+    return postMessageResponse('success', '문의가 접수되었습니다.');
   } catch (err) {
-    return jsonResponse(500, { error: err.message });
+    return postMessageResponse('error', err.message);
   }
+}
+
+function postMessageResponse(status, msg) {
+  var html = '<html><body><script>'
+    + 'window.parent.postMessage('
+    + JSON.stringify({ source: "neurosam-contact", status: status, message: msg })
+    + ', "*");'
+    + '</script></body></html>';
+  return HtmlService.createHtmlOutput(html)
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
 
 function saveToSheet(name, email, company, message) {
@@ -58,20 +69,20 @@ function saveToSheet(name, email, company, message) {
 }
 
 function sendNotification(name, email, company, message) {
-  const subject = `[neurosam.AI 문의] ${name}님의 새 문의가 접수되었습니다`;
+  const subject = '[neurosam.AI 문의] ' + name + '님의 새 문의가 접수되었습니다';
 
   const body = [
     '새로운 문의가 접수되었습니다.',
     '',
-    `이름: ${name}`,
-    `이메일: ${email}`,
-    `회사명: ${company || '-'}`,
+    '이름: ' + name,
+    '이메일: ' + email,
+    '회사명: ' + (company || '-'),
     '',
     '--- 문의 내용 ---',
     message,
     '',
     '---',
-    `접수 시각: ${Utilities.formatDate(new Date(), 'Asia/Seoul', 'yyyy-MM-dd HH:mm:ss')}`,
+    '접수 시각: ' + Utilities.formatDate(new Date(), 'Asia/Seoul', 'yyyy-MM-dd HH:mm:ss'),
     'Google Sheets에서 전체 문의 목록을 확인할 수 있습니다.',
   ].join('\n');
 
@@ -83,12 +94,8 @@ function sendNotification(name, email, company, message) {
   });
 }
 
-function jsonResponse(status, data) {
-  return ContentService
-    .createTextOutput(JSON.stringify(data))
-    .setMimeType(ContentService.MimeType.JSON);
-}
-
 function doGet() {
-  return jsonResponse(200, { status: 'ok', service: 'neurosam.ai contact form' });
+  return ContentService
+    .createTextOutput(JSON.stringify({ status: 'ok', service: 'neurosam.ai contact form' }))
+    .setMimeType(ContentService.MimeType.JSON);
 }
