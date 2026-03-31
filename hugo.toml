@@ -8,7 +8,7 @@ enableRobotsTXT = true
   description = 'neurosam.AI Agent-R은 AI 안내 로봇과 24시간 AI 전화 응대를 하나로 통합한 하이브리드 SaaS 솔루션입니다. 얼굴인식, 음성 AI, 텔레포니 AI를 결합하여 사무실, 호텔, 병원, 매장의 고객 응대를 자동화합니다. 2026 AI바우처 공급기업 선정.'
   author = 'Neurosam AI Team'
   keywords = 'AI 안내 로봇,AI 리셉션 로봇,AI 전화 응대,AI 전화비서,무인 안내 시스템,서비스 로봇,AI바우처,AI SaaS,얼굴인식 출입관리,AI 방문자 관리,AI 콜봇,AICC,neurosam,Agent-R'
-  contactFormURL = 'https://script.google.com/macros/s/AKfycbyy_g2AyPY1-0v19y28iXLHOPj1klo6VvokdK9hiRkIeIqov0J_NC-87fexQZVBtMeO8g/exec'
+  contactFormURL = 'https://script.google.com/macros/s/AKfycbxEphHPId_1uzqSWssftFWyzl3g2vrqBb9qW1aw23gOKwnw52n5hP-VN98oMKCxlNHPwg/exec'
 
 [sitemap]
   changefreq = 'weekly'

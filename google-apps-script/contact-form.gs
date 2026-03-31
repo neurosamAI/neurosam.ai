@@ -27,11 +27,6 @@ function doGet(e) {
     var company = e.parameter.company;
     var message = e.parameter.message;
 
-    // callback만 있고 데이터 없으면 상태 체크
-    if (!name && !email && !message) {
-      return jsonpResponse(callback, { status: 'ok', service: 'neurosam.ai contact form' });
-    }
-
     if (!name || !email || !message) {
       return jsonpResponse(callback, { success: false, error: 'missing_fields' });
     }
@@ -83,10 +78,17 @@ function sendNotification(name, email, company, message) {
     'Google Sheets에서 전체 문의 목록을 확인할 수 있습니다.',
   ].join('\n');
 
-  MailApp.sendEmail({
-    to: ADMIN_EMAIL,
-    subject: subject,
-    body: body,
+  GmailApp.sendEmail(ADMIN_EMAIL, subject, body, {
+    name: 'neurosam.AI 문의접수',
     replyTo: email,
   });
+
+  // 받은편지함 강제 이동 + 스팸 해제
+  Utilities.sleep(2000);
+  var threads = GmailApp.search('subject:"' + subject + '" newer_than:1m', 0, 1);
+  if (threads.length > 0) {
+    threads[0].moveToInbox();
+    threads[0].markUnread();
+    threads[0].markImportant();
+  }
 }
