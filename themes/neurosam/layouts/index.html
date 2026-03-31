@@ -648,7 +648,7 @@
             lastScroll = scrollY;
         });
 
-        // Contact form — JSONP (script tag GET, no CORS/iframe/CSP issues)
+        // Contact form — fetch GET with no-cors
         const APPS_SCRIPT_URL = '{{- .Site.Params.contactFormURL -}}';
 
         document.getElementById('contactForm').addEventListener('submit', function(e) {
@@ -663,51 +663,26 @@
             btn.disabled = true;
             btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>전송 중...';
 
-            const data = {
+            const params = new URLSearchParams({
                 name: form.name.value,
                 email: form.email.value,
                 company: form.company.value,
                 message: form.message.value,
-                callback: '_contactCb',
-            };
+            });
 
-            // JSONP callback
-            const timeout = setTimeout(() => {
-                cleanup();
-                errorEl.classList.remove('hidden');
-                btn.disabled = false;
-                btn.innerHTML = '문의 보내기';
-            }, 15000);
-
-            window._contactCb = function(result) {
-                cleanup();
-                if (result && result.success) {
+            fetch(APPS_SCRIPT_URL + '?' + params.toString(), { mode: 'no-cors' })
+                .then(() => {
                     form.classList.add('hidden');
                     successEl.classList.remove('hidden');
                     form.reset();
-                } else {
+                })
+                .catch(() => {
                     errorEl.classList.remove('hidden');
-                }
-                btn.disabled = false;
-                btn.innerHTML = '문의 보내기';
-            };
-
-            // Script tag GET request
-            const script = document.createElement('script');
-            script.src = APPS_SCRIPT_URL + '?' + new URLSearchParams(data).toString();
-            script.onerror = function() {
-                cleanup();
-                errorEl.classList.remove('hidden');
-                btn.disabled = false;
-                btn.innerHTML = '문의 보내기';
-            };
-            document.head.appendChild(script);
-
-            function cleanup() {
-                clearTimeout(timeout);
-                delete window._contactCb;
-                if (script.parentNode) script.parentNode.removeChild(script);
-            }
+                })
+                .finally(() => {
+                    btn.disabled = false;
+                    btn.innerHTML = '문의 보내기';
+                });
         });
     </script>
 </body>
