@@ -1,22 +1,25 @@
 /**
  * neurosam.AI Contact Form Handler (JSONP)
  *
- * 웹사이트에서 script 태그로 GET 요청을 보내고,
- * Apps Script가 JSONP 콜백으로 결과를 반환합니다.
- * CORS, iframe, CSP 이슈가 전혀 없는 방식입니다.
+ * 웹사이트에서 fetch GET 요청을 보내고,
+ * Apps Script가 이메일 알림을 발송합니다.
  *
  * === 설정 방법 ===
- * 1. Google Sheets에서 새 스프레드시트 생성
- * 2. 확장 프로그램 > Apps Script 열기
- * 3. 이 코드를 붙여넣기
- * 4. 배포 > 새 배포 > 웹 앱 선택
+ * 1. script.google.com에서 새 프로젝트 생성 (hello@ 계정)
+ * 2. 이 코드를 붙여넣기
+ * 3. testAuth 실행 → 권한 승인
+ * 4. 배포 > 새 배포 > 웹 앱
  *    - 실행 사용자: 본인
  *    - 액세스 권한: 모든 사용자
- * 5. 배포 후 받은 URL을 웹사이트 폼의 APPS_SCRIPT_URL에 설정
+ * 5. 배포 URL을 hugo.toml의 contactFormURL에 설정
+ *
+ * === 시트 기록이 필요하면 ===
+ * SPREADSHEET_ID를 설정하고 saveToSheet 관련 코드의 주석을 해제
  */
 
 var ADMIN_EMAIL = 'hello@neurosam.com';
-var SHEET_NAME = '문의';
+// var SPREADSHEET_ID = 'YOUR_SPREADSHEET_ID';  // 시트 기록 시 설정
+// var SHEET_NAME = '문의';
 
 function doGet(e) {
   var callback = e.parameter.callback || 'callback';
@@ -31,7 +34,7 @@ function doGet(e) {
       return jsonpResponse(callback, { success: false, error: 'missing_fields' });
     }
 
-    saveToSheet(name, email, company, message);
+    // saveToSheet(name, email, company, message);  // 시트 기록 시 주석 해제
     sendNotification(name, email, company, message);
 
     return jsonpResponse(callback, { success: true });
@@ -44,20 +47,6 @@ function jsonpResponse(callback, data) {
   var output = callback + '(' + JSON.stringify(data) + ');';
   return ContentService.createTextOutput(output)
     .setMimeType(ContentService.MimeType.JAVASCRIPT);
-}
-
-function saveToSheet(name, email, company, message) {
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
-  var sheet = ss.getSheetByName(SHEET_NAME);
-
-  if (!sheet) {
-    sheet = ss.insertSheet(SHEET_NAME);
-    sheet.appendRow(['접수일시', '이름', '이메일', '회사명', '문의 내용', '상태']);
-    sheet.getRange(1, 1, 1, 6).setFontWeight('bold');
-  }
-
-  var timestamp = Utilities.formatDate(new Date(), 'Asia/Seoul', 'yyyy-MM-dd HH:mm:ss');
-  sheet.appendRow([timestamp, name, email, company || '-', message, '신규']);
 }
 
 function sendNotification(name, email, company, message) {
@@ -75,20 +64,31 @@ function sendNotification(name, email, company, message) {
     '',
     '---',
     '접수 시각: ' + Utilities.formatDate(new Date(), 'Asia/Seoul', 'yyyy-MM-dd HH:mm:ss'),
-    'Google Sheets에서 전체 문의 목록을 확인할 수 있습니다.',
   ].join('\n');
 
   GmailApp.sendEmail(ADMIN_EMAIL, subject, body, {
     name: 'neurosam.AI 문의접수',
     replyTo: email,
   });
+}
 
-  // 받은편지함 강제 이동 + 스팸 해제
-  Utilities.sleep(2000);
-  var threads = GmailApp.search('subject:"' + subject + '" newer_than:1m', 0, 1);
-  if (threads.length > 0) {
-    threads[0].moveToInbox();
-    threads[0].markUnread();
-    threads[0].markImportant();
+/*
+// 시트 기록이 필요하면 주석 해제 + SPREADSHEET_ID 설정
+function saveToSheet(name, email, company, message) {
+  var ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  var sheet = ss.getSheetByName(SHEET_NAME);
+
+  if (!sheet) {
+    sheet = ss.insertSheet(SHEET_NAME);
+    sheet.appendRow(['접수일시', '이름', '이메일', '회사명', '문의 내용', '상태']);
+    sheet.getRange(1, 1, 1, 6).setFontWeight('bold');
   }
+
+  var timestamp = Utilities.formatDate(new Date(), 'Asia/Seoul', 'yyyy-MM-dd HH:mm:ss');
+  sheet.appendRow([timestamp, name, email, company || '-', message, '신규']);
+}
+*/
+
+function testAuth() {
+  sendNotification('권한테스트', 'test@test.com', '테스트', '권한 승인 테스트');
 }
