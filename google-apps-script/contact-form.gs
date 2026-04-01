@@ -61,7 +61,7 @@ function saveToSheet(name, email, company, message) {
 }
 
 function sendNotification(name, email, company, message) {
-  var subject = '[neurosam.AI 문의] ' + name + '님의 새 문의가 접수되었습니다';
+  var subject = '[neurosam.AI 문의] ' + name + '님 (' + email + ')';
 
   var body = [
     '새로운 문의가 접수되었습니다.',
