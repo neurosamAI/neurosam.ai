@@ -77,6 +77,24 @@
     }
     </script>
 
+    <!-- Structured Data: WebSite + SearchAction (sitelinks) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "neurosam.AI",
+      "alternateName": ["뉴로샘에이아이", "Neurosam AI", "Agent-R"],
+      "url": "https://neurosam.ai/",
+      "inLanguage": "ko-KR",
+      "publisher": {
+        "@type": "Organization",
+        "name": "neurosam.AI",
+        "legalName": "Neurosam AI Inc."
+      },
+      "description": "AI 응대 에이전트 카테고리를 정의하는 한국 AI 스타트업. 24시간 무인 응대 AI 키오스크 에이전트 로봇과 AI 전화 응대를 도메인 페르소나 플랫폼으로 통합."
+    }
+    </script>
+
     <!-- Structured Data: Product -->
     <script type="application/ld+json">
     {
@@ -84,15 +102,64 @@
       "@type": "Product",
       "name": "neurosam.AI Agent-R",
       "description": "방문객 및 전화를 응대하는 AI 응대 에이전트 & 하이브리드 SaaS 솔루션. 얼굴인식 기반 AI 시각 인식, 끊김 없는 음성 대화, 24시간 AI 전화 응대, 통합 관제 대시보드를 하나의 플랫폼으로 제공합니다.",
+      "image": "https://neurosam.ai/usecases/office-hero.png",
       "brand": {
         "@type": "Brand",
         "name": "neurosam.AI"
+      },
+      "manufacturer": {
+        "@type": "Organization",
+        "name": "neurosam.AI",
+        "legalName": "Neurosam AI Inc."
       },
       "category": "AI 응대 에이전트, AI 전화 응대 솔루션, 서비스 로봇 SaaS",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
+        "priceCurrency": "KRW",
+        "seller": {
+          "@type": "Organization",
+          "name": "neurosam.AI"
+        }
+      }
+    }
+    </script>
+
+    <!-- Structured Data: SoftwareApplication (Agent-R Platform) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "neurosam.AI Agent-R",
+      "alternateName": "Agent-R Platform",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "AI 응대 에이전트 / 도메인 페르소나 플랫폼",
+      "operatingSystem": "Web, Edge Linux",
+      "description": "24시간 무인 응대 AI 키오스크 에이전트 로봇과 AI 전화 응대를 하나의 도메인 페르소나 플랫폼으로 통합. 시스템프롬프트와 RAG 지식베이스를 모듈로 분리해 기관별 페르소나로 즉시 작동.",
+      "url": "https://neurosam.ai/",
+      "image": "https://neurosam.ai/usecases/office-hero.png",
+      "softwareVersion": "1.0",
+      "featureList": [
+        "얼굴인식 기반 멀티 비전 인지 (다인 검출, 재방문자 인식, 자율 개입)",
+        "끊김 없는 음성 대화 (Cut-in / Nudge / 다국어 STT·TTS)",
+        "24시간 AI 전화비서 (RAG 기반 응답 + 통화 요약·이관)",
+        "도메인 페르소나 엔진 (시스템프롬프트 + RAG 지식베이스 모듈)",
+        "통합 관제 대시보드 (Multi-Tenant·Role 기반 권한·실시간 알림)"
+      ],
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "정부·공공기관, 스마트 오피스, 호텔·리조트, 리테일·F&B, 의료기관"
+      },
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
         "priceCurrency": "KRW"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "neurosam.AI",
+        "legalName": "Neurosam AI Inc.",
+        "url": "https://neurosam.ai"
       }
     }
     </script>

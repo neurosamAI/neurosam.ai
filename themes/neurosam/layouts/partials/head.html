@@ -3,8 +3,17 @@
 <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
 <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 <meta name="author" content="{{ .Site.Params.author }}">
-{{ with .Site.Params.keywords }}<meta name="keywords" content="{{ . }}">{{ end }}
+{{ $page_kw := .Params.keywords }}
+{{ $industry := .Params.industry_label }}
+{{ $site_kw := .Site.Params.keywords }}
+{{ $kw := cond (ne $page_kw nil) (printf "%s,%s" $page_kw $site_kw) (cond (ne $industry nil) (printf "%s,%s" $industry $site_kw) $site_kw) }}
+{{ with $kw }}<meta name="keywords" content="{{ . }}">{{ end }}
 <link rel="canonical" href="{{ .Permalink }}">
+
+{{/* OG/Twitter image: page hero_image first, then site default */}}
+{{ $og_image_path := .Params.hero_image | default "/usecases/office-hero.png" }}
+{{ $og_image := printf "https://neurosam.ai%s" $og_image_path }}
+{{ $og_image_alt := printf "%s — neurosam.AI Agent-R" (.Params.industry_label | default .Title) }}
 
 <!-- Open Graph -->
 <meta property="og:title" content="{{ .Title }}">
@@ -13,11 +22,34 @@
 <meta property="og:url" content="{{ .Permalink }}">
 <meta property="og:site_name" content="{{ .Site.Title }}">
 <meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="{{ $og_image }}">
+<meta property="og:image:alt" content="{{ $og_image_alt }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="896">
 
 <!-- Twitter Card -->
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ .Title }}">
 <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+<meta name="twitter:image" content="{{ $og_image }}">
+<meta name="twitter:image:alt" content="{{ $og_image_alt }}">
+
+<!-- Favicon, theme-color, web manifest -->
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#080e1a">
+<meta name="apple-mobile-web-app-title" content="neurosam.AI">
+<meta name="application-name" content="neurosam.AI">
+
+<!-- Robots & AI access (GEO) -->
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="googlebot" content="index, follow">
+
+<!-- Performance hints -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <!-- Site-wide Organization Schema (GEO) -->
 <script type="application/ld+json">

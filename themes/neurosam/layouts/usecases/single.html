@@ -34,6 +34,55 @@
 </script>
 {{ end }}
 
+<!-- Service Schema (industry-specific service) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": {{ .Title | jsonify }},
+  "description": {{ .Description | jsonify }},
+  "serviceType": {{ .Params.industry_label | default "AI 응대 에이전트" | jsonify }},
+  "category": "AI 응대 에이전트 / 도메인 페르소나 플랫폼",
+  "url": "{{ .Permalink }}",
+  "provider": {
+    "@type": "Organization",
+    "name": "neurosam.AI",
+    "legalName": "Neurosam AI Inc.",
+    "url": "https://neurosam.ai"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "South Korea"
+  },
+  "audience": {
+    "@type": "BusinessAudience",
+    "audienceType": {{ .Params.industry_label | default "Business" | jsonify }}
+  }{{ with .Params.hero_image }},
+  "image": "https://neurosam.ai{{ . }}"{{ end }}
+}
+</script>
+
+{{ with .Params.workflow }}
+<!-- HowTo Schema (workflow steps for LLM citation) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": {{ printf "%s 운영 워크플로우" ($.Params.industry_label | default $.Title) | jsonify }},
+  "description": {{ $.Params.workflow_subtitle | default "Agent-R 운영 시나리오 단계별 안내" | jsonify }},
+  "step": [
+    {{ range $i, $step := . }}{{ if $i }},{{ end }}
+    {
+      "@type": "HowToStep",
+      "position": {{ add $i 1 }},
+      "name": {{ $step.title | jsonify }},
+      "text": {{ $step.description | jsonify }}
+    }{{ end }}
+  ]
+}
+</script>
+{{ end }}
+
 <article class="pt-16">
   <!-- Hero -->
   <section class="relative pt-20 pb-12 lg:pt-28 lg:pb-16 overflow-hidden">

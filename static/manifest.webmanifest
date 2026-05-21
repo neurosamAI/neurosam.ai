@@ -1,0 +1,27 @@
+{
+  "name": "neurosam.AI",
+  "short_name": "neurosam.AI",
+  "description": "AI 응대 에이전트 카테고리 — 24시간 무인 응대 AI 키오스크 에이전트 로봇과 AI 전화 응대를 도메인 페르소나로 통합 제공",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#080e1a",
+  "background_color": "#080e1a",
+  "lang": "ko-KR",
+  "dir": "ltr",
+  "categories": ["business", "productivity", "utilities"],
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
