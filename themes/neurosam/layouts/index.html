@@ -209,6 +209,30 @@
             "@type": "Answer",
             "text": "Agent-R의 Vision AI는 여러 명이 동시에 접근해도 각각의 얼굴을 실시간으로 감지·추적하며, 재방문자를 인식해 맞춤 인사를 제공합니다. 다양한 조도 환경과 다방향 접근 상황에서도 안정적으로 동작합니다."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "도입까지 얼마나 걸리나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Agent-R는 도메인 페르소나 엔진을 통해 기관별 시스템프롬프트와 RAG 지식베이스만 교체하면 동일한 플랫폼이 새 기관 페르소나로 작동하므로, 표준 도입 시나리오 기준 1주일 내 페르소나 배포가 가능합니다. 하드웨어 설치·시스템 연동까지 포함한 전체 일정은 기관 환경에 따라 도입 상담 단계에서 안내됩니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "AI바우처를 활용하면 자기부담은 얼마인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "수요기업의 자기부담률은 매년 NIPA가 정하는 정부 매칭 비율에 따라 결정됩니다. neurosam.AI는 AI바우처 공급기업 POOL과 AI청년창업기업 동반성장 바우처 공급기업 POOL 2건에 모두 등록되어 있어, 수요기업 상황에 맞는 바우처 매칭을 도입 상담 단계에서 함께 안내합니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "데모를 보거나 PoC를 진행할 수 있나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "네, 가능합니다. 도입 검토 단계에서 제품 데모·기술 자료 송부·기관 환경에 맞춘 PoC 협의가 모두 가능합니다. 도입 상담 폼으로 연락 주시면 24시간 내 회신 드리며, 도입 의무 없이 정보 검토만 원하셔도 문의 가능합니다."
+          }
         }
       ]
     }
@@ -296,21 +320,86 @@
                     <span class="text-gradient">응대하는 AI 응대 에이전트</span>
                 </h1>
 
-                <p class="text-lg sm:text-xl text-gray-400 leading-relaxed mb-10 max-w-2xl break-keep">
+                <p class="text-base sm:text-lg text-brand-300 font-semibold leading-relaxed mb-5 break-keep">
+                    24시간 응대를 인력 없이 — 정부 AI바우처로 자기부담 최소
+                </p>
+
+                <p class="text-base sm:text-lg text-gray-400 leading-relaxed mb-10 max-w-2xl break-keep">
                     <strong class="text-gray-200">neurosam.AI Agent-R</strong>은 AI 응대 에이전트와 24시간 AI 전화 응대를 하나로 통합한 올인원 하이브리드 SaaS 솔루션입니다. 얼굴인식, 음성 AI, 텔레포니 AI를 결합하여 스마트 오피스, 호텔, 병원, 매장 — 사람을 맞이하는 모든 공간에서 무인 안내와 지능형 고객 응대를 제공합니다.
                 </p>
 
                 <div class="flex flex-col sm:flex-row gap-3">
                     <a href="#contact" class="inline-flex items-center justify-center px-7 py-3.5 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-lg transition-all text-sm shadow-lg shadow-brand-500/20">
-                        도입 문의하기
+                        AI바우처 도입 상담
                         <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
                     </a>
                     <a href="#product" class="inline-flex items-center justify-center px-7 py-3.5 bg-white/[0.05] hover:bg-white/[0.08] border border-white/[0.08] text-gray-300 font-semibold rounded-lg transition-all text-sm">
                         솔루션 알아보기
                     </a>
                 </div>
+
+                <p class="mt-4 text-xs text-gray-500 flex flex-wrap items-center gap-x-3 gap-y-1">
+                    <span class="inline-flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-400/70 text-[10px]"></i> 24시간 내 회신</span>
+                    <span class="text-gray-700">·</span>
+                    <span class="inline-flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-400/70 text-[10px]"></i> 기술 자료 무료 송부</span>
+                    <span class="text-gray-700">·</span>
+                    <span class="inline-flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-400/70 text-[10px]"></i> 도입 의무 없음</span>
+                </p>
             </div>
 
+        </div>
+    </section>
+
+    <!-- Pain Section -->
+    <section id="pain" class="py-20 bg-brand-900/30 relative">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="text-center mb-12">
+                <p class="text-red-400/80 text-sm font-semibold tracking-wider uppercase mb-3 font-display">현장의 응대 부담</p>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight break-keep">
+                    응대 인력 없이도 24시간 운영해야 하는<br class="hidden sm:block">기관·매장이 마주한 3가지 현실
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-5">
+                <a href="/usecases/hotel/" class="group bg-white/[0.02] border border-white/[0.06] rounded-2xl p-7 hover:border-red-500/30 hover:bg-white/[0.04] transition-all">
+                    <div class="w-11 h-11 bg-red-500/10 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-moon text-red-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 break-keep">야간·휴일 응대 인력이 부족합니다</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed break-keep">
+                        새벽 체크인, 외래 휴진일 문의, 부재 시간대 예약 전화 — 인건비를 무한정 늘릴 수 없어 응대 공백이 누적됩니다.
+                    </p>
+                    <div class="mt-4 inline-flex items-center text-brand-400 text-xs font-semibold">
+                        호텔·리테일·의료 사례 보기 <i class="fa-solid fa-arrow-right ml-1.5 text-[10px] group-hover:translate-x-0.5 transition-transform"></i>
+                    </div>
+                </a>
+
+                <a href="/usecases/government/" class="group bg-white/[0.02] border border-white/[0.06] rounded-2xl p-7 hover:border-red-500/30 hover:bg-white/[0.04] transition-all">
+                    <div class="w-11 h-11 bg-red-500/10 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-scale-balanced text-red-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 break-keep">키오스크 접근성 의무화가 임박했습니다</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed break-keep">
+                        장애인차별금지법 개정으로 <strong class="text-gray-200">2026.1.28부터 기존 45만 대</strong>가 음성·다국어·접근성 요건을 충족해야 합니다.
+                    </p>
+                    <div class="mt-4 inline-flex items-center text-brand-400 text-xs font-semibold">
+                        정부·공공 대응 방안 보기 <i class="fa-solid fa-arrow-right ml-1.5 text-[10px] group-hover:translate-x-0.5 transition-transform"></i>
+                    </div>
+                </a>
+
+                <a href="/usecases/hotel/" class="group bg-white/[0.02] border border-white/[0.06] rounded-2xl p-7 hover:border-red-500/30 hover:bg-white/[0.04] transition-all">
+                    <div class="w-11 h-11 bg-red-500/10 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-language text-red-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 break-keep">외국인·다국어 응대 인력을 구하기 어렵습니다</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed break-keep">
+                        호텔·관광·공공 민원실은 한국어·영어·중국어·일본어를 24시간 응대해야 하지만, 사람을 추가 채용하기엔 비용 부담이 큽니다.
+                    </p>
+                    <div class="mt-4 inline-flex items-center text-brand-400 text-xs font-semibold">
+                        다국어 응대 사례 보기 <i class="fa-solid fa-arrow-right ml-1.5 text-[10px] group-hover:translate-x-0.5 transition-transform"></i>
+                    </div>
+                </a>
+            </div>
         </div>
     </section>
 
@@ -586,6 +675,17 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Inline CTA — after Why neurosam.AI -->
+            <div class="mt-14 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 bg-white/[0.02] border border-white/[0.06] rounded-2xl px-6 py-5">
+                <p class="text-gray-200 font-semibold text-sm sm:text-base text-center sm:text-left break-keep">
+                    AI바우처 공급기업 자격 2건 보유 — <span class="text-brand-300">즉시 도입 가능</span>합니다
+                </p>
+                <a href="#contact" class="shrink-0 inline-flex items-center justify-center px-5 py-2.5 bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold rounded-lg transition-all whitespace-nowrap">
+                    AI바우처 도입 상담
+                    <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                </a>
+            </div>
         </div>
     </section>
 
@@ -751,6 +851,21 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Inline CTA — after About -->
+            <div class="mt-14 max-w-3xl mx-auto bg-gradient-to-r from-brand-500/10 via-purple-500/10 to-emerald-500/10 border border-white/[0.08] rounded-2xl p-7 text-center">
+                <p class="text-white font-bold text-base sm:text-lg break-keep mb-2">
+                    회사가 더 궁금하신가요?
+                </p>
+                <p class="text-gray-400 text-sm mb-5 break-keep">
+                    제품 데모·기술 자료·도입 절차 안내 등 무엇이든 편하게 문의해 주세요.
+                </p>
+                <a href="#contact" class="inline-flex items-center justify-center px-6 py-3 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-lg transition-all text-sm">
+                    1:1 상담 요청하기
+                    <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                </a>
+                <p class="mt-3 text-xs text-gray-500">24시간 내 회신 · 기술 자료 무료 송부 · 도입 의무 없음</p>
+            </div>
         </div>
     </section>
 
@@ -812,6 +927,36 @@
                     </summary>
                     <div class="px-6 pb-5 text-gray-400 text-sm leading-relaxed break-keep">
                         Agent-R의 Vision AI는 여러 명이 동시에 접근해도 각각의 얼굴을 실시간으로 감지·추적하며, 재방문자를 인식해 이름을 불러 맞춤 인사를 제공합니다. 다양한 조도 환경과 다방향 접근 상황에서도 안정적으로 동작하는 AI 얼굴인식 출입관리가 가능합니다.
+                    </div>
+                </details>
+
+                <details class="group bg-white/[0.02] border border-white/[0.06] rounded-xl overflow-hidden">
+                    <summary class="flex items-center justify-between px-6 py-5 cursor-pointer text-white font-semibold text-sm hover:bg-white/[0.02] transition-colors">
+                        <span class="break-keep pr-4">도입까지 얼마나 걸리나요?</span>
+                        <i class="fa-solid fa-chevron-down text-gray-500 text-xs shrink-0 group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <div class="px-6 pb-5 text-gray-400 text-sm leading-relaxed break-keep">
+                        Agent-R의 핵심 장점은 <strong class="text-gray-200">도메인 페르소나 엔진</strong>입니다. 기관별 시스템프롬프트와 RAG 지식베이스만 교체하면 동일한 플랫폼이 새 기관 페르소나로 작동하므로, 표준 도입 시나리오 기준 <strong class="text-gray-200">1주일 내 페르소나 배포</strong>가 가능합니다. 하드웨어 설치·시스템 연동까지 포함한 전체 일정은 기관 환경에 따라 도입 상담 단계에서 안내드립니다.
+                    </div>
+                </details>
+
+                <details class="group bg-white/[0.02] border border-white/[0.06] rounded-xl overflow-hidden">
+                    <summary class="flex items-center justify-between px-6 py-5 cursor-pointer text-white font-semibold text-sm hover:bg-white/[0.02] transition-colors">
+                        <span class="break-keep pr-4">AI바우처를 활용하면 자기부담은 얼마인가요?</span>
+                        <i class="fa-solid fa-chevron-down text-gray-500 text-xs shrink-0 group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <div class="px-6 pb-5 text-gray-400 text-sm leading-relaxed break-keep">
+                        수요기업의 자기부담률은 매년 NIPA가 정하는 정부 매칭 비율에 따라 결정됩니다. 일반적으로 정부가 일정 비율을 지원하고 수요기업이 나머지를 자기부담하는 구조이며, 정확한 비율과 도입 자격은 매년 공고 기준이 다릅니다. neurosam.AI는 <strong class="text-gray-200">AI바우처 공급기업 POOL과 AI청년창업기업 동반성장 바우처 공급기업 POOL 2건</strong>에 모두 등록되어 있어, 수요기업의 상황에 맞는 바우처 매칭을 도입 상담 단계에서 함께 안내드립니다.
+                    </div>
+                </details>
+
+                <details class="group bg-white/[0.02] border border-white/[0.06] rounded-xl overflow-hidden">
+                    <summary class="flex items-center justify-between px-6 py-5 cursor-pointer text-white font-semibold text-sm hover:bg-white/[0.02] transition-colors">
+                        <span class="break-keep pr-4">데모를 보거나 PoC를 진행할 수 있나요?</span>
+                        <i class="fa-solid fa-chevron-down text-gray-500 text-xs shrink-0 group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <div class="px-6 pb-5 text-gray-400 text-sm leading-relaxed break-keep">
+                        네, 가능합니다. 도입 검토 단계에서 제품 데모·기술 자료 송부·기관 환경에 맞춘 PoC 협의 모두 진행 가능합니다. <a href="#contact" class="text-brand-400 hover:text-brand-300 underline underline-offset-2">도입 상담 폼</a>으로 연락 주시면 24시간 내 회신 드리며, 도입 의무 없이 정보 검토만 원하셔도 편하게 문의해 주세요.
                     </div>
                 </details>
             </div>
