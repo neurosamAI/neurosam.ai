@@ -1,4 +1,39 @@
 {{ define "main" }}
+
+<!-- BreadcrumbList Schema (GEO) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "홈", "item": "https://neurosam.ai/"},
+    {"@type": "ListItem", "position": 2, "name": "활용 사례", "item": "https://neurosam.ai/usecases/"},
+    {"@type": "ListItem", "position": 3, "name": "{{ .Params.industry_label | default .Title }}", "item": "{{ .Permalink }}"}
+  ]
+}
+</script>
+
+{{ with .Params.faqs }}
+<!-- FAQPage Schema (GEO — high-value structured Q&A for LLM citation) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {{ range $i, $faq := . }}{{ if $i }},{{ end }}
+    {
+      "@type": "Question",
+      "name": {{ $faq.q | jsonify }},
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": {{ $faq.a | plainify | jsonify }}
+      }
+    }{{ end }}
+  ]
+}
+</script>
+{{ end }}
+
 <article class="pt-16">
   <!-- Hero -->
   <section class="relative pt-20 pb-12 lg:pt-28 lg:pb-16 overflow-hidden">

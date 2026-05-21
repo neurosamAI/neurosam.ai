@@ -19,8 +19,51 @@
 <meta name="twitter:title" content="{{ .Title }}">
 <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 
+<!-- Site-wide Organization Schema (GEO) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "neurosam.AI",
+  "legalName": "Neurosam AI Inc.",
+  "alternateName": ["뉴로샘에이아이", "Neurosam AI", "Agent-R"],
+  "url": "https://neurosam.ai",
+  "email": "hello@neurosam.com",
+  "description": "AI 응대 에이전트 카테고리를 정의하는 한국 AI 스타트업. 24시간 무인 응대 AI 키오스크 에이전트 로봇과 AI 전화 응대를 하나의 도메인 페르소나 플랫폼으로 통합 제공.",
+  "foundingDate": "2025-12-19",
+  "founder": {
+    "@type": "Person",
+    "name": "Murry Jeong",
+    "alternateName": "정문창",
+    "jobTitle": "Founder & CEO",
+    "sameAs": ["https://www.linkedin.com/in/murryjeong/"]
+  },
+  "knowsAbout": [
+    "AI 응대 에이전트",
+    "AI 키오스크 에이전트 로봇",
+    "도메인 페르소나 플랫폼",
+    "AI 전화 응대",
+    "AICC",
+    "AI바우처",
+    "AI청년창업기업 바우처",
+    "장애인차별금지법 키오스크 접근성",
+    "Vision AI",
+    "STT / TTS",
+    "LLM RAG 페르소나 엔진"
+  ],
+  "award": [
+    "2026 과학기술정보통신부 AI바우처 공급기업 POOL",
+    "2026 NIPA AI청년창업기업 동반성장 바우처 공급기업 POOL"
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/company/neurosam-ai/",
+    "https://oss.neurosam.ai"
+  ]
+}
+</script>
+
 {{ if .IsPage }}
-<!-- Article Schema -->
+<!-- Article Schema (GEO-enhanced) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -29,6 +72,13 @@
   "description": "{{ with .Description }}{{ . }}{{ end }}",
   "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
   "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
+  {{ with .Params.industry_label }}"articleSection": "{{ . }}",{{ end }}
+  "keywords": [{{ with .Site.Params.keywords }}{{ range $i, $kw := split . "," }}{{ if $i }}, {{ end }}"{{ trim $kw " " }}"{{ end }}{{ end }}],
+  "about": [
+    {"@type": "Thing", "name": "AI 응대 에이전트"},
+    {"@type": "Thing", "name": "도메인 페르소나 플랫폼"},
+    {"@type": "Thing", "name": "neurosam.AI Agent-R"}
+  ],
   "author": {
     "@type": "Organization",
     "name": "{{ .Site.Params.author }}",
@@ -37,9 +87,15 @@
   "publisher": {
     "@type": "Organization",
     "name": "neurosam.AI",
-    "url": "https://neurosam.ai"
+    "legalName": "Neurosam AI Inc.",
+    "url": "https://neurosam.ai",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://neurosam.ai/logo.svg"
+    }
   },
-  "mainEntityOfPage": "{{ .Permalink }}"
+  "mainEntityOfPage": "{{ .Permalink }}"{{ with .Params.hero_image }},
+  "image": "https://neurosam.ai{{ . }}"{{ end }}
 }
 </script>
 {{ end }}

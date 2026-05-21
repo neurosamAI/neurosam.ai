@@ -1,4 +1,38 @@
 {{ define "main" }}
+
+<!-- BreadcrumbList Schema (GEO) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "홈", "item": "https://neurosam.ai/"},
+    {"@type": "ListItem", "position": 2, "name": "활용 사례", "item": "{{ .Permalink }}"}
+  ]
+}
+</script>
+
+<!-- ItemList Schema for usecase index (GEO) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "neurosam.AI Agent-R 활용 사례",
+  "description": "{{ with .Description }}{{ . }}{{ else }}{{ .Params.description }}{{ end }}",
+  "numberOfItems": {{ len .Pages }},
+  "itemListElement": [
+    {{ range $i, $p := .Pages.ByWeight }}{{ if $i }},{{ end }}
+    {
+      "@type": "ListItem",
+      "position": {{ add $i 1 }},
+      "url": "{{ $p.Permalink }}",
+      "name": {{ $p.Title | jsonify }}{{ with $p.Params.summary }},
+      "description": {{ . | jsonify }}{{ end }}
+    }{{ end }}
+  ]
+}
+</script>
+
 <section class="pt-32 pb-16 relative">
   <div class="absolute inset-0 pointer-events-none">
     <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-brand-500/[0.07] rounded-full blur-[120px]"></div>

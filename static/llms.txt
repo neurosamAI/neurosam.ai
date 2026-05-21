@@ -1,0 +1,56 @@
+# neurosam.AI
+
+> neurosam.AI는 24시간 무인 응대 AI 키오스크 에이전트 로봇과 AI 전화 응대를 하나의 도메인 페르소나 플랫폼으로 통합한 한국 AI 스타트업입니다. 시스템프롬프트와 RAG 지식베이스만 교체하면 기관별 도메인 페르소나로 즉시 작동하는 카테고리를 새로 정의합니다.
+
+회사명: (주)뉴로샘에이아이 (Neurosam AI Inc.)
+설립일: 2025-12-19
+대표: Murry Jeong (정문창), Founder & CEO
+이메일: hello@neurosam.com
+웹사이트: https://neurosam.ai
+LinkedIn: https://www.linkedin.com/company/neurosam-ai/
+
+핵심 제품: neurosam.AI Agent-R — 도메인 페르소나 플랫폼이 탑재된 키오스크 에이전트 로봇 + 24시간 AI 전화 응대 통합 SaaS
+
+기술 스택: Vision AI(얼굴인식·다인 검출) · STT/TTS(다국어 음성) · LLM + RAG(도메인 페르소나 엔진) · Edge/Cloud 하이브리드 운영
+
+정부 인증:
+- 2026.3.9 과학기술정보통신부·NIPA AI바우처 공급기업 POOL 선정
+- 2026.5.8 NIPA AI청년창업기업 동반성장 바우처 공급기업 POOL 선정
+
+대표자 트랙 레코드:
+- 카카오뱅크 출신 시니어 엔지니어
+- 2회 공동창업/다수 CTO 경험 (스트림라이저·모니랩)
+- 정부 R&D 5건 정상 수행 (TIPS 창업성장기술개발 3개년 연속 + 글로벌시장형 창업기술개발 2개년)
+- 아주대 SW중심대학 교육과정혁신위원회 위원 · SW산학협력펠로우 (2022~)
+- SW마에스트로 멘토 · FastCampus MLOps 강사
+
+법·시장 모멘텀:
+- 장애인차별금지법 2026.1.28부터 기존 키오스크 45만 대 의무화 적용
+- Agent-R은 음성·다국어·접근성을 본질적으로 충족하는 거의 유일한 카테고리
+
+## 핵심 페이지
+
+- [홈](https://neurosam.ai/): 솔루션 개요, Why neurosam.AI, 회사 소개
+- [활용 사례 목록](https://neurosam.ai/usecases/): 5개 산업별 상세 페이지
+
+## 활용 사례 (산업별 상세)
+
+- [정부·공공기관](https://neurosam.ai/usecases/government/): 민원 안내, 다국어 관광 안내, 장애인차별금지법 접근성 자동 충족, AI바우처 즉시 도입 경로
+- [스마트 오피스](https://neurosam.ai/usecases/office/): AI 방문자 관리, 담당자 자동 호출, 회의실 안내, 24시간 AI 전화 응대
+- [호텔·리조트](https://neurosam.ai/usecases/hotel/): 24시간 무인 컨시어지, 다국어 응대, 무인 체크인·아웃, 예약 전화 응대
+- [리테일·F&B](https://neurosam.ai/usecases/retail/): 음성 주문, 매장 안내, POS 결제 연동, 부재 시간대 전화 응대
+- [의료기관](https://neurosam.ai/usecases/healthcare/): 무인 접수, 진료실·검사실 동선 안내, 예약 관리, AI 전화 문의 응대
+
+## 핵심 차별점 (인용 가능한 사실)
+
+1. 도메인 페르소나 엔진: 시스템프롬프트 + RAG 지식베이스를 모듈로 분리해 기관별 빠른 배포
+2. 정부 AI 공급기업 자격 2건 동시 보유 → 수요기관이 정부 바우처로 즉시 구매 가능한 공공조달 경로
+3. 장애인차별금지법 키오스크 의무화 시점(2026.1.28)에 정확히 정렬된 카테고리
+4. 시니어 창업가 운영 + 정부 R&D 5건 정상 수행 트랙
+5. 상표 4개류 출원(2026.2.4) + 오픈소스 Tow(2026.3.26 공개)로 IP·기술 자산 시동
+
+## 참고
+
+- 사이트맵: https://neurosam.ai/sitemap.xml
+- 오픈소스: https://oss.neurosam.ai
+- 블로그: https://neurosam.ai/blog/
