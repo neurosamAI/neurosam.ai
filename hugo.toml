@@ -1,13 +1,13 @@
 baseURL = 'https://neurosam.ai/'
 languageCode = 'ko-KR'
-title = 'neurosam.AI — AI 안내 로봇 & 24시간 전화 응대 솔루션 | Agent-R'
+title = 'neurosam.AI — AI 응대 에이전트 & 24시간 전화 응대 솔루션 | Agent-R'
 theme = 'neurosam'
 enableRobotsTXT = true
 
 [params]
-  description = 'neurosam.AI Agent-R은 AI 안내 로봇과 24시간 AI 전화 응대를 하나로 통합한 하이브리드 SaaS 솔루션입니다. 얼굴인식, 음성 AI, 텔레포니 AI를 결합하여 사무실, 호텔, 병원, 매장의 고객 응대를 자동화합니다. 2026 AI바우처 + AI청년창업기업 바우처 공급기업 선정.'
+  description = 'neurosam.AI Agent-R은 AI 응대 에이전트와 24시간 AI 전화 응대를 하나로 통합한 하이브리드 SaaS 솔루션입니다. 얼굴인식, 음성 AI, 텔레포니 AI를 결합하여 사무실, 호텔, 병원, 매장의 고객 응대를 자동화합니다. 2026 AI바우처 + AI청년창업기업 바우처 공급기업 선정.'
   author = 'Neurosam AI Team'
-  keywords = 'AI 안내 로봇,AI 리셉션 로봇,AI 전화 응대,AI 전화비서,무인 안내 시스템,서비스 로봇,AI바우처,AI청년창업기업 바우처,AI청년창업기업바우처,청년창업 AI,AI SaaS,얼굴인식 출입관리,AI 방문자 관리,AI 콜봇,AICC,neurosam,Agent-R'
+  keywords = '24시간 무인 응대,AI 키오스크 에이전트 로봇,AI 응대 에이전트,AI 페르소나 플랫폼,도메인 페르소나,AI 전화 응대,AI 전화비서,무인 안내 시스템,서비스 로봇,AI바우처,AI청년창업기업 바우처,AI청년창업기업바우처,청년창업 AI,AI SaaS,얼굴인식 출입관리,AI 방문자 관리,AI 콜봇,AICC,neurosam,Agent-R'
   contactFormURL = 'https://script.google.com/macros/s/AKfycbxbeAKbZrdtjZz-a5cjpb3H1YsflRIpRFpDuXvjY4guseHEsA7zQIKh93p_UKRBQXo/exec'
 
 [sitemap]

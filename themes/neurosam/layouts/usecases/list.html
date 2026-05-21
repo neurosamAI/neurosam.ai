@@ -1,0 +1,59 @@
+{{ define "main" }}
+<section class="pt-32 pb-16 relative">
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-brand-500/[0.07] rounded-full blur-[120px]"></div>
+    <div class="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-purple-500/[0.05] rounded-full blur-[120px]"></div>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 relative z-10">
+    <nav class="mb-6 text-sm">
+      <a href="/" class="text-gray-500 hover:text-gray-300 transition-colors">홈</a>
+      <span class="text-gray-600 mx-2">/</span>
+      <span class="text-gray-300">활용 사례</span>
+    </nav>
+
+    <div class="max-w-3xl mb-14">
+      <p class="text-brand-400 text-sm font-semibold tracking-wider uppercase mb-3 font-display">Use Cases</p>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-[1.15] tracking-tight mb-5 break-keep">
+        사람을 맞이하는 모든 공간에<br>
+        <span class="text-gradient">Agent-R이 응대합니다</span>
+      </h1>
+      <p class="text-lg text-gray-400 leading-relaxed break-keep">
+        {{ with .Description }}{{ . }}{{ else }}{{ .Params.description }}{{ end }}
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="pb-24">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {{ range .Pages.ByWeight }}
+      <a href="{{ .Permalink }}" class="group block bg-white/[0.02] border border-white/[0.06] rounded-2xl overflow-hidden hover:border-brand-500/30 hover:bg-white/[0.04] transition-all duration-300">
+        {{ with .Params.hero_image }}
+        <div class="aspect-[4/3] overflow-hidden bg-gradient-to-br from-brand-500/10 via-purple-500/5 to-emerald-500/10">
+          <img src="{{ . }}" alt="{{ $.Title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        </div>
+        {{ end }}
+        <div class="p-6">
+          {{ with .Params.industry_label }}
+          <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-brand-500/10 border border-brand-500/20 mb-3">
+            {{ with $.Params.icon }}<i class="fa-solid {{ . }} text-brand-400 text-[11px]"></i>{{ end }}
+            <span class="text-brand-300 text-[10px] font-bold tracking-wider uppercase">{{ . }}</span>
+          </div>
+          {{ end }}
+          <h2 class="text-lg font-bold text-white mb-2 break-keep group-hover:text-brand-300 transition-colors">{{ .Title }}</h2>
+          <p class="text-gray-400 text-sm leading-relaxed break-keep">
+            {{ with .Params.summary }}{{ . }}{{ else }}{{ .Description }}{{ end }}
+          </p>
+          <div class="mt-4 inline-flex items-center text-brand-400 text-sm font-semibold">
+            자세히 보기
+            <i class="fa-solid fa-arrow-right ml-2 text-xs group-hover:translate-x-1 transition-transform"></i>
+          </div>
+        </div>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
