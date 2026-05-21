@@ -10,6 +10,27 @@ enableRobotsTXT = false
   keywords = '24시간 무인 응대,AI 키오스크 에이전트 로봇,AI 응대 에이전트,AI 페르소나 플랫폼,도메인 페르소나,AI 전화 응대,AI 전화비서,무인 안내 시스템,서비스 로봇,AI바우처,AI청년창업기업 바우처,AI청년창업기업바우처,청년창업 AI,AI SaaS,얼굴인식 출입관리,AI 방문자 관리,AI 콜봇,AICC,neurosam,Agent-R'
   contactFormURL = 'https://script.google.com/macros/s/AKfycbxbeAKbZrdtjZz-a5cjpb3H1YsflRIpRFpDuXvjY4guseHEsA7zQIKh93p_UKRBQXo/exec'
 
+[params.company]
+  legalName = '(주)뉴로샘에이아이'
+  englishName = 'Neurosam AI Inc.'
+  ceo = '정문창 (Murry Jeong)'
+  businessNumber = ''  # 사업자등록번호 — 추후 입력
+  address = ''  # 본사 주소 — 추후 입력
+  email = 'hello@neurosam.com'
+
+[params.analytics]
+  # Google Analytics 4 Measurement ID (예: G-XXXXXXXXXX). 비워두면 비활성.
+  ga4_id = ''
+  # Plausible Analytics domain (예: neurosam.ai). 비워두면 비활성.
+  plausible_domain = ''
+  # Microsoft Clarity Project ID. 비워두면 비활성.
+  clarity_id = ''
+
+[params.social]
+  linkedin = 'https://www.linkedin.com/company/neurosam-ai/'
+  linkedinFounder = 'https://www.linkedin.com/in/murryjeong/'
+  oss = 'https://oss.neurosam.ai'
+
 [sitemap]
   changefreq = 'weekly'
   priority = 0.5

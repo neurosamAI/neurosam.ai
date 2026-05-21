@@ -32,6 +32,8 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    {{ partial "analytics.html" . }}
+
     <script>
         tailwind.config = {
             theme: {
@@ -302,7 +304,8 @@
         </div>
 
         <div class="max-w-6xl mx-auto px-5 sm:px-8 relative z-10">
-            <div class="max-w-3xl">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-10 lg:items-center">
+              <div class="lg:col-span-7">
                 <!-- Trust Badges -->
                 <div class="flex flex-wrap items-center gap-2 mb-8">
                     <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20">
@@ -345,8 +348,31 @@
                     <span class="text-gray-700">·</span>
                     <span class="inline-flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-400/70 text-[10px]"></i> 도입 의무 없음</span>
                 </p>
-            </div>
+              </div>
 
+              <!-- Hero Visual -->
+              <div class="lg:col-span-5 mt-12 lg:mt-0">
+                <figure class="relative">
+                  <div class="relative rounded-2xl overflow-hidden border border-white/[0.08] bg-white/[0.02] shadow-2xl shadow-brand-500/10 aspect-[4/3]">
+                    <img src="/usecases/office-hero.png" alt="neurosam.AI Agent-R — 사무실 로비에서 음성으로 응대하는 AI 키오스크 에이전트" class="w-full h-full object-cover" loading="eager" fetchpriority="high">
+                  </div>
+                  <!-- Floating mini cards -->
+                  <div class="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 px-3 py-1.5 rounded-full bg-brand-950/90 border border-emerald-500/30 backdrop-blur-md shadow-lg">
+                    <span class="text-emerald-400 text-[11px] font-bold tracking-wide flex items-center gap-1.5">
+                      <span class="flex h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                      LIVE · 24시간 무인 응대
+                    </span>
+                  </div>
+                  <div class="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 px-3 py-2 rounded-xl bg-brand-950/90 border border-white/[0.08] backdrop-blur-md shadow-lg">
+                    <div class="flex items-center gap-2">
+                      <i class="fa-solid fa-microphone text-brand-400 text-xs"></i>
+                      <span class="text-gray-200 text-[11px] font-semibold">음성으로 대화하는 AI</span>
+                    </div>
+                  </div>
+                </figure>
+                <p class="mt-3 text-[11px] text-gray-600 text-center">AI 생성 컨셉 이미지 · 도입 환경 시각화</p>
+              </div>
+            </div>
         </div>
     </section>
 
@@ -703,35 +729,60 @@
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                <a href="/usecases/government/" class="group bg-white/[0.02] border border-white/[0.06] rounded-xl p-6 hover:bg-white/[0.04] hover:border-brand-500/30 transition-all">
-                    <div class="text-3xl mb-4"><i class="fa-solid fa-landmark text-brand-400"></i></div>
-                    <h3 class="font-bold text-white mb-2 text-sm group-hover:text-brand-300 transition-colors">정부·공공기관</h3>
-                    <p class="text-gray-500 text-xs leading-relaxed break-keep">민원 안내, 다국어 관광 안내, 장애인차별금지법 접근성 자동 충족, AI바우처 즉시 도입</p>
-                    <div class="mt-3 text-brand-400 text-xs font-semibold inline-flex items-center">자세히 보기 <i class="fa-solid fa-arrow-right ml-1.5 text-[10px] group-hover:translate-x-0.5 transition-transform"></i></div>
+                <a href="/usecases/government/" class="group bg-white/[0.02] border border-white/[0.06] rounded-xl overflow-hidden hover:bg-white/[0.04] hover:border-brand-500/30 transition-all">
+                    <div class="aspect-[16/10] overflow-hidden bg-brand-900/40">
+                        <img src="/usecases/government-hero.png" alt="정부·공공기관 — Agent-R 도입 환경" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
+                    </div>
+                    <div class="p-6">
+                        <div class="text-2xl mb-3"><i class="fa-solid fa-landmark text-brand-400"></i></div>
+                        <h3 class="font-bold text-white mb-2 text-sm group-hover:text-brand-300 transition-colors">정부·공공기관</h3>
+                        <p class="text-gray-500 text-xs leading-relaxed break-keep">민원 안내, 다국어 관광 안내, 장애인차별금지법 접근성 자동 충족, AI바우처 즉시 도입</p>
+                        <div class="mt-3 text-brand-400 text-xs font-semibold inline-flex items-center">자세히 보기 <i class="fa-solid fa-arrow-right ml-1.5 text-[10px] group-hover:translate-x-0.5 transition-transform"></i></div>
+                    </div>
                 </a>
-                <a href="/usecases/office/" class="group bg-white/[0.02] border border-white/[0.06] rounded-xl p-6 hover:bg-white/[0.04] hover:border-brand-500/30 transition-all">
-                    <div class="text-3xl mb-4"><i class="fa-solid fa-building text-brand-400"></i></div>
-                    <h3 class="font-bold text-white mb-2 text-sm group-hover:text-brand-300 transition-colors">스마트 오피스</h3>
-                    <p class="text-gray-500 text-xs leading-relaxed break-keep">AI 방문자 관리, 담당자 자동 호출, 회의실 안내, 부재중 전화 응대까지 한 솔루션으로</p>
-                    <div class="mt-3 text-brand-400 text-xs font-semibold inline-flex items-center">자세히 보기 <i class="fa-solid fa-arrow-right ml-1.5 text-[10px] group-hover:translate-x-0.5 transition-transform"></i></div>
+                <a href="/usecases/office/" class="group bg-white/[0.02] border border-white/[0.06] rounded-xl overflow-hidden hover:bg-white/[0.04] hover:border-brand-500/30 transition-all">
+                    <div class="aspect-[16/10] overflow-hidden bg-brand-900/40">
+                        <img src="/usecases/office-hero.png" alt="스마트 오피스 — Agent-R 도입 환경" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
+                    </div>
+                    <div class="p-6">
+                        <div class="text-2xl mb-3"><i class="fa-solid fa-building text-brand-400"></i></div>
+                        <h3 class="font-bold text-white mb-2 text-sm group-hover:text-brand-300 transition-colors">스마트 오피스</h3>
+                        <p class="text-gray-500 text-xs leading-relaxed break-keep">AI 방문자 관리, 담당자 자동 호출, 회의실 안내, 부재중 전화 응대까지 한 솔루션으로</p>
+                        <div class="mt-3 text-brand-400 text-xs font-semibold inline-flex items-center">자세히 보기 <i class="fa-solid fa-arrow-right ml-1.5 text-[10px] group-hover:translate-x-0.5 transition-transform"></i></div>
+                    </div>
                 </a>
-                <a href="/usecases/hotel/" class="group bg-white/[0.02] border border-white/[0.06] rounded-xl p-6 hover:bg-white/[0.04] hover:border-purple-500/30 transition-all">
-                    <div class="text-3xl mb-4"><i class="fa-solid fa-hotel text-purple-400"></i></div>
-                    <h3 class="font-bold text-white mb-2 text-sm group-hover:text-purple-300 transition-colors">호텔·리조트</h3>
-                    <p class="text-gray-500 text-xs leading-relaxed break-keep">24시간 무인 컨시어지, 다국어 응대, 무인 체크인/아웃, 예약 전화 응대로 만성 구인난 해소</p>
-                    <div class="mt-3 text-purple-400 text-xs font-semibold inline-flex items-center">자세히 보기 <i class="fa-solid fa-arrow-right ml-1.5 text-[10px] group-hover:translate-x-0.5 transition-transform"></i></div>
+                <a href="/usecases/hotel/" class="group bg-white/[0.02] border border-white/[0.06] rounded-xl overflow-hidden hover:bg-white/[0.04] hover:border-purple-500/30 transition-all">
+                    <div class="aspect-[16/10] overflow-hidden bg-brand-900/40">
+                        <img src="/usecases/hotel-hero.png" alt="호텔·리조트 — Agent-R 도입 환경" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
+                    </div>
+                    <div class="p-6">
+                        <div class="text-2xl mb-3"><i class="fa-solid fa-hotel text-purple-400"></i></div>
+                        <h3 class="font-bold text-white mb-2 text-sm group-hover:text-purple-300 transition-colors">호텔·리조트</h3>
+                        <p class="text-gray-500 text-xs leading-relaxed break-keep">24시간 무인 컨시어지, 다국어 응대, 무인 체크인/아웃, 예약 전화 응대로 만성 구인난 해소</p>
+                        <div class="mt-3 text-purple-400 text-xs font-semibold inline-flex items-center">자세히 보기 <i class="fa-solid fa-arrow-right ml-1.5 text-[10px] group-hover:translate-x-0.5 transition-transform"></i></div>
+                    </div>
                 </a>
-                <a href="/usecases/retail/" class="group bg-white/[0.02] border border-white/[0.06] rounded-xl p-6 hover:bg-white/[0.04] hover:border-emerald-500/30 transition-all">
-                    <div class="text-3xl mb-4"><i class="fa-solid fa-store text-emerald-400"></i></div>
-                    <h3 class="font-bold text-white mb-2 text-sm group-hover:text-emerald-300 transition-colors">리테일·F&B</h3>
-                    <p class="text-gray-500 text-xs leading-relaxed break-keep">음성 주문, 매장 안내, POS 결제 연동, 부재 시간대 예약 전화 응대 자동화</p>
-                    <div class="mt-3 text-emerald-400 text-xs font-semibold inline-flex items-center">자세히 보기 <i class="fa-solid fa-arrow-right ml-1.5 text-[10px] group-hover:translate-x-0.5 transition-transform"></i></div>
+                <a href="/usecases/retail/" class="group bg-white/[0.02] border border-white/[0.06] rounded-xl overflow-hidden hover:bg-white/[0.04] hover:border-emerald-500/30 transition-all">
+                    <div class="aspect-[16/10] overflow-hidden bg-brand-900/40">
+                        <img src="/usecases/retail-hero.png" alt="리테일·F&B — Agent-R 도입 환경" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
+                    </div>
+                    <div class="p-6">
+                        <div class="text-2xl mb-3"><i class="fa-solid fa-store text-emerald-400"></i></div>
+                        <h3 class="font-bold text-white mb-2 text-sm group-hover:text-emerald-300 transition-colors">리테일·F&B</h3>
+                        <p class="text-gray-500 text-xs leading-relaxed break-keep">음성 주문, 매장 안내, POS 결제 연동, 부재 시간대 예약 전화 응대 자동화</p>
+                        <div class="mt-3 text-emerald-400 text-xs font-semibold inline-flex items-center">자세히 보기 <i class="fa-solid fa-arrow-right ml-1.5 text-[10px] group-hover:translate-x-0.5 transition-transform"></i></div>
+                    </div>
                 </a>
-                <a href="/usecases/healthcare/" class="group bg-white/[0.02] border border-white/[0.06] rounded-xl p-6 hover:bg-white/[0.04] hover:border-amber-500/30 transition-all">
-                    <div class="text-3xl mb-4"><i class="fa-solid fa-hospital text-amber-400"></i></div>
-                    <h3 class="font-bold text-white mb-2 text-sm group-hover:text-amber-300 transition-colors">의료기관</h3>
-                    <p class="text-gray-500 text-xs leading-relaxed break-keep">환자 무인 접수, 진료실·검사실 동선 안내, 예약 관리, AI 전화 문의 응대로 외래 부담 분산</p>
-                    <div class="mt-3 text-amber-400 text-xs font-semibold inline-flex items-center">자세히 보기 <i class="fa-solid fa-arrow-right ml-1.5 text-[10px] group-hover:translate-x-0.5 transition-transform"></i></div>
+                <a href="/usecases/healthcare/" class="group bg-white/[0.02] border border-white/[0.06] rounded-xl overflow-hidden hover:bg-white/[0.04] hover:border-amber-500/30 transition-all">
+                    <div class="aspect-[16/10] overflow-hidden bg-brand-900/40">
+                        <img src="/usecases/healthcare-hero.png" alt="의료기관 — Agent-R 도입 환경" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
+                    </div>
+                    <div class="p-6">
+                        <div class="text-2xl mb-3"><i class="fa-solid fa-hospital text-amber-400"></i></div>
+                        <h3 class="font-bold text-white mb-2 text-sm group-hover:text-amber-300 transition-colors">의료기관</h3>
+                        <p class="text-gray-500 text-xs leading-relaxed break-keep">환자 무인 접수, 진료실·검사실 동선 안내, 예약 관리, AI 전화 문의 응대로 외래 부담 분산</p>
+                        <div class="mt-3 text-amber-400 text-xs font-semibold inline-flex items-center">자세히 보기 <i class="fa-solid fa-arrow-right ml-1.5 text-[10px] group-hover:translate-x-0.5 transition-transform"></i></div>
+                    </div>
                 </a>
                 <a href="/usecases/" class="group bg-gradient-to-br from-brand-500/10 via-purple-500/10 to-emerald-500/10 border border-white/[0.08] rounded-xl p-6 hover:border-brand-500/30 transition-all flex flex-col justify-center items-start">
                     <div class="text-3xl mb-4"><i class="fa-solid fa-grip text-gray-300"></i></div>
@@ -1022,21 +1073,74 @@
     </section>
 
     <!-- Footer -->
-    <footer class="border-t border-white/[0.06] py-10">
+    <footer class="border-t border-white/[0.06] pt-14 pb-10 mt-8">
         <div class="max-w-6xl mx-auto px-5 sm:px-8">
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div class="flex items-center gap-3">
-                    <img src="logo.svg" alt="neurosam.AI" class="h-5 w-auto opacity-60">
-                    <span class="w-px h-4 bg-gray-800 hidden sm:block"></span>
-                    <span class="text-xs text-gray-600">&copy; 2026 Neurosam AI Inc.</span>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
+                <!-- Brand -->
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="logo.svg" alt="neurosam.AI" class="h-6 w-auto">
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed break-keep max-w-md mb-5">
+                        24시간 무인 응대 AI 키오스크 에이전트 로봇과 AI 전화 응대를 도메인 페르소나 플랫폼으로 통합 제공하는 한국 AI 스타트업.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[10px] text-emerald-400 font-semibold">
+                            <span class="flex h-1 w-1 rounded-full bg-emerald-400"></span>
+                            2026 AI바우처 공급기업
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-[10px] text-purple-400 font-semibold">
+                            <span class="flex h-1 w-1 rounded-full bg-purple-400"></span>
+                            AI청년창업기업 바우처 공급기업
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Sitemap -->
+                <div>
+                    <p class="text-xs font-semibold text-gray-300 uppercase tracking-wider mb-4">사이트맵</p>
+                    <ul class="space-y-2.5 text-sm text-gray-500">
+                        <li><a href="#product" class="hover:text-gray-300 transition-colors">솔루션</a></li>
+                        <li><a href="#capabilities" class="hover:text-gray-300 transition-colors">기술 역량</a></li>
+                        <li><a href="#why" class="hover:text-gray-300 transition-colors">Why neurosam.AI</a></li>
+                        <li><a href="/usecases/" class="hover:text-gray-300 transition-colors">활용 사례</a></li>
+                        <li><a href="#about" class="hover:text-gray-300 transition-colors">회사 소개</a></li>
+                        <li><a href="/blog/" class="hover:text-gray-300 transition-colors">블로그</a></li>
+                        <li><a href="https://oss.neurosam.ai" class="hover:text-gray-300 transition-colors">오픈소스 (Tow)</a></li>
+                    </ul>
+                </div>
+
+                <!-- Company -->
+                <div>
+                    <p class="text-xs font-semibold text-gray-300 uppercase tracking-wider mb-4">회사 정보</p>
+                    <ul class="space-y-2.5 text-sm text-gray-500">
+                        <li><span class="text-gray-400">(주)뉴로샘에이아이</span></li>
+                        <li>Neurosam AI Inc.</li>
+                        <li>대표 정문창</li>
+                        <li><a href="mailto:hello@neurosam.com" class="hover:text-gray-300 transition-colors inline-flex items-center gap-2"><i class="fa-solid fa-envelope text-[11px]"></i> hello@neurosam.com</a></li>
+                        <li><a href="https://www.linkedin.com/company/neurosam-ai/" target="_blank" rel="noopener" class="hover:text-gray-300 transition-colors inline-flex items-center gap-2"><i class="fa-brands fa-linkedin text-[11px]"></i> LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-7 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-gray-600">
+                    <span>&copy; {{ now.Year }} Neurosam AI Inc.</span>
+                    <span class="text-gray-800">·</span>
+                    <a href="/privacy/" class="hover:text-gray-400 transition-colors">개인정보처리방침</a>
+                    <span class="text-gray-800">·</span>
+                    <a href="/terms/" class="hover:text-gray-400 transition-colors">이용약관</a>
                 </div>
                 <div class="flex items-center gap-5">
-                    <a href="https://www.linkedin.com/company/neurosam-ai/" target="_blank" class="text-gray-600 hover:text-gray-400 transition-colors"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="mailto:hello@neurosam.com" class="text-gray-600 hover:text-gray-400 transition-colors"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/company/neurosam-ai/" target="_blank" rel="noopener" aria-label="LinkedIn" class="text-gray-600 hover:text-gray-300 transition-colors"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://oss.neurosam.ai" target="_blank" rel="noopener" aria-label="Open Source" class="text-gray-600 hover:text-gray-300 transition-colors"><i class="fa-brands fa-github"></i></a>
+                    <a href="mailto:hello@neurosam.com" aria-label="Email" class="text-gray-600 hover:text-gray-300 transition-colors"><i class="fa-solid fa-envelope"></i></a>
                 </div>
             </div>
         </div>
     </footer>
+
+    {{ partial "sticky-cta.html" . }}
 
     <script>
         function toggleMenu() {
