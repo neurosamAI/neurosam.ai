@@ -9,7 +9,7 @@
   <div class="space-y-6">
     {{ range .Pages }}
     <article class="group">
-      <a href="{{ .Permalink }}" class="block bg-white/[0.02] border border-white/[0.06] rounded-xl p-6 hover:border-brand-500/30 hover:bg-white/[0.04] transition-all duration-200">
+      <a href="{{ .RelPermalink }}" class="block bg-white/[0.02] border border-white/[0.06] rounded-xl p-6 hover:border-brand-500/30 hover:bg-white/[0.04] transition-all duration-200">
         <div class="flex items-center gap-3 text-xs text-gray-500 mb-3">
           <time class="text-brand-500 font-medium">{{ .Date.Format "2006년 1월 2일" }}</time>
           {{ with .Params.author }}
