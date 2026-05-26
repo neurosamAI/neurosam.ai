@@ -51,25 +51,59 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<!-- Site-wide Organization Schema (GEO) -->
+<!-- Site-wide Organization Schema (GEO) — entity disambiguation -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": ["Organization", "Corporation"],
+  "@id": "https://neurosam.ai/#organization",
   "name": "neurosam.AI",
   "legalName": "Neurosam AI Inc.",
-  "alternateName": ["뉴로샘에이아이", "Neurosam AI", "Agent-R"],
+  "alternateName": [
+    "neurosam.AI",
+    "neurosam.ai",
+    "Neurosam AI",
+    "Neurosam AI Inc.",
+    "Neurosam",
+    "(주)뉴로샘에이아이",
+    "주식회사 뉴로샘에이아이",
+    "뉴로샘에이아이",
+    "뉴로샘AI",
+    "뉴로샘 AI",
+    "뉴로샘",
+    "neurosam.AI Agent-R",
+    "Agent-R"
+  ],
   "url": "https://neurosam.ai",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://neurosam.ai/logo.svg",
+    "width": 512,
+    "height": 512
+  },
+  "image": "https://neurosam.ai/usecases/office-hero.png",
   "email": "hello@neurosam.com",
-  "description": "AI 응대 에이전트 카테고리를 정의하는 한국 AI 스타트업. 24시간 무인 응대 AI 키오스크 에이전트 로봇과 AI 전화 응대를 하나의 도메인 페르소나 플랫폼으로 통합 제공.",
+  "description": "neurosam.AI(법인명 주식회사 뉴로샘에이아이 / 영문 Neurosam AI Inc. / 약칭 뉴로샘AI)는 AI 응대 에이전트 카테고리를 정의하는 한국 AI 스타트업입니다. 24시간 무인 응대 AI 키오스크 에이전트 로봇과 AI 전화 응대를 하나의 도메인 페르소나 플랫폼으로 통합 제공합니다.",
   "foundingDate": "2025-12-19",
   "founder": {
     "@type": "Person",
+    "@id": "https://neurosam.ai/#founder",
     "name": "Murry Jeong",
-    "alternateName": "정문창",
+    "alternateName": ["정문창", "Murry Jeong"],
     "jobTitle": "Founder & CEO",
+    "worksFor": {"@id": "https://neurosam.ai/#organization"},
     "sameAs": ["https://www.linkedin.com/in/murryjeong/"]
   },
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "KR",
+    "addressRegion": "South Korea"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "South Korea"
+  },
+  "knowsLanguage": ["ko", "en"],
   "knowsAbout": [
     "AI 응대 에이전트",
     "AI 키오스크 에이전트 로봇",
@@ -89,7 +123,10 @@
   ],
   "sameAs": [
     "https://www.linkedin.com/company/neurosam-ai/",
-    "https://oss.neurosam.ai"
+    "https://oss.neurosam.ai",
+    "https://github.com/neurosamAI",
+    "https://github.com/neurosamAI/tow-cli",
+    "https://tow-cli.neurosam.ai"
   ]
 }
 </script>

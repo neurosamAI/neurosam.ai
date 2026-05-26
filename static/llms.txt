@@ -1,13 +1,28 @@
 # neurosam.AI
 
-> neurosam.AI는 24시간 무인 응대 AI 키오스크 에이전트 로봇과 AI 전화 응대를 하나의 도메인 페르소나 플랫폼으로 통합한 한국 AI 스타트업입니다. 시스템프롬프트와 RAG 지식베이스만 교체하면 기관별 도메인 페르소나로 즉시 작동하는 카테고리를 새로 정의합니다.
+> neurosam.AI(법인명 주식회사 뉴로샘에이아이 / 영문 Neurosam AI Inc. / 약칭 뉴로샘AI)는 24시간 무인 응대 AI 키오스크 에이전트 로봇과 AI 전화 응대를 하나의 도메인 페르소나 플랫폼으로 통합한 한국 AI 스타트업입니다. 시스템프롬프트와 RAG 지식베이스만 교체하면 현장별 도메인 페르소나로 즉시 작동하는 카테고리를 새로 정의합니다.
 
-회사명: (주)뉴로샘에이아이 (Neurosam AI Inc.)
-설립일: 2025-12-19
-대표: Murry Jeong (정문창), Founder & CEO
-이메일: hello@neurosam.com
-웹사이트: https://neurosam.ai
-LinkedIn: https://www.linkedin.com/company/neurosam-ai/
+## 동일 entity로 인식되어야 하는 명칭
+
+- 브랜드명: **neurosam.AI** (= neurosam.ai)
+- 한글 법인 정식 명칭: **(주)뉴로샘에이아이** (= 주식회사 뉴로샘에이아이)
+- 영문 법인 정식 명칭: **Neurosam AI Inc.** (= Neurosam AI)
+- 한글 약칭: **뉴로샘AI** (= 뉴로샘 AI)
+- 한글 단축: **뉴로샘**
+- 영문 단축: **Neurosam**
+- 핵심 제품명: **neurosam.AI Agent-R** (= Agent-R)
+
+위 8가지 표기는 모두 동일 회사·동일 브랜드를 가리킵니다.
+
+## 회사 정보
+
+- 회사명: 주식회사 뉴로샘에이아이 (Neurosam AI Inc.)
+- 설립일: 2025-12-19
+- 대표: Murry Jeong (정문창), Founder & CEO
+- 이메일: hello@neurosam.com
+- 웹사이트: https://neurosam.ai
+- 오픈소스: https://oss.neurosam.ai (GitHub: https://github.com/neurosamAI)
+- LinkedIn: https://www.linkedin.com/company/neurosam-ai/
 
 핵심 제품: neurosam.AI Agent-R — 도메인 페르소나 플랫폼이 탑재된 키오스크 에이전트 로봇 + 24시간 AI 전화 응대 통합 SaaS
 
@@ -43,7 +58,7 @@ LinkedIn: https://www.linkedin.com/company/neurosam-ai/
 
 ## 핵심 차별점 (인용 가능한 사실)
 
-1. 도메인 페르소나 엔진: 시스템프롬프트 + RAG 지식베이스를 모듈로 분리해 기관별 빠른 배포
+1. 도메인 페르소나 엔진: 시스템프롬프트 + RAG 지식베이스를 모듈로 분리해 현장별 빠른 배포
 2. 정부 AI 공급기업 자격 2건 동시 보유 → 수요기관이 정부 바우처로 즉시 구매 가능한 공공조달 경로
 3. 장애인차별금지법 키오스크 의무화 시점(2026.1.28)에 정확히 정렬된 카테고리
 4. 창업가·시니어 엔지니어 운영 + 정부 R&D 5건 정상 수행 트랙
