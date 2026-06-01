@@ -20,11 +20,11 @@ enableRobotsTXT = false
 
 [params.analytics]
   # Google Analytics 4 Measurement ID (예: G-XXXXXXXXXX). 비워두면 비활성.
-  ga4_id = ''
+  ga4_id = 'G-YPGV2E40BW'
   # Plausible Analytics domain (예: neurosam.ai). 비워두면 비활성.
   plausible_domain = ''
   # Microsoft Clarity Project ID. 비워두면 비활성.
-  clarity_id = ''
+  clarity_id = 'x00bpbkmbw'
 
 [params.social]
   linkedin = 'https://www.linkedin.com/company/neurosam-ai/'
