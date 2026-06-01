@@ -43,7 +43,7 @@
           <li>{{ .Site.Params.company.englishName | default "Neurosam AI Inc." }}</li>
           <li>대표 {{ .Site.Params.company.ceo | default "정문창" }}</li>
           {{ with .Site.Params.company.businessNumber }}<li>사업자등록번호 {{ . }}</li>{{ end }}
-          {{ with .Site.Params.company.address }}<li class="break-keep">{{ . }}</li>{{ end }}
+          {{ with .Site.Params.company.address }}<li class="break-keep">{{ . }}{{ with $.Site.Params.company.postalCode }} ({{ . }}){{ end }}</li>{{ end }}
           <li><a href="mailto:{{ .Site.Params.company.email | default "hello@neurosam.com" }}" class="hover:text-gray-300 transition-colors inline-flex items-center gap-2"><i class="fa-solid fa-envelope text-[11px]"></i> {{ .Site.Params.company.email | default "hello@neurosam.com" }}</a></li>
           <li><a href="{{ .Site.Params.social.linkedin | default "https://www.linkedin.com/company/neurosam-ai/" }}" target="_blank" rel="noopener" class="hover:text-gray-300 transition-colors inline-flex items-center gap-2"><i class="fa-brands fa-linkedin text-[11px]"></i> LinkedIn</a></li>
         </ul>
