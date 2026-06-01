@@ -333,7 +333,7 @@
                     <a href="#about" class="px-3 py-2 text-sm text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5">회사 소개</a>
                     <a href="/blog/" class="px-3 py-2 text-sm text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5">블로그</a>
                     <a href="https://oss.neurosam.ai" class="px-3 py-2 text-sm text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5">오픈소스</a>
-                    <a href="#contact" class="ml-3 px-5 py-2 bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold rounded-lg transition-all">
+                    <a href="#contact" data-cta-label="도입 문의" data-cta-location="nav-desktop" class="ml-3 px-5 py-2 bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold rounded-lg transition-all">
                         도입 문의
                     </a>
                 </div>
@@ -353,13 +353,13 @@
                 <a href="#about" onclick="toggleMenu()" class="block px-3 py-2.5 text-gray-300 hover:text-white rounded-lg text-sm">회사 소개</a>
                 <a href="/blog/" onclick="toggleMenu()" class="block px-3 py-2.5 text-gray-300 hover:text-white rounded-lg text-sm">블로그</a>
                 <a href="https://oss.neurosam.ai" onclick="toggleMenu()" class="block px-3 py-2.5 text-gray-300 hover:text-white rounded-lg text-sm">오픈소스</a>
-                <a href="#contact" onclick="toggleMenu()" class="block px-3 py-2.5 text-brand-400 font-semibold rounded-lg text-sm">도입 문의</a>
+                <a href="#contact" onclick="toggleMenu()" data-cta-label="도입 문의" data-cta-location="nav-mobile" class="block px-3 py-2.5 text-brand-400 font-semibold rounded-lg text-sm">도입 문의</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero -->
-    <section class="relative pt-28 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
+    <section data-funnel-section="hero" class="relative pt-28 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
         <div class="absolute inset-0 pointer-events-none">
             <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-brand-500/[0.07] rounded-full blur-[120px]"></div>
             <div class="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-purple-500/[0.05] rounded-full blur-[120px]"></div>
@@ -394,11 +394,11 @@
                 </p>
 
                 <div class="flex flex-col sm:flex-row gap-3">
-                    <a href="#contact" class="inline-flex items-center justify-center px-7 py-3.5 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-lg transition-all text-sm shadow-lg shadow-brand-500/20">
+                    <a href="#contact" data-cta-label="AI바우처 도입 상담" data-cta-location="hero" class="inline-flex items-center justify-center px-7 py-3.5 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-lg transition-all text-sm shadow-lg shadow-brand-500/20">
                         AI바우처 도입 상담
                         <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
                     </a>
-                    <a href="#product" class="inline-flex items-center justify-center px-7 py-3.5 bg-white/[0.05] hover:bg-white/[0.08] border border-white/[0.08] text-gray-300 font-semibold rounded-lg transition-all text-sm">
+                    <a href="#product" data-cta-label="솔루션 알아보기" data-cta-location="hero" class="inline-flex items-center justify-center px-7 py-3.5 bg-white/[0.05] hover:bg-white/[0.08] border border-white/[0.08] text-gray-300 font-semibold rounded-lg transition-all text-sm">
                         솔루션 알아보기
                     </a>
                 </div>
@@ -442,7 +442,7 @@
     </section>
 
     <!-- Pain Section -->
-    <section id="pain" class="py-20 bg-brand-900/30 relative">
+    <section id="pain" data-funnel-section="pain" class="py-20 bg-brand-900/30 relative">
         <div class="max-w-6xl mx-auto px-5 sm:px-8">
             <div class="text-center mb-12">
                 <p class="text-red-400/80 text-sm font-semibold tracking-wider uppercase mb-3 font-display">현장의 응대 부담</p>
@@ -452,7 +452,7 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-5">
-                <a href="/usecases/hotel/" class="group bg-white/[0.02] border border-white/[0.06] rounded-2xl p-7 hover:border-red-500/30 hover:bg-white/[0.04] transition-all">
+                <a href="/usecases/hotel/" data-cta-label="Pain 카드: 야간·휴일 응대 인력" data-cta-location="pain-grid" class="group bg-white/[0.02] border border-white/[0.06] rounded-2xl p-7 hover:border-red-500/30 hover:bg-white/[0.04] transition-all">
                     <div class="w-11 h-11 bg-red-500/10 rounded-xl flex items-center justify-center mb-4">
                         <i class="fa-solid fa-moon text-red-400"></i>
                     </div>
@@ -465,7 +465,7 @@
                     </div>
                 </a>
 
-                <a href="/usecases/government/" class="group bg-white/[0.02] border border-white/[0.06] rounded-2xl p-7 hover:border-red-500/30 hover:bg-white/[0.04] transition-all">
+                <a href="/usecases/government/" data-cta-label="Pain 카드: 키오스크 의무화" data-cta-location="pain-grid" class="group bg-white/[0.02] border border-white/[0.06] rounded-2xl p-7 hover:border-red-500/30 hover:bg-white/[0.04] transition-all">
                     <div class="w-11 h-11 bg-red-500/10 rounded-xl flex items-center justify-center mb-4">
                         <i class="fa-solid fa-scale-balanced text-red-400"></i>
                     </div>
@@ -478,7 +478,7 @@
                     </div>
                 </a>
 
-                <a href="/usecases/hotel/" class="group bg-white/[0.02] border border-white/[0.06] rounded-2xl p-7 hover:border-red-500/30 hover:bg-white/[0.04] transition-all">
+                <a href="/usecases/hotel/" data-cta-label="Pain 카드: 외국인·다국어 응대" data-cta-location="pain-grid" class="group bg-white/[0.02] border border-white/[0.06] rounded-2xl p-7 hover:border-red-500/30 hover:bg-white/[0.04] transition-all">
                     <div class="w-11 h-11 bg-red-500/10 rounded-xl flex items-center justify-center mb-4">
                         <i class="fa-solid fa-language text-red-400"></i>
                     </div>
@@ -495,7 +495,7 @@
     </section>
 
     <!-- Product Section -->
-    <section id="product" class="py-24 relative">
+    <section id="product" data-funnel-section="product" class="py-24 relative">
         <div class="line-glow w-full"></div>
         <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-12">
             <div class="text-center mb-16">
@@ -680,7 +680,7 @@
     </section>
 
     <!-- Why neurosam.AI -->
-    <section id="why" class="py-24 relative">
+    <section id="why" data-funnel-section="why" class="py-24 relative">
         <div class="line-glow w-full"></div>
         <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-12">
             <div class="text-center mb-16">
@@ -772,7 +772,7 @@
                 <p class="text-gray-200 font-semibold text-sm sm:text-base text-center sm:text-left break-keep">
                     AI바우처 공급기업 자격 2건 보유 — <span class="text-brand-300">즉시 도입 가능</span>합니다
                 </p>
-                <a href="#contact" class="shrink-0 inline-flex items-center justify-center px-5 py-2.5 bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold rounded-lg transition-all whitespace-nowrap">
+                <a href="#contact" data-cta-label="AI바우처 도입 상담" data-cta-location="why-inline" class="shrink-0 inline-flex items-center justify-center px-5 py-2.5 bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold rounded-lg transition-all whitespace-nowrap">
                     AI바우처 도입 상담
                     <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
                 </a>
@@ -781,7 +781,7 @@
     </section>
 
     <!-- Use Cases -->
-    <section id="usecases" class="py-24">
+    <section id="usecases" data-funnel-section="usecases" class="py-24">
         <div class="max-w-6xl mx-auto px-5 sm:px-8">
             <div class="text-center mb-16">
                 <p class="text-brand-400 text-sm font-semibold tracking-wider uppercase mb-3 font-display">Use Cases</p>
@@ -794,7 +794,7 @@
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                <a href="/usecases/government/" class="group bg-white/[0.02] border border-white/[0.06] rounded-xl overflow-hidden hover:bg-white/[0.04] hover:border-brand-500/30 transition-all">
+                <a href="/usecases/government/" data-cta-label="유스케이스 카드: 정부·공공기관" data-cta-location="usecases-grid" class="group bg-white/[0.02] border border-white/[0.06] rounded-xl overflow-hidden hover:bg-white/[0.04] hover:border-brand-500/30 transition-all">
                     <div class="aspect-[16/10] overflow-hidden bg-brand-900/40">
                         <picture>
                           <source srcset="/usecases/government-hero.webp" type="image/webp">
@@ -808,7 +808,7 @@
                         <div class="mt-3 text-brand-400 text-xs font-semibold inline-flex items-center">자세히 보기 <i class="fa-solid fa-arrow-right ml-1.5 text-[10px] group-hover:translate-x-0.5 transition-transform"></i></div>
                     </div>
                 </a>
-                <a href="/usecases/office/" class="group bg-white/[0.02] border border-white/[0.06] rounded-xl overflow-hidden hover:bg-white/[0.04] hover:border-brand-500/30 transition-all">
+                <a href="/usecases/office/" data-cta-label="유스케이스 카드: 스마트 오피스" data-cta-location="usecases-grid" class="group bg-white/[0.02] border border-white/[0.06] rounded-xl overflow-hidden hover:bg-white/[0.04] hover:border-brand-500/30 transition-all">
                     <div class="aspect-[16/10] overflow-hidden bg-brand-900/40">
                         <picture>
                           <source srcset="/usecases/office-hero.webp" type="image/webp">
@@ -822,7 +822,7 @@
                         <div class="mt-3 text-brand-400 text-xs font-semibold inline-flex items-center">자세히 보기 <i class="fa-solid fa-arrow-right ml-1.5 text-[10px] group-hover:translate-x-0.5 transition-transform"></i></div>
                     </div>
                 </a>
-                <a href="/usecases/hotel/" class="group bg-white/[0.02] border border-white/[0.06] rounded-xl overflow-hidden hover:bg-white/[0.04] hover:border-purple-500/30 transition-all">
+                <a href="/usecases/hotel/" data-cta-label="유스케이스 카드: 호텔·리조트" data-cta-location="usecases-grid" class="group bg-white/[0.02] border border-white/[0.06] rounded-xl overflow-hidden hover:bg-white/[0.04] hover:border-purple-500/30 transition-all">
                     <div class="aspect-[16/10] overflow-hidden bg-brand-900/40">
                         <picture>
                           <source srcset="/usecases/hotel-hero.webp" type="image/webp">
@@ -836,7 +836,7 @@
                         <div class="mt-3 text-purple-400 text-xs font-semibold inline-flex items-center">자세히 보기 <i class="fa-solid fa-arrow-right ml-1.5 text-[10px] group-hover:translate-x-0.5 transition-transform"></i></div>
                     </div>
                 </a>
-                <a href="/usecases/retail/" class="group bg-white/[0.02] border border-white/[0.06] rounded-xl overflow-hidden hover:bg-white/[0.04] hover:border-emerald-500/30 transition-all">
+                <a href="/usecases/retail/" data-cta-label="유스케이스 카드: 리테일·F&B" data-cta-location="usecases-grid" class="group bg-white/[0.02] border border-white/[0.06] rounded-xl overflow-hidden hover:bg-white/[0.04] hover:border-emerald-500/30 transition-all">
                     <div class="aspect-[16/10] overflow-hidden bg-brand-900/40">
                         <picture>
                           <source srcset="/usecases/retail-hero.webp" type="image/webp">
@@ -850,7 +850,7 @@
                         <div class="mt-3 text-emerald-400 text-xs font-semibold inline-flex items-center">자세히 보기 <i class="fa-solid fa-arrow-right ml-1.5 text-[10px] group-hover:translate-x-0.5 transition-transform"></i></div>
                     </div>
                 </a>
-                <a href="/usecases/healthcare/" class="group bg-white/[0.02] border border-white/[0.06] rounded-xl overflow-hidden hover:bg-white/[0.04] hover:border-amber-500/30 transition-all">
+                <a href="/usecases/healthcare/" data-cta-label="유스케이스 카드: 의료기관" data-cta-location="usecases-grid" class="group bg-white/[0.02] border border-white/[0.06] rounded-xl overflow-hidden hover:bg-white/[0.04] hover:border-amber-500/30 transition-all">
                     <div class="aspect-[16/10] overflow-hidden bg-brand-900/40">
                         <picture>
                           <source srcset="/usecases/healthcare-hero.webp" type="image/webp">
@@ -864,7 +864,7 @@
                         <div class="mt-3 text-amber-400 text-xs font-semibold inline-flex items-center">자세히 보기 <i class="fa-solid fa-arrow-right ml-1.5 text-[10px] group-hover:translate-x-0.5 transition-transform"></i></div>
                     </div>
                 </a>
-                <a href="/usecases/" class="group bg-gradient-to-br from-brand-500/10 via-purple-500/10 to-emerald-500/10 border border-white/[0.08] rounded-xl p-6 hover:border-brand-500/30 transition-all flex flex-col justify-center items-start">
+                <a href="/usecases/" data-cta-label="모든 활용 사례 보기" data-cta-location="usecases-grid" class="group bg-gradient-to-br from-brand-500/10 via-purple-500/10 to-emerald-500/10 border border-white/[0.08] rounded-xl p-6 hover:border-brand-500/30 transition-all flex flex-col justify-center items-start">
                     <div class="text-3xl mb-4"><i class="fa-solid fa-grip text-gray-300"></i></div>
                     <h3 class="font-bold text-white mb-2 text-sm">모든 활용 사례 보기</h3>
                     <p class="text-gray-400 text-xs leading-relaxed break-keep">5개 산업별 상세 도입 시나리오와 워크플로우, 산업별 FAQ를 한 곳에서 확인하세요.</p>
@@ -882,7 +882,7 @@
                     <p class="text-white font-bold text-lg break-keep">AI바우처 또는 AI청년창업기업 바우처로 Agent-R 도입 비용을 지원받을 수 있습니다</p>
                     <p class="text-gray-400 text-sm mt-1 break-keep">과학기술정보통신부 AI바우처와 AI청년창업기업 바우처 모두 공급기업으로 선정되어, 수요기업의 상황에 맞는 바우처로 솔루션 도입 비용을 충당할 수 있습니다.</p>
                 </div>
-                <a href="#contact" class="shrink-0 px-6 py-3 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-lg text-sm transition-all whitespace-nowrap">
+                <a href="#contact" data-cta-label="AI바우처 도입 상담" data-cta-location="usecases-voucher-box" class="shrink-0 px-6 py-3 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-lg text-sm transition-all whitespace-nowrap">
                     AI바우처 도입 상담
                 </a>
             </div>
@@ -890,7 +890,7 @@
     </section>
 
     <!-- About -->
-    <section id="about" class="py-24 bg-brand-900/50 relative">
+    <section id="about" data-funnel-section="about" class="py-24 bg-brand-900/50 relative">
         <div class="max-w-6xl mx-auto px-5 sm:px-8">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div>
@@ -1004,7 +1004,7 @@
                 <p class="text-gray-400 text-sm mb-5 break-keep">
                     제품 1pager·도입 절차 가이드·AI바우처 매칭 안내. 도입 의무 없음.
                 </p>
-                <form id="liteForm" class="max-w-md mx-auto flex flex-col sm:flex-row gap-2">
+                <form id="liteForm" data-form-name="lite" class="max-w-md mx-auto flex flex-col sm:flex-row gap-2">
                     <input type="email" name="email" required placeholder="business@company.com" class="flex-1 px-4 py-3 rounded-lg bg-white/[0.05] border border-white/[0.08] focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none text-white placeholder-gray-600 text-sm transition-all">
                     <button type="submit" id="liteSubmit" class="shrink-0 px-5 py-3 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-lg transition-all text-sm whitespace-nowrap">
                         자료 받기
@@ -1136,7 +1136,7 @@
                 제품 데모, AI바우처/AI청년창업기업 바우처 도입, 기술 자문 등 편하게 문의해 주세요.
             </p>
 
-            <form id="contactForm" class="space-y-4 text-left">
+            <form id="contactForm" data-form-name="contact" class="space-y-4 text-left">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs text-gray-500 mb-1.5 font-medium">이름 *</label>
@@ -1251,6 +1251,7 @@
     </footer>
 
     {{ partial "sticky-cta.html" . }}
+    {{ partial "funnel-tracking.html" . }}
 
     <script>
         function toggleMenu() {

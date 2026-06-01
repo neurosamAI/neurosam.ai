@@ -121,11 +121,11 @@
           {{ end }}
 
           <div class="flex flex-col sm:flex-row gap-3">
-            <a href="/#contact" class="inline-flex items-center justify-center px-6 py-3 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-lg transition-all text-sm shadow-lg shadow-brand-500/20">
+            <a href="/#contact" data-cta-label="도입 문의하기" data-cta-location="usecase-hero" class="inline-flex items-center justify-center px-6 py-3 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-lg transition-all text-sm shadow-lg shadow-brand-500/20">
               도입 문의하기
               <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
             </a>
-            <a href="/usecases/" class="inline-flex items-center justify-center px-6 py-3 bg-white/[0.05] hover:bg-white/[0.08] border border-white/[0.08] text-gray-300 font-semibold rounded-lg transition-all text-sm">
+            <a href="/usecases/" data-cta-label="다른 활용 사례 보기" data-cta-location="usecase-hero" class="inline-flex items-center justify-center px-6 py-3 bg-white/[0.05] hover:bg-white/[0.08] border border-white/[0.08] text-gray-300 font-semibold rounded-lg transition-all text-sm">
               다른 활용 사례 보기
             </a>
           </div>
@@ -269,7 +269,7 @@
         <p class="text-gray-400 mb-7 break-keep text-sm sm:text-base">
           {{ .Params.cta_body | default "AI바우처 또는 AI청년창업기업 바우처로 도입 비용 부담을 줄일 수 있습니다." | safeHTML }}
         </p>
-        <a href="/#contact" class="inline-flex items-center justify-center px-7 py-3.5 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-lg transition-all text-sm shadow-lg shadow-brand-500/20">
+        <a href="/#contact" data-cta-label="도입 상담 시작하기" data-cta-location="usecase-bottom" class="inline-flex items-center justify-center px-7 py-3.5 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-lg transition-all text-sm shadow-lg shadow-brand-500/20">
           도입 상담 시작하기
           <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
         </a>

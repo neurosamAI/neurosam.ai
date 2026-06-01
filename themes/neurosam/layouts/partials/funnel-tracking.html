@@ -1,0 +1,143 @@
+{{/*
+  Funnel tracking — dataLayer + GA4 + Plausible + Microsoft Clarity
+  integrated event system.
+
+  5-step funnel:
+    1) Landing       page_view (auto by GA4 enhanced measurement)
+    2) Engagement    funnel_hero_view / funnel_pain_view / funnel_why_view / scroll_milestone(50)
+    3) Interest      funnel_usecases_view / usecase_card_click / blog_view / scroll_milestone(90)
+    4) Intent        cta_click / form_start
+    5) Conversion    form_submit
+
+  Sections marked with data-funnel-section="..." auto-fire `funnel_{name}_view`
+  once per session (threshold 0.4).
+
+  CTA elements marked with data-cta-label="..." fire `cta_click` with
+  label·location·destination params.
+
+  Forms with data-form-name="..." fire `form_start` (first input focus) and
+  `form_submit`.
+*/}}
+<script>
+(function () {
+  window.dataLayer = window.dataLayer || [];
+
+  function trackEvent(name, params) {
+    params = params || {};
+    var payload = Object.assign({ event: name }, params);
+    try { window.dataLayer.push(payload); } catch (_) {}
+    if (typeof window.gtag === 'function') {
+      try { window.gtag('event', name, params); } catch (_) {}
+    }
+    if (typeof window.plausible === 'function') {
+      try { window.plausible(name, { props: params }); } catch (_) {}
+    }
+    if (typeof window.clarity === 'function') {
+      try {
+        Object.keys(params).forEach(function (k) {
+          window.clarity('set', k, String(params[k]));
+        });
+        if (name !== 'page_view') window.clarity('event', name);
+      } catch (_) {}
+    }
+  }
+  window.trackEvent = trackEvent;
+
+  // --- Section views (IntersectionObserver, once per session) ---
+  var seenSections = {};
+  try { seenSections = JSON.parse(sessionStorage.getItem('nsfn_seen') || '{}'); } catch (_) {}
+
+  function markSeen(name) {
+    if (seenSections[name]) return false;
+    seenSections[name] = 1;
+    try { sessionStorage.setItem('nsfn_seen', JSON.stringify(seenSections)); } catch (_) {}
+    return true;
+  }
+
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var name = entry.target.getAttribute('data-funnel-section');
+        if (!name) return;
+        if (markSeen(name)) {
+          trackEvent('funnel_' + name + '_view', {
+            section: name,
+            page_path: location.pathname,
+          });
+        }
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.4 });
+
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('[data-funnel-section]').forEach(function (el) {
+        observer.observe(el);
+      });
+    });
+  }
+
+  // --- CTA clicks ---
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-cta-label]');
+    if (!el) return;
+    trackEvent('cta_click', {
+      cta_label: el.getAttribute('data-cta-label'),
+      cta_location: el.getAttribute('data-cta-location') || '',
+      destination: el.getAttribute('href') || '',
+      page_path: location.pathname,
+    });
+  });
+
+  // --- Form lifecycle (start on first focus, submit on submit) ---
+  var formStarted = {};
+  document.addEventListener('focusin', function (e) {
+    var form = e.target.closest('form[data-form-name]');
+    if (!form) return;
+    var name = form.getAttribute('data-form-name');
+    if (formStarted[name]) return;
+    formStarted[name] = 1;
+    trackEvent('form_start', { form_name: name, page_path: location.pathname });
+  });
+
+  document.addEventListener('submit', function (e) {
+    var form = e.target.closest('form[data-form-name]');
+    if (!form) return;
+    var name = form.getAttribute('data-form-name');
+    trackEvent('form_submit', { form_name: name, page_path: location.pathname });
+  }, true);
+
+  // --- Scroll milestones (50%, 90%) ---
+  var milestones = [50, 90];
+  var fired = {};
+  function onScroll() {
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    if (max <= 0) return;
+    var pct = Math.round((h.scrollTop || window.scrollY) / max * 100);
+    milestones.forEach(function (m) {
+      if (pct >= m && !fired[m]) {
+        fired[m] = 1;
+        trackEvent('scroll_milestone', { milestone: m, page_path: location.pathname });
+      }
+    });
+  }
+  var scrollTimer = null;
+  window.addEventListener('scroll', function () {
+    if (scrollTimer) return;
+    scrollTimer = setTimeout(function () { scrollTimer = null; onScroll(); }, 200);
+  }, { passive: true });
+
+  // --- Outbound link clicks (optional, marked) ---
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[data-outbound], a[href^="https://oss.neurosam.ai"], a[href^="https://github.com/neurosamAI"], a[href^="https://tow-cli.neurosam.ai"]');
+    if (!a) return;
+    if (a.hasAttribute('data-cta-label')) return; // already tracked as CTA
+    trackEvent('outbound_click', {
+      destination: a.getAttribute('href') || '',
+      label: a.getAttribute('data-outbound') || (a.textContent || '').trim().slice(0, 80),
+      page_path: location.pathname,
+    });
+  });
+})();
+</script>

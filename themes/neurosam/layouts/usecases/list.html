@@ -63,7 +63,7 @@
   <div class="max-w-6xl mx-auto px-5 sm:px-8">
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {{ range .Pages.ByWeight }}
-      <a href="{{ .RelPermalink }}" class="group block bg-white/[0.02] border border-white/[0.06] rounded-2xl overflow-hidden hover:border-brand-500/30 hover:bg-white/[0.04] transition-all duration-300">
+      <a href="{{ .RelPermalink }}" data-cta-label="유스케이스 카드: {{ .Title }}" data-cta-location="usecases-list" class="group block bg-white/[0.02] border border-white/[0.06] rounded-2xl overflow-hidden hover:border-brand-500/30 hover:bg-white/[0.04] transition-all duration-300">
         {{ with .Params.hero_image }}
         <div class="aspect-[4/3] overflow-hidden bg-gradient-to-br from-brand-500/10 via-purple-500/5 to-emerald-500/10">
           {{ $webp := replace . ".png" ".webp" }}
