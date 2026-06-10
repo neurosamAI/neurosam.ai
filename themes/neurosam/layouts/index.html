@@ -7,6 +7,9 @@
     <meta name="description" content="neurosam.AI(법인명 (주)뉴로샘에이아이 / 영문 Neurosam AI Inc. / 약칭 뉴로샘AI)는 AI 응대 에이전트와 24시간 AI 전화 응대를 하나로 통합한 하이브리드 SaaS 솔루션 neurosam.AI Agent-R을 제공합니다. 얼굴인식·음성 AI·텔레포니 AI를 결합해 사무실·호텔·병원·매장의 고객 응대를 자동화합니다. 2026 과학기술정보통신부 AI바우처 및 AI청년창업기업 바우처 공급기업 선정.">
     <meta name="keywords" content="24시간 무인 응대, AI 키오스크 에이전트 로봇, AI 응대 에이전트, AI 페르소나 플랫폼, 도메인 페르소나, AI 전화 응대, AI 전화비서, 무인 안내 시스템, 서비스 로봇, AI바우처, AI청년창업기업 바우처, AI청년창업기업바우처, 청년창업 AI, AI SaaS, 얼굴인식 출입관리, AI 방문자 관리, AI 콜봇, AICC, neurosam, Agent-R">
     <link rel="canonical" href="https://neurosam.ai/">
+    <link rel="alternate" hreflang="ko-KR" href="https://neurosam.ai/">
+    <link rel="alternate" hreflang="en" href="https://neurosam.ai/en/">
+    <link rel="alternate" hreflang="x-default" href="https://neurosam.ai/">
     {{ with .Site.Params.verification.naver }}<meta name="naver-site-verification" content="{{ . }}">{{ end }}
     {{ with .Site.Params.verification.google }}<meta name="google-site-verification" content="{{ . }}">{{ end }}
 
@@ -350,6 +353,11 @@
                     <a href="#contact" data-cta-label="도입 문의" data-cta-location="nav-desktop" class="ml-3 px-5 py-2 bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold rounded-lg transition-all">
                         도입 문의
                     </a>
+                    <span class="ml-3 flex items-center gap-2 text-sm">
+                        <a href="/" class="text-white font-semibold" aria-current="page">KO</a>
+                        <span class="text-gray-700">/</span>
+                        <a href="/en/" class="text-gray-400 hover:text-white transition-colors">EN</a>
+                    </span>
                 </div>
 
                 <button onclick="toggleMenu()" class="md:hidden p-2 text-gray-400 hover:text-white">
@@ -368,6 +376,11 @@
                 <a href="/blog/" onclick="toggleMenu()" class="block px-3 py-2.5 text-gray-300 hover:text-white rounded-lg text-sm">블로그</a>
                 <a href="https://oss.neurosam.ai" onclick="toggleMenu()" class="block px-3 py-2.5 text-gray-300 hover:text-white rounded-lg text-sm">오픈소스</a>
                 <a href="#contact" onclick="toggleMenu()" data-cta-label="도입 문의" data-cta-location="nav-mobile" class="block px-3 py-2.5 text-brand-400 font-semibold rounded-lg text-sm">도입 문의</a>
+                <div class="flex items-center gap-2 px-3 py-2.5 text-sm border-t border-white/[0.06] mt-1 pt-3">
+                    <a href="/" class="text-white font-semibold" aria-current="page">KO 한국어</a>
+                    <span class="text-gray-700">/</span>
+                    <a href="/en/" class="text-gray-300 hover:text-white transition-colors">EN English</a>
+                </div>
             </div>
         </div>
     </nav>
