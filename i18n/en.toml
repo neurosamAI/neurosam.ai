@@ -24,8 +24,8 @@ bc_usecases = "Use Cases"
 
 # Footer
 footer_tagline = "A Korea-based AI startup unifying a 24/7 unmanned AI kiosk agent robot and AI phone answering into one domain-persona platform."
-footer_badge_voucher = "2026 AI Voucher Supplier"
-footer_badge_youth = "AI Youth-Startup Voucher Supplier"
+footer_badge_voucher = "2026 MSIT-recognized AI supplier"
+footer_badge_youth = "NIPA-registered AI startup"
 footer_sitemap = "Sitemap"
 footer_oss_label = "Open Source (Tow)"
 footer_company = "Company"
@@ -36,7 +36,7 @@ footer_terms = "Terms of Service"
 footer_naver_place = "Naver Place"
 
 # Sticky CTA
-sticky_title = "Minimize your cost with the AI Voucher"
+sticky_title = "24/7 reception with zero added headcount"
 sticky_sub = "Reply within 24h · No obligation"
 aria_close = "Close"
 
@@ -47,7 +47,7 @@ uc_default_workflow_heading = "How it works in practice"
 uc_default_workflow_subtitle = "A step-by-step look at how Agent-R operates"
 uc_default_faqs_heading = "Frequently asked questions"
 uc_default_cta_heading = "Start your deployment review today"
-uc_default_cta_body = "The AI Voucher or AI Youth-Startup Voucher can significantly reduce your deployment cost."
+uc_default_cta_body = "Book a product demo and consultation tailored to your environment — reply within 24 hours, no obligation."
 uc_default_servicetype = "AI reception agent"
 
 # Use case (list)

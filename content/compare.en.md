@@ -20,8 +20,8 @@ When you start evaluating unmanned reception, the options usually come down to f
 | 24/7 AI phone reception | ✕ | △ (separate solution) | ✕ | **○ (integrated)** |
 | Domain rollout speed | Requires redevelopment | Per-FAQ | HW-dependent, slow | **Fast deployment by swapping system prompt + RAG** |
 | Returning-visitor recognition | ✕ | △ (on login) | △ | **○ (face recognition)** |
-| Entry deployment cost | Low | Low (monthly subscription) | Very high | **Reasonable + AI Voucher support** |
-| Government voucher deployment | △ | △ | △ | **○ (2 AI Voucher supplier registrations)** |
+| Entry deployment cost | Low | Low (monthly subscription) | Very high | **Reasonable, subscription-based** |
+| Government-recognized AI supplier | △ | △ | △ | **○ (MSIT · NIPA recognized, 2026)** |
 
 > ○ Supported · △ Limited/optional · ✕ Not supported
 
@@ -42,7 +42,7 @@ A **domain persona platform** that integrates face recognition (Vision AI) + voi
 - **Voice, multilingual support, and accessibility met by design** → automatic compliance with the Korea Disability Discrimination Act
 - **Integrated 24/7 AI phone reception** → in-person reception plus after-hours calls in a single solution
 - **Just swap the per-site system prompt and RAG knowledge base** → rapid deployment to new domains
-- **2 supplier registrations for the AI Voucher and AI Youth-Startup Voucher** → minimal out-of-pocket deployment through government support
+- **Government-recognized AI supplier (MSIT · NIPA, 2026)** → an independently vetted vendor
 
 ## When Is Agent-R the Right Fit?
 
@@ -50,9 +50,8 @@ A **domain persona platform** that integrates face recognition (Vision AI) + voi
 - When **staffing for night, holiday, or multilingual reception is hard to secure**
 - When you need to meet the **mandated kiosk accessibility requirements under the Korea Disability Discrimination Act**
 - When an industrial robot is too much but a simple kiosk isn't enough
-- When you want to deploy with **government support through the AI Voucher**
 
-For concrete scenarios by industry, see [Use Cases](/en/usecases/); for the deployment process, see the [AI Voucher Deployment Guide](/en/blog/2026/05/ai-voucher-introduction-guide-2026/).
+For concrete scenarios by industry, see [Use Cases](/en/usecases/).
 
 ---
 

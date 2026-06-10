@@ -41,8 +41,8 @@ faqs:
     a: "A unified control dashboard supports headquarters/branch permission separation. With role-based access control, headquarters can see reception activity across all locations while each branch sees only its own data."
   - q: "Can visit history integrate with ERP or attendance systems?"
     a: "Integration with external systems is available via REST API. During initial onboarding, we configure the workflow to fit your in-house systems in a customization phase."
-  - q: "Can I cover adoption costs with the AI Voucher?"
-    a: "Yes. neurosam.AI has been selected for both the MSIT AI Voucher supplier POOL and the AI Youth-Startup Voucher supplier list, so you can adopt the solution through whichever of the two vouchers fits best."
+  - q: "How quickly can it be deployed?"
+    a: "Thanks to the domain persona engine, the same platform runs as your office's persona once we configure the system prompt and RAG knowledge base — so persona deployment is possible within about a week for a standard scenario. Hardware installation and system integration timelines are shared during the consultation."
 cta_heading: "Let Agent-R handle your office reception"
-cta_body: "Ease the burden on a solo receptionist while raising the quality of visitor reception. Available through the AI Voucher and the AI Youth-Startup Voucher."
+cta_body: "Ease the burden on a solo receptionist while raising the quality of visitor reception. Book a demo and consultation for your space."
 ---
