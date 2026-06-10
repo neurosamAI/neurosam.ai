@@ -60,3 +60,10 @@ ds_updated = "최종 업데이트"
 
 # Language switcher
 lang_switch_label = "언어 선택"
+
+# Blog
+blog_title = "기술, 인사이트, 그리고 여정"
+blog_subtitle = "neurosam.AI 팀이 공유하는 이야기"
+blog_empty = "아직 게시된 글이 없습니다. 곧 새로운 이야기를 전해드리겠습니다."
+blog_back = "블로그 목록으로"
+blog_top = "맨 위로"

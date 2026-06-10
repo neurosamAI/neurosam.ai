@@ -60,3 +60,10 @@ ds_updated = "Last updated"
 
 # Language switcher
 lang_switch_label = "Select language"
+
+# Blog
+blog_title = "Technology, insights, and our journey"
+blog_subtitle = "Stories shared by the neurosam.AI team"
+blog_empty = "English articles are coming soon. In the meantime, explore our solution and use cases."
+blog_back = "Back to blog"
+blog_top = "Back to top"

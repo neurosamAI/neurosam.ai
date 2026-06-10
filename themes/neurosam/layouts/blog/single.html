@@ -2,7 +2,7 @@
 <article class="max-w-4xl mx-auto px-6 pt-24 pb-16">
   <header class="mb-14">
     <div class="flex items-center gap-3 text-sm text-gray-500 mb-4">
-      <time class="text-brand-500 font-medium">{{ .Date.Format "2006년 1월 2일" }}</time>
+      <time class="text-brand-500 font-medium">{{ .Date.Format (cond (eq .Language.Lang "en") "Jan 2, 2006" "2006년 1월 2일") }}</time>
       {{ with .Params.author }}
       <span class="text-gray-700">·</span>
       <span>{{ . }}</span>
@@ -27,11 +27,11 @@
   </div>
 
   <div class="mt-16 pt-8 border-t border-white/[0.06] flex items-center justify-between">
-    <a href="/blog/" class="text-brand-500 hover:text-brand-400 transition-colors text-sm font-medium">
-      &larr; 블로그 목록으로
+    <a href="{{ "/blog/" | relLangURL }}" class="text-brand-500 hover:text-brand-400 transition-colors text-sm font-medium">
+      &larr; {{ i18n "blog_back" }}
     </a>
     <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" class="text-gray-600 hover:text-gray-400 transition-colors text-sm">
-      맨 위로 &uarr;
+      {{ i18n "blog_top" }} &uarr;
     </a>
   </div>
 </article>

@@ -2,16 +2,27 @@
 <div class="max-w-5xl mx-auto px-6 pt-24 pb-16">
   <div class="mb-14">
     <p class="text-brand-500 text-sm font-semibold tracking-wider uppercase mb-2 font-display">Blog</p>
-    <h1 class="text-3xl font-extrabold text-white tracking-tight">기술, 인사이트, 그리고 여정</h1>
-    <p class="text-gray-500 mt-2 text-sm">neurosam.AI 팀이 공유하는 이야기</p>
+    <h1 class="text-3xl font-extrabold text-white tracking-tight break-keep">{{ i18n "blog_title" }}</h1>
+    <p class="text-gray-500 mt-2 text-sm break-keep">{{ i18n "blog_subtitle" }}</p>
   </div>
+
+  {{ if not .Pages }}
+  <div class="bg-white/[0.02] border border-white/[0.06] rounded-xl p-10 text-center">
+    <i class="fa-regular fa-pen-to-square text-3xl text-gray-600 mb-4"></i>
+    <p class="text-gray-400 text-sm break-keep">{{ i18n "blog_empty" }}</p>
+    <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+      <a href="{{ "/usecases/" | relLangURL }}" class="inline-flex items-center px-5 py-2.5 bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold rounded-lg transition-all">{{ i18n "nav_usecases" }}</a>
+      <a href="{{ "/" | relLangURL }}#contact" class="inline-flex items-center px-5 py-2.5 bg-white/[0.05] hover:bg-white/[0.08] border border-white/[0.08] text-gray-300 text-sm font-semibold rounded-lg transition-all">{{ i18n "nav_contact" }}</a>
+    </div>
+  </div>
+  {{ end }}
 
   <div class="space-y-6">
     {{ range .Pages }}
     <article class="group">
       <a href="{{ .RelPermalink }}" class="block bg-white/[0.02] border border-white/[0.06] rounded-xl p-6 hover:border-brand-500/30 hover:bg-white/[0.04] transition-all duration-200">
         <div class="flex items-center gap-3 text-xs text-gray-500 mb-3">
-          <time class="text-brand-500 font-medium">{{ .Date.Format "2006년 1월 2일" }}</time>
+          <time class="text-brand-500 font-medium">{{ .Date.Format (cond (eq .Language.Lang "en") "Jan 2, 2006" "2006년 1월 2일") }}</time>
           {{ with .Params.author }}
           <span class="text-gray-700">·</span>
           <span>{{ . }}</span>
