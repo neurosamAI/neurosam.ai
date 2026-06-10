@@ -22,8 +22,12 @@
 (function () {
   window.dataLayer = window.dataLayer || [];
 
+  // Content language served by Hugo (ko / en) — for language-segmented funnel analysis.
+  // NOTE: this is the SITE content language, not the visitor's browser language.
+  var CONTENT_LANG = (document.documentElement.getAttribute('lang') || 'ko').slice(0, 2);
+
   function trackEvent(name, params) {
-    params = params || {};
+    params = Object.assign({ content_language: CONTENT_LANG }, params || {});
     var payload = Object.assign({ event: name }, params);
     try { window.dataLayer.push(payload); } catch (_) {}
     if (typeof window.gtag === 'function') {

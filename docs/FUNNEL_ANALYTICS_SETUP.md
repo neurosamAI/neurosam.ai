@@ -23,6 +23,8 @@ GA4 + Microsoft Clarity 조합으로 neurosam.ai 5단계 퍼널을 측정·시�
 | `scroll_milestone` | 50% / 90% 스크롤 도달 | `milestone`, `page_path` |
 | `outbound_click` | LinkedIn·GitHub·oss·tow-cli 외부 링크 클릭 | `destination`, `label`, `page_path` |
 
+> 모든 이벤트에 `content_language`(`ko`/`en`) 파라미터가 자동 포함됩니다. GA4 config에도 주입되어 자동 `page_view`까지 언어가 실립니다. 이는 **사이트 콘텐츠 언어**(서빙된 /en/ 여부)이며, GA4 기본 제공 `language`(방문자 브라우저 언어)와 다릅니다 — 영문 페이지를 보는 한국어 브라우저 사용자도 `content_language=en`으로 정확히 분리됩니다.
+
 전체 트래킹 로직: [themes/neurosam/layouts/partials/funnel-tracking.html](../themes/neurosam/layouts/partials/funnel-tracking.html)
 
 ## Step 1. GA4 발급 + 연결
@@ -134,4 +136,36 @@ window.trackEvent('custom_event_name', {
 
 ---
 
-마지막 업데이트: 2026-05-21
+## 언어별 퍼널 세그먼트 (한국어 / 영문)
+
+모든 이벤트가 `content_language`(`ko`/`en`)를 싣고 있어, 한국어 사이트(`/`)와 영문 사이트(`/en/`)의 전환율을 분리 분석할 수 있습니다.
+
+### A. GA4 맞춤 측정기준 등록 (콘솔)
+1. **관리** → **데이터 표시** → **맞춤 정의** → **맞춤 측정기준** 탭 → **맞춤 측정기준 만들기**
+2. 측정기준 이름: `Content Language` / 범위: `이벤트` / 이벤트 매개변수: `content_language`
+3. 저장 (반영까지 24~48시간)
+
+### B. 퍼널 보고서를 언어로 분해 (콘솔)
+- **탐색 → 유입경로 탐색 분석** 보고서에서 좌측 **분류(Breakdown)** 에 `Content Language` 측정기준을 끌어다 놓으면 → 각 단계가 ko/en으로 나뉘어 표시됩니다.
+- 또는 **세그먼트**를 2개 만들어 비교:
+  - `세그먼트: 한국어` — 조건: 이벤트의 `content_language` 정확히 일치 `ko`
+  - `세그먼트: 영문` — 조건: 이벤트의 `content_language` 정확히 일치 `en`
+  - 두 세그먼트를 유입경로 탐색에 함께 적용 → 단계별 전환율을 나란히 비교
+
+### C. 표준 보고서에서도 활용
+- **보고서 → 참여도 → 이벤트** → 우상단 `+` 또는 보조 측정기준에 `Content Language` 추가
+- **탐색 → 자유 형식**: 행=`Content Language`, 열=이벤트, 값=이벤트 수 → 언어별 이벤트 분포 한눈에
+
+### D. Microsoft Clarity 언어 필터
+- Clarity는 `content_language` 태그가 자동 set되어, **레코딩 → 필터 → 맞춤 태그**에서 `content_language = en`으로 영문 사용자 세션만 골라 볼 수 있습니다.
+
+### E. 대안 — GA4 기본 `Page path` 활용
+맞춤 측정기준 반영 전이라도, 즉시 분리 분석하려면 **Page path and screen class**에 `/en/` 포함 여부로 필터:
+- 영문: `Page path`가 `/en/`으로 시작
+- 한국어: `Page path`가 `/en/`을 **포함하지 않음**
+
+> 권장: A의 `content_language` 맞춤 측정기준이 가장 정확합니다. Page path 방식은 즉시 가능하나 루트 경로 해석에 주의가 필요합니다.
+
+---
+
+마지막 업데이트: 2026-06-10
