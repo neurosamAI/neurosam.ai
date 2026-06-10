@@ -29,6 +29,7 @@
           <li><a href="/#capabilities" class="hover:text-gray-300 transition-colors">기술 역량</a></li>
           <li><a href="/#why" class="hover:text-gray-300 transition-colors">Why neurosam.AI</a></li>
           <li><a href="/usecases/" class="hover:text-gray-300 transition-colors">활용 사례</a></li>
+          <li><a href="/compare/" class="hover:text-gray-300 transition-colors">솔루션 비교</a></li>
           <li><a href="/#about" class="hover:text-gray-300 transition-colors">회사 소개</a></li>
           <li><a href="/blog/" class="hover:text-gray-300 transition-colors">블로그</a></li>
           <li><a href="https://oss.neurosam.ai" class="hover:text-gray-300 transition-colors">오픈소스 (Tow)</a></li>
@@ -46,6 +47,7 @@
           {{ with .Site.Params.company.address }}<li class="break-keep">{{ . }}{{ with $.Site.Params.company.postalCode }} ({{ . }}){{ end }}</li>{{ end }}
           <li><a href="mailto:{{ .Site.Params.company.email | default "hello@neurosam.com" }}" class="hover:text-gray-300 transition-colors inline-flex items-center gap-2"><i class="fa-solid fa-envelope text-[11px]"></i> {{ .Site.Params.company.email | default "hello@neurosam.com" }}</a></li>
           <li><a href="{{ .Site.Params.social.linkedin | default "https://www.linkedin.com/company/neurosam-ai/" }}" target="_blank" rel="noopener" class="hover:text-gray-300 transition-colors inline-flex items-center gap-2"><i class="fa-brands fa-linkedin text-[11px]"></i> LinkedIn</a></li>
+          {{ with .Site.Params.place.naver }}<li><a href="{{ . }}" target="_blank" rel="noopener" class="hover:text-gray-300 transition-colors inline-flex items-center gap-2"><i class="fa-solid fa-location-dot text-[11px]"></i> 네이버 플레이스</a></li>{{ end }}
         </ul>
       </div>
     </div>

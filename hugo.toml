@@ -19,6 +19,16 @@ enableRobotsTXT = false
   postalCode = '16978'
   email = 'hello@neurosam.com'
 
+[params.verification]
+  # 네이버 서치어드바이저 사이트 소유확인 코드. 등록 후 코드만 입력하면 활성.
+  naver = ''
+  # 구글 서치콘솔 HTML 태그 방식 코드 (선택 — GA4 연결 시 불필요할 수 있음).
+  google = ''
+
+[params.place]
+  # 네이버 플레이스 URL (받으면 입력 → sameAs·푸터 연결)
+  naver = ''
+
 [params.analytics]
   # Google Analytics 4 Measurement ID (예: G-XXXXXXXXXX). 비워두면 비활성.
   ga4_id = 'G-YPGV2E40BW'

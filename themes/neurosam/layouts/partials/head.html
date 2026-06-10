@@ -10,10 +10,14 @@
 {{ with $kw }}<meta name="keywords" content="{{ . }}">{{ end }}
 <link rel="canonical" href="{{ .Permalink }}">
 
-{{/* OG/Twitter image: page hero_image first, then site default */}}
-{{ $og_image_path := .Params.hero_image | default "/usecases/office-hero.png" }}
+{{/* Search engine site ownership verification */}}
+{{ with .Site.Params.verification.naver }}<meta name="naver-site-verification" content="{{ . }}">{{ end }}
+{{ with .Site.Params.verification.google }}<meta name="google-site-verification" content="{{ . }}">{{ end }}
+
+{{/* OG/Twitter image: page hero_image first, then branded OG card */}}
+{{ $og_image_path := .Params.hero_image | default "/og-card.png" }}
 {{ $og_image := printf "https://neurosam.ai%s" $og_image_path }}
-{{ $og_image_alt := printf "%s — neurosam.AI Agent-R" (.Params.industry_label | default .Title) }}
+{{ $og_image_alt := printf "%s — neurosam.AI (뉴로샘AI) Agent-R" (.Params.industry_label | default .Title) }}
 
 <!-- Open Graph -->
 <meta property="og:title" content="{{ .Title }}">
@@ -125,12 +129,14 @@
     "2026 과학기술정보통신부 AI바우처 공급기업 POOL",
     "2026 NIPA AI청년창업기업 동반성장 바우처 공급기업 POOL"
   ],
-  "sameAs": [
+  {{ with .Site.Params.place.naver }}"hasMap": "{{ . }}",
+  {{ end }}"sameAs": [
     "https://www.linkedin.com/company/neurosam-ai/",
     "https://oss.neurosam.ai",
     "https://github.com/neurosamAI",
     "https://github.com/neurosamAI/tow-cli",
-    "https://tow-cli.neurosam.ai"
+    "https://tow-cli.neurosam.ai"{{ with .Site.Params.place.naver }},
+    "{{ . }}"{{ end }}
   ]
 }
 </script>

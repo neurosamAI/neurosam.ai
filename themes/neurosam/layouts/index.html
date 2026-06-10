@@ -7,6 +7,8 @@
     <meta name="description" content="neurosam.AI(법인명 (주)뉴로샘에이아이 / 영문 Neurosam AI Inc. / 약칭 뉴로샘AI)는 AI 응대 에이전트와 24시간 AI 전화 응대를 하나로 통합한 하이브리드 SaaS 솔루션 neurosam.AI Agent-R을 제공합니다. 얼굴인식·음성 AI·텔레포니 AI를 결합해 사무실·호텔·병원·매장의 고객 응대를 자동화합니다. 2026 과학기술정보통신부 AI바우처 및 AI청년창업기업 바우처 공급기업 선정.">
     <meta name="keywords" content="24시간 무인 응대, AI 키오스크 에이전트 로봇, AI 응대 에이전트, AI 페르소나 플랫폼, 도메인 페르소나, AI 전화 응대, AI 전화비서, 무인 안내 시스템, 서비스 로봇, AI바우처, AI청년창업기업 바우처, AI청년창업기업바우처, 청년창업 AI, AI SaaS, 얼굴인식 출입관리, AI 방문자 관리, AI 콜봇, AICC, neurosam, Agent-R">
     <link rel="canonical" href="https://neurosam.ai/">
+    {{ with .Site.Params.verification.naver }}<meta name="naver-site-verification" content="{{ . }}">{{ end }}
+    {{ with .Site.Params.verification.google }}<meta name="google-site-verification" content="{{ . }}">{{ end }}
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
@@ -15,11 +17,17 @@
     <meta property="og:url" content="https://neurosam.ai/">
     <meta property="og:site_name" content="neurosam.AI">
     <meta property="og:locale" content="ko_KR">
+    <meta property="og:image" content="https://neurosam.ai/og-card.png">
+    <meta property="og:image:alt" content="neurosam.AI (뉴로샘AI) — 24시간 무인 응대 AI 키오스크 에이전트 로봇">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="neurosam.AI — AI 응대 에이전트 & 24시간 AI 전화 응대 솔루션">
     <meta name="twitter:description" content="neurosam.AI(뉴로샘에이아이) Agent-R — AI 응대 에이전트와 24시간 전화 응대를 하나로 통합한 하이브리드 SaaS.">
+    <meta name="twitter:image" content="https://neurosam.ai/og-card.png">
+    <meta name="twitter:image:alt" content="neurosam.AI (뉴로샘AI) — 24시간 무인 응대 AI 키오스크 에이전트 로봇">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -135,12 +143,14 @@
         "2026 과학기술정보통신부 AI바우처 공급기업 POOL",
         "2026 NIPA AI청년창업기업 동반성장 바우처 공급기업 POOL"
       ],
-      "sameAs": [
+      {{ with .Site.Params.place.naver }}"hasMap": "{{ . }}",
+      {{ end }}"sameAs": [
         "https://www.linkedin.com/company/neurosam-ai/",
         "https://oss.neurosam.ai",
         "https://github.com/neurosamAI",
         "https://github.com/neurosamAI/tow-cli",
-        "https://tow-cli.neurosam.ai"
+        "https://tow-cli.neurosam.ai"{{ with .Site.Params.place.naver }},
+        "{{ . }}"{{ end }}
       ]
     }
     </script>
@@ -1218,6 +1228,7 @@
                         <li><a href="#capabilities" class="hover:text-gray-300 transition-colors">기술 역량</a></li>
                         <li><a href="#why" class="hover:text-gray-300 transition-colors">Why neurosam.AI</a></li>
                         <li><a href="/usecases/" class="hover:text-gray-300 transition-colors">활용 사례</a></li>
+                        <li><a href="/compare/" class="hover:text-gray-300 transition-colors">솔루션 비교</a></li>
                         <li><a href="#about" class="hover:text-gray-300 transition-colors">회사 소개</a></li>
                         <li><a href="/blog/" class="hover:text-gray-300 transition-colors">블로그</a></li>
                         <li><a href="https://oss.neurosam.ai" class="hover:text-gray-300 transition-colors">오픈소스 (Tow)</a></li>
@@ -1235,6 +1246,7 @@
                         <li class="break-keep">경기도 용인시 기흥구 중부대로 579, 604 중 4018호 (16978)</li>
                         <li><a href="mailto:hello@neurosam.com" class="hover:text-gray-300 transition-colors inline-flex items-center gap-2"><i class="fa-solid fa-envelope text-[11px]"></i> hello@neurosam.com</a></li>
                         <li><a href="https://www.linkedin.com/company/neurosam-ai/" target="_blank" rel="noopener" class="hover:text-gray-300 transition-colors inline-flex items-center gap-2"><i class="fa-brands fa-linkedin text-[11px]"></i> LinkedIn</a></li>
+                        {{ with .Site.Params.place.naver }}<li><a href="{{ . }}" target="_blank" rel="noopener" class="hover:text-gray-300 transition-colors inline-flex items-center gap-2"><i class="fa-solid fa-location-dot text-[11px]"></i> 네이버 플레이스</a></li>{{ end }}
                     </ul>
                 </div>
             </div>
