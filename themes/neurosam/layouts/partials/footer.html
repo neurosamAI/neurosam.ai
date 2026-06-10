@@ -7,47 +7,51 @@
           <img src="/logo.svg" alt="neurosam.AI" class="h-6 w-auto">
         </div>
         <p class="text-gray-400 text-sm leading-relaxed break-keep max-w-md mb-5">
-          24시간 무인 응대 AI 키오스크 에이전트 로봇과 AI 전화 응대를 도메인 페르소나 플랫폼으로 통합 제공하는 한국 AI 스타트업.
+          {{ i18n "footer_tagline" }}
         </p>
         <div class="flex flex-wrap items-center gap-2">
           <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[10px] text-emerald-400 font-semibold">
             <span class="flex h-1 w-1 rounded-full bg-emerald-400"></span>
-            2026 AI바우처 공급기업
+            {{ i18n "footer_badge_voucher" }}
           </span>
           <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-[10px] text-purple-400 font-semibold">
             <span class="flex h-1 w-1 rounded-full bg-purple-400"></span>
-            AI청년창업기업 바우처 공급기업
+            {{ i18n "footer_badge_youth" }}
           </span>
         </div>
       </div>
 
       <!-- Sitemap -->
       <div>
-        <p class="text-xs font-semibold text-gray-300 uppercase tracking-wider mb-4">사이트맵</p>
+        <p class="text-xs font-semibold text-gray-300 uppercase tracking-wider mb-4">{{ i18n "footer_sitemap" }}</p>
         <ul class="space-y-2.5 text-sm text-gray-500">
-          <li><a href="/#product" class="hover:text-gray-300 transition-colors">솔루션</a></li>
-          <li><a href="/#capabilities" class="hover:text-gray-300 transition-colors">기술 역량</a></li>
-          <li><a href="/#why" class="hover:text-gray-300 transition-colors">Why neurosam.AI</a></li>
-          <li><a href="/usecases/" class="hover:text-gray-300 transition-colors">활용 사례</a></li>
-          <li><a href="/compare/" class="hover:text-gray-300 transition-colors">솔루션 비교</a></li>
-          <li><a href="/#about" class="hover:text-gray-300 transition-colors">회사 소개</a></li>
-          <li><a href="/blog/" class="hover:text-gray-300 transition-colors">블로그</a></li>
-          <li><a href="https://oss.neurosam.ai" class="hover:text-gray-300 transition-colors">오픈소스 (Tow)</a></li>
+          <li><a href="{{ "/" | relLangURL }}#product" class="hover:text-gray-300 transition-colors">{{ i18n "nav_solution" }}</a></li>
+          <li><a href="{{ "/" | relLangURL }}#capabilities" class="hover:text-gray-300 transition-colors">{{ i18n "nav_capabilities" }}</a></li>
+          <li><a href="{{ "/" | relLangURL }}#why" class="hover:text-gray-300 transition-colors">{{ i18n "nav_why" }}</a></li>
+          <li><a href="{{ "/usecases/" | relLangURL }}" class="hover:text-gray-300 transition-colors">{{ i18n "nav_usecases" }}</a></li>
+          <li><a href="{{ "/compare/" | relLangURL }}" class="hover:text-gray-300 transition-colors">{{ i18n "nav_compare" }}</a></li>
+          <li><a href="{{ "/" | relLangURL }}#about" class="hover:text-gray-300 transition-colors">{{ i18n "nav_about" }}</a></li>
+          <li><a href="{{ "/blog/" | relLangURL }}" class="hover:text-gray-300 transition-colors">{{ i18n "nav_blog" }}</a></li>
+          <li><a href="https://oss.neurosam.ai" class="hover:text-gray-300 transition-colors">{{ i18n "footer_oss_label" }}</a></li>
         </ul>
       </div>
 
       <!-- Company -->
       <div>
-        <p class="text-xs font-semibold text-gray-300 uppercase tracking-wider mb-4">회사 정보</p>
+        <p class="text-xs font-semibold text-gray-300 uppercase tracking-wider mb-4">{{ i18n "footer_company" }}</p>
         <ul class="space-y-2.5 text-sm text-gray-500">
           <li><span class="text-gray-400">{{ .Site.Params.company.legalName | default "(주)뉴로샘에이아이" }}</span></li>
           <li>{{ .Site.Params.company.englishName | default "Neurosam AI Inc." }}</li>
-          <li>대표 {{ .Site.Params.company.ceo | default "정문창" }}</li>
-          {{ with .Site.Params.company.businessNumber }}<li>사업자등록번호 {{ . }}</li>{{ end }}
-          {{ with .Site.Params.company.address }}<li class="break-keep">{{ . }}{{ with $.Site.Params.company.postalCode }} ({{ . }}){{ end }}</li>{{ end }}
+          <li>{{ i18n "footer_ceo_label" }} {{ .Site.Params.company.ceo | default "정문창" }}</li>
+          {{ with .Site.Params.company.businessNumber }}<li>{{ i18n "footer_bizno_label" }} {{ . }}</li>{{ end }}
+          {{ if eq .Language.Lang "en" }}
+            {{ with .Site.Params.company.addressEn }}<li class="break-keep">{{ . }}{{ with $.Site.Params.company.postalCode }} ({{ . }}){{ end }}</li>{{ end }}
+          {{ else }}
+            {{ with .Site.Params.company.address }}<li class="break-keep">{{ . }}{{ with $.Site.Params.company.postalCode }} ({{ . }}){{ end }}</li>{{ end }}
+          {{ end }}
           <li><a href="mailto:{{ .Site.Params.company.email | default "hello@neurosam.com" }}" class="hover:text-gray-300 transition-colors inline-flex items-center gap-2"><i class="fa-solid fa-envelope text-[11px]"></i> {{ .Site.Params.company.email | default "hello@neurosam.com" }}</a></li>
           <li><a href="{{ .Site.Params.social.linkedin | default "https://www.linkedin.com/company/neurosam-ai/" }}" target="_blank" rel="noopener" class="hover:text-gray-300 transition-colors inline-flex items-center gap-2"><i class="fa-brands fa-linkedin text-[11px]"></i> LinkedIn</a></li>
-          {{ with .Site.Params.place.naver }}<li><a href="{{ . }}" target="_blank" rel="noopener" class="hover:text-gray-300 transition-colors inline-flex items-center gap-2"><i class="fa-solid fa-location-dot text-[11px]"></i> 네이버 플레이스</a></li>{{ end }}
+          {{ with .Site.Params.place.naver }}<li><a href="{{ . }}" target="_blank" rel="noopener" class="hover:text-gray-300 transition-colors inline-flex items-center gap-2"><i class="fa-solid fa-location-dot text-[11px]"></i> {{ i18n "footer_naver_place" }}</a></li>{{ end }}
         </ul>
       </div>
     </div>
@@ -56,9 +60,9 @@
       <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-gray-600">
         <span>&copy; {{ now.Year }} Neurosam AI Inc.</span>
         <span class="text-gray-800">·</span>
-        <a href="/privacy/" class="hover:text-gray-400 transition-colors">개인정보처리방침</a>
+        <a href="{{ "/privacy/" | relLangURL }}" class="hover:text-gray-400 transition-colors">{{ i18n "footer_privacy" }}</a>
         <span class="text-gray-800">·</span>
-        <a href="/terms/" class="hover:text-gray-400 transition-colors">이용약관</a>
+        <a href="{{ "/terms/" | relLangURL }}" class="hover:text-gray-400 transition-colors">{{ i18n "footer_terms" }}</a>
       </div>
       <div class="flex items-center gap-5">
         <a href="{{ .Site.Params.social.linkedin | default "https://www.linkedin.com/company/neurosam-ai/" }}" target="_blank" rel="noopener" aria-label="LinkedIn" class="text-gray-600 hover:text-gray-300 transition-colors"><i class="fa-brands fa-linkedin"></i></a>

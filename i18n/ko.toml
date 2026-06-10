@@ -1,0 +1,62 @@
+# 한국어 UI 문자열 (공유 partial·레이아웃)
+
+# Navigation
+nav_solution = "솔루션"
+nav_capabilities = "기술 역량"
+nav_why = "Why neurosam.AI"
+nav_usecases = "활용 사례"
+nav_compare = "솔루션 비교"
+nav_about = "회사 소개"
+nav_blog = "블로그"
+nav_oss = "오픈소스"
+nav_contact = "도입 문의"
+
+# CTA
+cta_consult = "도입 상담"
+cta_request_demo = "도입 문의하기"
+cta_other_usecases = "다른 활용 사례 보기"
+cta_start_consult = "도입 상담 시작하기"
+cta_learn_more = "자세히 보기"
+
+# Breadcrumb
+bc_home = "홈"
+bc_usecases = "활용 사례"
+
+# Footer
+footer_tagline = "24시간 무인 응대 AI 키오스크 에이전트 로봇과 AI 전화 응대를 도메인 페르소나 플랫폼으로 통합 제공하는 한국 AI 스타트업."
+footer_badge_voucher = "2026 AI바우처 공급기업"
+footer_badge_youth = "AI청년창업기업 바우처 공급기업"
+footer_sitemap = "사이트맵"
+footer_oss_label = "오픈소스 (Tow)"
+footer_company = "회사 정보"
+footer_ceo_label = "대표"
+footer_bizno_label = "사업자등록번호"
+footer_privacy = "개인정보처리방침"
+footer_terms = "이용약관"
+footer_naver_place = "네이버 플레이스"
+
+# Sticky CTA
+sticky_title = "AI바우처로 자기부담 최소 도입"
+sticky_sub = "24시간 내 회신 · 도입 의무 없음"
+aria_close = "닫기"
+
+# Use case (single) labels
+uc_figcaption = "AI 생성 이미지 · 도입 환경 컨셉 시각화"
+uc_default_benefits_heading = "현장의 응대 부담을 Agent-R이 해결합니다"
+uc_default_workflow_heading = "실제 운영 시나리오"
+uc_default_workflow_subtitle = "Agent-R 운영 시나리오 단계별 안내"
+uc_default_faqs_heading = "자주 묻는 질문"
+uc_default_cta_heading = "지금 도입을 검토해 보세요"
+uc_default_cta_body = "AI바우처 또는 AI청년창업기업 바우처로 도입 비용 부담을 줄일 수 있습니다."
+uc_default_servicetype = "AI 응대 에이전트"
+
+# Use case (list)
+ucl_title_line1 = "사람을 맞이하는 모든 공간에"
+ucl_title_line2 = "Agent-R이 응대합니다"
+ucl_schema_name = "neurosam.AI Agent-R 활용 사례"
+
+# Default single
+ds_updated = "최종 업데이트"
+
+# Language switcher
+lang_switch_label = "언어 선택"

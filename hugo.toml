@@ -1,13 +1,30 @@
 baseURL = 'https://neurosam.ai/'
-languageCode = 'ko-KR'
-title = 'neurosam.AI — AI 응대 에이전트 & 24시간 전화 응대 솔루션 | Agent-R'
 theme = 'neurosam'
 enableRobotsTXT = false
+defaultContentLanguage = 'ko'
+defaultContentLanguageInSubdir = false
+
+[languages]
+  [languages.ko]
+    languageCode = 'ko-KR'
+    languageName = '한국어'
+    weight = 1
+    title = 'neurosam.AI — AI 응대 에이전트 & 24시간 전화 응대 솔루션 | Agent-R'
+    [languages.ko.params]
+      description = 'neurosam.AI(법인명 (주)뉴로샘에이아이 / 영문 Neurosam AI Inc. / 약칭 뉴로샘AI)는 AI 응대 에이전트와 24시간 AI 전화 응대를 하나로 통합한 하이브리드 SaaS 솔루션 neurosam.AI Agent-R을 제공합니다. 얼굴인식·음성 AI·텔레포니 AI를 결합해 사무실·호텔·병원·매장의 고객 응대를 자동화합니다. 2026 AI바우처 + AI청년창업기업 바우처 공급기업 선정.'
+      keywords = 'neurosam.AI,neurosam.ai,Neurosam AI,Neurosam AI Inc.,뉴로샘에이아이,(주)뉴로샘에이아이,뉴로샘AI,뉴로샘,Agent-R,neurosam.AI Agent-R,24시간 무인 응대,AI 키오스크 에이전트 로봇,AI 응대 에이전트,AI 페르소나 플랫폼,도메인 페르소나,AI 전화 응대,AI 전화비서,무인 안내 시스템,서비스 로봇,AI바우처,AI청년창업기업 바우처,AI청년창업기업바우처,청년창업 AI,AI SaaS,얼굴인식 출입관리,AI 방문자 관리,AI 콜봇,AICC'
+
+  [languages.en]
+    languageCode = 'en'
+    languageName = 'English'
+    weight = 2
+    title = 'neurosam.AI — AI Reception Agent & 24/7 AI Phone Answering | Agent-R'
+    [languages.en.params]
+      description = 'neurosam.AI (legal name: Neurosam AI Inc.) builds Agent-R, an all-in-one hybrid SaaS that unifies an AI reception agent and 24/7 AI phone answering. Powered by face recognition, voice AI, and telephony AI, Agent-R automates visitor and customer response across offices, hotels, hospitals, and retail stores.'
+      keywords = 'neurosam.AI,Neurosam AI,Neurosam AI Inc.,Agent-R,AI reception agent,AI kiosk agent robot,AI reception robot,24/7 AI phone answering,AI receptionist,unmanned reception,domain persona platform,face recognition kiosk,voice AI,AICC,service robot,AI concierge robot,self-service kiosk AI'
 
 [params]
-  description = 'neurosam.AI(법인명 (주)뉴로샘에이아이 / 영문 Neurosam AI Inc. / 약칭 뉴로샘AI)는 AI 응대 에이전트와 24시간 AI 전화 응대를 하나로 통합한 하이브리드 SaaS 솔루션 neurosam.AI Agent-R을 제공합니다. 얼굴인식·음성 AI·텔레포니 AI를 결합해 사무실·호텔·병원·매장의 고객 응대를 자동화합니다. 2026 AI바우처 + AI청년창업기업 바우처 공급기업 선정.'
   author = 'Neurosam AI Team'
-  keywords = 'neurosam.AI,neurosam.ai,Neurosam AI,Neurosam AI Inc.,뉴로샘에이아이,(주)뉴로샘에이아이,뉴로샘AI,뉴로샘,Agent-R,neurosam.AI Agent-R,24시간 무인 응대,AI 키오스크 에이전트 로봇,AI 응대 에이전트,AI 페르소나 플랫폼,도메인 페르소나,AI 전화 응대,AI 전화비서,무인 안내 시스템,서비스 로봇,AI바우처,AI청년창업기업 바우처,AI청년창업기업바우처,청년창업 AI,AI SaaS,얼굴인식 출입관리,AI 방문자 관리,AI 콜봇,AICC'
   contactFormURL = 'https://script.google.com/macros/s/AKfycbxbeAKbZrdtjZz-a5cjpb3H1YsflRIpRFpDuXvjY4guseHEsA7zQIKh93p_UKRBQXo/exec'
 
 [params.company]
@@ -16,6 +33,7 @@ enableRobotsTXT = false
   ceo = '정문창 (Murry Jeong)'
   businessNumber = '807-87-03850'
   address = '경기도 용인시 기흥구 중부대로 579, 604 중 4018호'
+  addressEn = '4018, 579 Jungbu-daero, Giheung-gu, Yongin-si, Gyeonggi-do, South Korea'
   postalCode = '16978'
   email = 'hello@neurosam.com'
 

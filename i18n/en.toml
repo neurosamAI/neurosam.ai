@@ -1,0 +1,62 @@
+# English UI strings (shared partials / layouts)
+
+# Navigation
+nav_solution = "Solution"
+nav_capabilities = "Technology"
+nav_why = "Why neurosam.AI"
+nav_usecases = "Use Cases"
+nav_compare = "Compare"
+nav_about = "About"
+nav_blog = "Blog"
+nav_oss = "Open Source"
+nav_contact = "Contact"
+
+# CTA
+cta_consult = "Talk to us"
+cta_request_demo = "Request a demo"
+cta_other_usecases = "See other use cases"
+cta_start_consult = "Start a consultation"
+cta_learn_more = "Learn more"
+
+# Breadcrumb
+bc_home = "Home"
+bc_usecases = "Use Cases"
+
+# Footer
+footer_tagline = "A Korea-based AI startup unifying a 24/7 unmanned AI kiosk agent robot and AI phone answering into one domain-persona platform."
+footer_badge_voucher = "2026 AI Voucher Supplier"
+footer_badge_youth = "AI Youth-Startup Voucher Supplier"
+footer_sitemap = "Sitemap"
+footer_oss_label = "Open Source (Tow)"
+footer_company = "Company"
+footer_ceo_label = "CEO"
+footer_bizno_label = "Business Reg. No."
+footer_privacy = "Privacy Policy"
+footer_terms = "Terms of Service"
+footer_naver_place = "Naver Place"
+
+# Sticky CTA
+sticky_title = "Minimize your cost with the AI Voucher"
+sticky_sub = "Reply within 24h · No obligation"
+aria_close = "Close"
+
+# Use case (single) labels
+uc_figcaption = "AI-generated concept image · deployment environment"
+uc_default_benefits_heading = "How Agent-R solves your front-line response burden"
+uc_default_workflow_heading = "How it works in practice"
+uc_default_workflow_subtitle = "A step-by-step look at how Agent-R operates"
+uc_default_faqs_heading = "Frequently asked questions"
+uc_default_cta_heading = "Start your deployment review today"
+uc_default_cta_body = "The AI Voucher or AI Youth-Startup Voucher can significantly reduce your deployment cost."
+uc_default_servicetype = "AI reception agent"
+
+# Use case (list)
+ucl_title_line1 = "Wherever you greet people,"
+ucl_title_line2 = "Agent-R responds"
+ucl_schema_name = "neurosam.AI Agent-R use cases"
+
+# Default single
+ds_updated = "Last updated"
+
+# Language switcher
+lang_switch_label = "Select language"

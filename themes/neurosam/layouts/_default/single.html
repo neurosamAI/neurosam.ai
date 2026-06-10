@@ -2,7 +2,7 @@
 <article class="pt-28 pb-24">
   <div class="max-w-3xl mx-auto px-5 sm:px-8">
     <nav class="mb-6 text-sm">
-      <a href="/" class="text-gray-500 hover:text-gray-300 transition-colors">홈</a>
+      <a href="{{ "/" | relLangURL }}" class="text-gray-500 hover:text-gray-300 transition-colors">{{ i18n "bc_home" }}</a>
       <span class="text-gray-600 mx-2">/</span>
       <span class="text-gray-300">{{ .Title }}</span>
     </nav>
@@ -10,7 +10,7 @@
     <header class="mb-10 pb-8 border-b border-white/[0.06]">
       <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight break-keep mb-3">{{ .Title }}</h1>
       {{ with .Description }}<p class="text-gray-400 text-base leading-relaxed break-keep">{{ . }}</p>{{ end }}
-      {{ if not .Date.IsZero }}<p class="mt-4 text-xs text-gray-600">최종 업데이트 · {{ .Lastmod.Format "2006년 1월 2일" }}</p>{{ end }}
+      {{ if not .Date.IsZero }}<p class="mt-4 text-xs text-gray-600">{{ i18n "ds_updated" }} · {{ .Lastmod.Format (cond (eq .Language.Lang "en") "Jan 2, 2006" "2006년 1월 2일") }}</p>{{ end }}
     </header>
 
     <div class="prose">

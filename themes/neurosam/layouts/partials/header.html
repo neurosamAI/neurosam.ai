@@ -1,21 +1,31 @@
+{{- $home := cond (eq .Language.Lang "ko") "/" (printf "/%s/" .Language.Lang) -}}
+{{- $map := dict -}}
+{{- range .AllTranslations -}}{{- $map = merge $map (dict .Language.Lang .RelPermalink) -}}{{- end -}}
 <nav id="nav" class="fixed w-full z-50 bg-brand-950/80 backdrop-blur-xl border-b border-white/[0.06] transition-all duration-300">
   <div class="max-w-6xl mx-auto px-5 sm:px-8">
     <div class="flex items-center justify-between h-16">
-      <a href="/" class="flex items-center gap-2 group">
+      <a href="{{ $home }}" class="flex items-center gap-2 group">
         <img src="/logo.svg" alt="neurosam.AI" class="h-7 w-auto">
       </a>
 
       <div class="hidden md:flex items-center gap-1">
-        <a href="/#product" class="px-3 py-2 text-sm text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5">솔루션</a>
-        <a href="/#capabilities" class="px-3 py-2 text-sm text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5">기술 역량</a>
-        <a href="/#why" class="px-3 py-2 text-sm text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5">Why neurosam.AI</a>
-        <a href="/usecases/" class="px-3 py-2 text-sm text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5">활용 사례</a>
-        <a href="/#about" class="px-3 py-2 text-sm text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5">회사 소개</a>
-        <a href="/blog/" class="px-3 py-2 text-sm text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5">블로그</a>
-        <a href="https://oss.neurosam.ai" class="px-3 py-2 text-sm text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5">오픈소스</a>
-        <a href="/#contact" class="ml-3 px-5 py-2 bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold rounded-lg transition-all">
-          도입 문의
+        <a href="{{ "/" | relLangURL }}#product" class="px-3 py-2 text-sm text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5">{{ i18n "nav_solution" }}</a>
+        <a href="{{ "/" | relLangURL }}#capabilities" class="px-3 py-2 text-sm text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5">{{ i18n "nav_capabilities" }}</a>
+        <a href="{{ "/" | relLangURL }}#why" class="px-3 py-2 text-sm text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5">{{ i18n "nav_why" }}</a>
+        <a href="{{ "/usecases/" | relLangURL }}" class="px-3 py-2 text-sm text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5">{{ i18n "nav_usecases" }}</a>
+        <a href="{{ "/#about" | relLangURL }}" class="px-3 py-2 text-sm text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5">{{ i18n "nav_about" }}</a>
+        <a href="{{ "/blog/" | relLangURL }}" class="px-3 py-2 text-sm text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5">{{ i18n "nav_blog" }}</a>
+        <a href="https://oss.neurosam.ai" class="px-3 py-2 text-sm text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5">{{ i18n "nav_oss" }}</a>
+        <a href="{{ "/" | relLangURL }}#contact" class="ml-3 px-5 py-2 bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold rounded-lg transition-all">
+          {{ i18n "nav_contact" }}
         </a>
+        <span class="ml-2 flex items-center gap-1 text-xs text-gray-500" aria-label="{{ i18n "lang_switch_label" }}">
+          {{- range $i, $l := .Site.Languages -}}
+            {{- if $i }}<span class="text-gray-700">/</span>{{ end -}}
+            {{- $href := index $map $l.Lang | default (cond (eq $l.Lang "ko") "/" (printf "/%s/" $l.Lang)) -}}
+            <a href="{{ $href }}" class="px-1 hover:text-white transition-colors {{ if eq $l.Lang $.Language.Lang }}text-white font-semibold{{ end }}">{{ if eq $l.Lang "ko" }}KO{{ else }}EN{{ end }}</a>
+          {{- end -}}
+        </span>
       </div>
 
       <button onclick="document.getElementById('blog-mobile-menu').classList.toggle('hidden')" class="md:hidden p-2 text-gray-400 hover:text-white">
@@ -26,14 +36,21 @@
 
   <div id="blog-mobile-menu" class="hidden md:hidden border-t border-white/[0.06]">
     <div class="px-4 py-3 space-y-1 bg-brand-950/95 backdrop-blur-xl">
-      <a href="/#product" class="block px-3 py-2.5 text-gray-300 hover:text-white rounded-lg text-sm">솔루션</a>
-      <a href="/#capabilities" class="block px-3 py-2.5 text-gray-300 hover:text-white rounded-lg text-sm">기술 역량</a>
-      <a href="/#why" class="block px-3 py-2.5 text-gray-300 hover:text-white rounded-lg text-sm">Why neurosam.AI</a>
-      <a href="/usecases/" class="block px-3 py-2.5 text-gray-300 hover:text-white rounded-lg text-sm">활용 사례</a>
-      <a href="/#about" class="block px-3 py-2.5 text-gray-300 hover:text-white rounded-lg text-sm">회사 소개</a>
-      <a href="/blog/" class="block px-3 py-2.5 text-gray-300 hover:text-white rounded-lg text-sm">블로그</a>
-      <a href="https://oss.neurosam.ai" class="block px-3 py-2.5 text-gray-300 hover:text-white rounded-lg text-sm">오픈소스</a>
-      <a href="/#contact" class="block px-3 py-2.5 text-brand-400 font-semibold rounded-lg text-sm">도입 문의</a>
+      <a href="{{ "/" | relLangURL }}#product" class="block px-3 py-2.5 text-gray-300 hover:text-white rounded-lg text-sm">{{ i18n "nav_solution" }}</a>
+      <a href="{{ "/" | relLangURL }}#capabilities" class="block px-3 py-2.5 text-gray-300 hover:text-white rounded-lg text-sm">{{ i18n "nav_capabilities" }}</a>
+      <a href="{{ "/" | relLangURL }}#why" class="block px-3 py-2.5 text-gray-300 hover:text-white rounded-lg text-sm">{{ i18n "nav_why" }}</a>
+      <a href="{{ "/usecases/" | relLangURL }}" class="block px-3 py-2.5 text-gray-300 hover:text-white rounded-lg text-sm">{{ i18n "nav_usecases" }}</a>
+      <a href="{{ "/#about" | relLangURL }}" class="block px-3 py-2.5 text-gray-300 hover:text-white rounded-lg text-sm">{{ i18n "nav_about" }}</a>
+      <a href="{{ "/blog/" | relLangURL }}" class="block px-3 py-2.5 text-gray-300 hover:text-white rounded-lg text-sm">{{ i18n "nav_blog" }}</a>
+      <a href="https://oss.neurosam.ai" class="block px-3 py-2.5 text-gray-300 hover:text-white rounded-lg text-sm">{{ i18n "nav_oss" }}</a>
+      <a href="{{ "/" | relLangURL }}#contact" class="block px-3 py-2.5 text-brand-400 font-semibold rounded-lg text-sm">{{ i18n "nav_contact" }}</a>
+      <div class="flex items-center gap-2 px-3 py-2.5 text-sm text-gray-400">
+        {{- range $i, $l := .Site.Languages -}}
+          {{- if $i }}<span class="text-gray-700">/</span>{{ end -}}
+          {{- $href := index $map $l.Lang | default (cond (eq $l.Lang "ko") "/" (printf "/%s/" $l.Lang)) -}}
+          <a href="{{ $href }}" class="hover:text-white {{ if eq $l.Lang $.Language.Lang }}text-white font-semibold{{ end }}">{{ if eq $l.Lang "ko" }}KO 한국어{{ else }}EN English{{ end }}</a>
+        {{- end -}}
+      </div>
     </div>
   </div>
 </nav>
