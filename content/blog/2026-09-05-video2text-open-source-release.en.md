@@ -65,15 +65,17 @@ Every conversion is kept in a history. If a speaker match is slightly off, or yo
 
 ## Install
 
+No build required: grab `video2text-v1.0.0-macos-arm64.zip` from the [latest release](https://github.com/neurosamAI/video2text/releases/latest), unzip it, and double-click `video2text.app`.
+
+To build it from source instead:
+
 ```bash
 git clone https://github.com/neurosamAI/video2text
 cd video2text
-python3.11 -m venv .venv
-./.venv/bin/pip install -r requirements.txt
 ./build.sh   # creates the venv, installs deps, and syncs video2text.app in one step
 ```
 
-`pyannote/speaker-diarization-3.1` is a gated model on HuggingFace, so a one-time free account, license agreement, and access token are required. After that, double-click `video2text.app`, or run `./run.sh` to start a local web server at http://127.0.0.1:8765.
+`pyannote/speaker-diarization-3.1` is a gated model on HuggingFace, so a one-time free account, license agreement, and access token are required. Paste the token into the Settings card at the top of the app.
 
 On Apple Silicon (M2 Pro), a 2-hour recording takes roughly 15–40 minutes for diarization and 10–20 minutes for transcription — and there's no upload wait to add on top.
 

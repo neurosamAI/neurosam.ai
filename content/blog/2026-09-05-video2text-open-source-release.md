@@ -65,15 +65,17 @@ mp4(또는 오디오) 파일 하나를 넣으면, 다음 파이프라인을 거�
 
 ## 설치
 
+빌드 없이 바로 쓰고 싶다면 [Releases 페이지](https://github.com/neurosamAI/video2text/releases/latest)에서 `video2text-v1.0.0-macos-arm64.zip`을 받아 압축을 풀고 `video2text.app`을 더블클릭하면 된다.
+
+코드를 직접 빌드하려면:
+
 ```bash
 git clone https://github.com/neurosamAI/video2text
 cd video2text
-python3.11 -m venv .venv
-./.venv/bin/pip install -r requirements.txt
 ./build.sh   # venv 생성 + 의존성 설치 + video2text.app 번들 동기화까지 한 번에
 ```
 
-`pyannote/speaker-diarization-3.1`은 HuggingFace의 gated 모델이라 무료 계정 생성과 라이선스 동의, 액세스 토큰 발급이 한 번 필요하다. 이후로는 `video2text.app`을 더블클릭하거나 `./run.sh`로 로컬 웹 서버(http://127.0.0.1:8765)를 띄워 사용한다.
+`pyannote/speaker-diarization-3.1`은 HuggingFace의 gated 모델이라 무료 계정 생성과 라이선스 동의, 액세스 토큰 발급이 한 번 필요하다. 앱을 열면 맨 위 "설정" 카드에서 토큰을 저장할 수 있다.
 
 Apple Silicon(M2 Pro 기준)에서 2시간짜리 녹화라면 화자 분리에 15~40분, 전사에 10~20분 정도 걸린다 — 인터넷 업로드 대기 시간이 없다는 점을 감안하면 체감 속도는 이보다 낫다.
 
