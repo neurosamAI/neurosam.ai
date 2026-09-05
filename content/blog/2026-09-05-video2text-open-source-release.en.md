@@ -65,7 +65,7 @@ Every conversion is kept in a history. If a speaker match is slightly off, or yo
 
 ## Install
 
-No build required: grab `video2text-v1.0.0-macos-arm64.zip` from the [latest release](https://github.com/neurosamAI/video2text/releases/latest), unzip it, and double-click `video2text.app`.
+No build required: grab `video2text-v1.0.1-macos-arm64.zip` from the [latest release](https://github.com/neurosamAI/video2text/releases/latest), unzip it, and double-click `video2text.app`.
 
 To build it from source instead:
 
