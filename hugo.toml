@@ -39,7 +39,7 @@ defaultContentLanguageInSubdir = false
 
 [params.verification]
   # 네이버 서치어드바이저 사이트 소유확인 코드. 등록 후 코드만 입력하면 활성.
-  naver = ''
+  naver = 'f1effdca4b3c3eb14c78bb27b68b7853ac2086c4'
   # 구글 서치콘솔 HTML 태그 방식 코드 (선택 — GA4 연결 시 불필요할 수 있음).
   google = ''
 
