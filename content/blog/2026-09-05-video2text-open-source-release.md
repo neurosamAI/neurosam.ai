@@ -65,7 +65,7 @@ mp4(또는 오디오) 파일 하나를 넣으면, 다음 파이프라인을 거�
 
 ## 설치
 
-빌드 없이 바로 쓰고 싶다면 [Releases 페이지](https://github.com/neurosamAI/video2text/releases/latest)에서 `video2text-v1.0.0-macos-arm64.zip`을 받아 압축을 풀고 `video2text.app`을 더블클릭하면 된다.
+빌드 없이 바로 쓰고 싶다면 [Releases 페이지](https://github.com/neurosamAI/video2text/releases/latest)에서 `video2text-v1.0.1-macos-arm64.zip`을 받아 압축을 풀고 `video2text.app`을 더블클릭하면 된다.
 
 코드를 직접 빌드하려면:
 
